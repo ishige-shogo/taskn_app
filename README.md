@@ -56,7 +56,7 @@
 >3. 掲示板メモ機能では忘れてはいけない内容やタスク記述ルールを書きます。(本日14-16時に配達物受け取り予定・現実的なものだけ記述すること　等)
 >4. 分析画面でタスク達成度を確認できます。
 
-**他の機能**
+## 他の機能
 
 1. **ログ機能**があります。(○○さんがTODOリストに追加しました・メモを消しました等)
 
@@ -72,17 +72,17 @@
 [テーブル定義書・アプリケーション詳細設計](https://docs.google.com/spreadsheets/d/1T74wFeck5zvVcDJOU_7VzCvwDMPfgS-o02Bh9Bzpbiw/edit?usp=sharing)
 
 ## チャレンジ要素一覧
-https://docs.google.com/spreadsheets/d/1RFY9YETr8O3dOyvynmOLHyf9Lk7-TYPbuJRNSd9cFK0/edit?usp=sharing
+[チャレンジ要素一覧](https://docs.google.com/spreadsheets/d/1RFY9YETr8O3dOyvynmOLHyf9Lk7-TYPbuJRNSd9cFK0/edit?usp=sharing)
 
 ## 開発環境
-- OS：Windows10
-- 言語：HTML,CSS,JavaScript,Ruby,SQL
-- フレームワーク：Ruby on Rails
-- JSライブラリ：jQuery
-- IDE：Cloud9
++ OS：Windows10
++ 言語：HTML,CSS,JavaScript,Ruby,SQL
++ フレームワーク：Ruby on Rails 5.2.4
++ JSライブラリ：jQuery
++ IDE：Cloud9
 
 ## 使用素材
-・ICOOON  MONO(トップページデザイン・利用者アイコンに使用予定)
-https://icooon-mono.com/category/transport/
-・ロゴメーカー(アプリケーションのロゴに使用予定)
-https://logo-maker.stores.jp/
++ [ICOOON  MONO](https://icooon-mono.com/category/transport/)(トップページデザイン・利用者アイコンに使用予定)
+
++ [ロゴメーカー](https://logo-maker.stores.jp/)(アプリケーションのロゴに使用予定)
+

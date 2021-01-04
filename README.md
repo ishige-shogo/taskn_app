@@ -64,11 +64,16 @@
 
 3. **お問い合わせ機能**があります。（改善してほしいことを管理者に送信できます）
 
+
 ## 設計書
 
+[ER図・UIFlow・画面設計](https://docs.google.com/presentation/d/1eZgJde1nMYudyUOFiBr0TFLnuX0U71qg0qFNmT0f-UY/edit?usp=sharing)
+
+[テーブル定義書・アプリケーション詳細設計](https://docs.google.com/spreadsheets/d/1T74wFeck5zvVcDJOU_7VzCvwDMPfgS-o02Bh9Bzpbiw/edit?usp=sharing)
 
 ## チャレンジ要素一覧
 https://docs.google.com/spreadsheets/d/1RFY9YETr8O3dOyvynmOLHyf9Lk7-TYPbuJRNSd9cFK0/edit?usp=sharing
+
 ## 開発環境
 - OS：Windows10
 - 言語：HTML,CSS,JavaScript,Ruby,SQL

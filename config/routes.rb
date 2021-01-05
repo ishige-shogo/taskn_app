@@ -1,68 +1,56 @@
 Rails.application.routes.draw do
-  namespace :users do
-    get 'analysis/index'
-    get 'analysis/show'
-  end
-  namespace :users do
-    get 'memos/create'
-    get 'memos/destroy'
-    get 'memos/destroy_all'
-  end
-  namespace :users do
-    get 'lists/new'
-    get 'lists/create'
-    get 'lists/destroy'
-    get 'lists/update'
-    get 'lists/start'
-  end
-  namespace :users do
-    get 'mains/index'
-    get 'mains/edit'
-    get 'mains/update'
-    get 'mains/exit'
-  end
-  namespace :users do
-    get 'contacts/index'
-    get 'contacts/new'
-    get 'contacts/create'
-  end
-  namespace :users do
-    get 'mypages/edit'
-    get 'mypages/update'
-    get 'mypages/unsubscribe'
-    get 'mypages/withdraw'
-  end
-  namespace :users do
-    get 'rooms/index'
-    get 'rooms/show'
-    get 'rooms/update'
-    get 'rooms/new'
-    get 'rooms/create'
-  end
-  namespace :users do
-    get 'homes/top'
-    get 'homes/how_to'
-  end
+   #ルートパス(未ログイン時トップ画面)
+  root to: "users/homes#top"
+
+  #gem devise 管理者
+  devise_for :admins, controllers: {
+    sessions:      'admins/sessions',
+    passwords:     'admins/passwords',
+    registrations: 'admins/registrations'
+  }
+
+  #gem devise 利用者
+  devise_for :users, controllers: {
+    sessions:      'users/sessions',
+    passwords:     'users/passwords',
+    registrations: 'users/registrations'
+  }
+
+  #使い方ページの表示
+  get '/how_to' => 'users/homes#how_to'
+
+  #利用者退会画面の表示
+  get '/mypages/unsubscribe' => 'users/mypages#unsubscribe'
+
+  #利用者の退会処理(有効フラグカラムを退会済に変える)
+  patch '/mypages/withdraw' => 'users/mypages#withdraw'
+
+  #ルーム退出処理(keyカラムをnilに書き換える)
+  patch '/main/:id/exit' => 'users/mains#exit', as: 'exit'
+
+  #タスクを開始したときの処理(タスクテーブルにデータが作成される)
+  post '/lists/start' => 'users/lists#start'
+
+  #メモを全て削除する処理
+  delete '/memo/:id/all' => 'users/memos#destroy_all', as: 'destroy_all'
+
+  #URLにadminsを含ませる
   namespace :admins do
-    get 'analysis/index'
+    resources :contacts, only: [:index, :show, :update]
+    resources :rooms, only: [:index, :update]
+    resources :users, only: [:index, :update]
+    resources :logs, only: [:index]
+    resources :analysis, only: [:index]
   end
-  namespace :admins do
-    get 'users/index'
-    get 'users/update'
+
+  #URLにusersを含ませない
+  scope module: :users do
+    resources :rooms, except: [:edit, :destroy]
+    resources :contacts, only: [:index, :new, :create]
+    resources :mains, only: [:index, :edit, :update]
+    resources :lists, only: [:new, :create, :update, :destroy]
+    resources :memos, only: [:create, :destroy]
+    #URLにidをもたせないため単数形
+    resource :mypages, only: [:edit, :update]
   end
-  namespace :admins do
-    get 'logs/index'
-  end
-  namespace :admins do
-    get 'rooms/index'
-    get 'rooms/update'
-  end
-  namespace :admins do
-    get 'contacts/index'
-    get 'contacts/show'
-    get 'contacts/update'
-  end
-  devise_for :admins
-  devise_for :users
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

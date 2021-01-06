@@ -12,5 +12,7 @@ class User < ApplicationRecord
   has_many :tasks
   has_many :room_users
 
+  attachment :image
+
   validates :name, presence: true, length: {minimum: 3}
 end

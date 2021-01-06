@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_06_005026) do
+ActiveRecord::Schema.define(version: 2021_01_06_010526) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -34,6 +34,15 @@ ActiveRecord::Schema.define(version: 2021_01_06_005026) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "lists", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "room_id"
+    t.string "body"
+    t.integer "importance"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "rooms", force: :cascade do |t|
     t.integer "user_id"
     t.string "name"
@@ -41,6 +50,16 @@ ActiveRecord::Schema.define(version: 2021_01_06_005026) do
     t.string "encrypted_roompass_iv"
     t.date "deadline"
     t.boolean "is_deleted", default: false, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "tasks", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "room_id"
+    t.string "body"
+    t.integer "importance"
+    t.boolean "is_finished", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

@@ -13,6 +13,8 @@
         <%= attachment_image_tag @user, :image, format: "jpeg", id: "img_prev", fallback: "no_image.jpg", size: "100x100" %><br>
         <%= f.attachment_field :image %>
     </div>
-    <%= f.submit "変更を保存" %>
+    <%= f.submit "変更を保存" ,class: "btn btn-primary" %>
 <% end %>
 
+<%= link_to "パスワードを変更する", edit_user_registration_path %>
+<%= link_to "退会する", mypages_unsubscribe_path %>

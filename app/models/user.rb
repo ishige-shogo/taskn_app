@@ -12,7 +12,16 @@ class User < ApplicationRecord
   has_many :tasks
   has_many :room_users
 
+  #refileの画像処理で必要
   attachment :image
+
+  #デフォルト値はfalse、退会処理をするとtrueに変更
+  enum is_deleted: { 有効: false, 退会済: true }
+
+  #is_deletedカラムが有効であればtrueを返す
+  def active_for_authentication?
+    super && (self.is_deleted == "有効")
+  end
 
   validates :name, presence: true, length: { minimum: 3 }
 end

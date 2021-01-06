@@ -1,2 +1,6 @@
 <h1>Users::Mypages#unsubscribe</h1>
-<p>Find me in app/views/users/mypages/unsubscribe.html.erb</p>
+本当に退会しますか？
+
+<%= link_to "マイページに戻る", edit_mypages_path %>
+
+<%= link_to "退会する", mypages_withdraw_path, method: :patch %>

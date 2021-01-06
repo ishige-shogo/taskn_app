@@ -1,4 +1,7 @@
 <h2>ログイン</h2>
+<% if flash[:notice] %>
+  <p><%= flash[:notice] %></p>
+<% end %>
 
 <%= form_with model: @user, url: new_user_session_path, local: true do |f| %>
 

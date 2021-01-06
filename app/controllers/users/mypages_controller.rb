@@ -18,6 +18,7 @@ class Users::MypagesController < ApplicationController
   end
 
   private
+
   # 利用者のニックネーム/メール/アイコンの変更
   def user_params
     params.require(:user).permit(:name, :email, :image)

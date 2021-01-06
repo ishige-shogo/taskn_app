@@ -7,3 +7,5 @@
 #   )
 # end
 
+#.envファイルでキーを管理
+Refile.secret_key = ENV["CONFIG_REFILEKEY"]

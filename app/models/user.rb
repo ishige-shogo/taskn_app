@@ -4,5 +4,13 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  has_many :contacts
+  has_many :lists
+  has_many :logs
+  has_many :memos
+  has_many :rooms
+  has_many :tasks
+  has_many :room_users
+
   validates :name, presence: true, length: {minimum: 3}
 end

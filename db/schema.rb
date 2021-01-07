@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_06_011543) do
+ActiveRecord::Schema.define(version: 2021_01_07_075347) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -95,11 +95,10 @@ ActiveRecord::Schema.define(version: 2021_01_06_011543) do
     t.datetime "remember_created_at"
     t.string "name"
     t.text "image_id"
-    t.string "encrypted_roomkey"
-    t.string "encrypted_roomkey_iv"
     t.boolean "is_deleted", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "present_room"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

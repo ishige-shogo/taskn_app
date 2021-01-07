@@ -1,0 +1,12 @@
+<h1>メイン画面</h1>
+<%# @lists.each do |list| %>
+    <%#= list.body %>
+    <%#= list.user.name %>
+<%# end %>
+
+ここからテスト<br>
+ルーム作成者:<%= @room.user.name %><br>
+ルーム名:<%= @room.name %><br>
+利用者:<%= @user.name %><br>
+利用者の現在所属するルームid:<%= @user.present_room %><br>
+

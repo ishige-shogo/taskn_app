@@ -26,7 +26,7 @@ Rails.application.routes.draw do
   patch '/mypages/withdraw' => 'users/mypages#withdraw'
 
   # ルーム退出処理(keyカラムをnilに書き換える)
-  patch '/main/:id/exit' => 'users/mains#exit', as: 'exit'
+  patch '/main/:id/out' => 'users/mains#out', as: 'out'
 
   # タスクを開始したときの処理(タスクテーブルにデータが作成される)
   post '/lists/start' => 'users/lists#start'
@@ -47,7 +47,7 @@ Rails.application.routes.draw do
   scope module: :users do
     resources :rooms, except: [:edit, :destroy]
     resources :contacts, only: [:index, :new, :create]
-    resources :mains, only: [:index, :edit, :update]
+    resources :mains, only: [:show, :edit, :update]
     resources :lists, only: [:new, :create, :update, :destroy]
     resources :memos, only: [:create, :destroy]
     # URLにidをもたせないため単数形

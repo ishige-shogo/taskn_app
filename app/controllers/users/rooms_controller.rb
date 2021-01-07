@@ -32,9 +32,8 @@ class Users::RoomsController < ApplicationController
     if @room.save
       # 利用者のpresent_roomカラムを作成したルームIDの値にする
       user = User.find(current_user.id)
-      user.roomkey = @room.roompass
       user.present_room = @room.id
-      user.update
+      user.save
       # 作成したルームに遷移する
       redirect_to main_path(@room.id)
     else
@@ -47,6 +46,10 @@ class Users::RoomsController < ApplicationController
   # ルームを新規作成する際のメソッド
   def room_params
     params.require(:room).permit(:name, :roompass, :roompass_confirmation)
+  end
+
+  def user_present_room_params
+    params.permit(:present_room)
   end
 
 end

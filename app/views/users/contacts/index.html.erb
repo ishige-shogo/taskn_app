@@ -3,7 +3,9 @@
 
 <% @contacts.each do |contact| %>
   <%= contact.title %>
-  <%= contact.body %><br>
+  <%= contact.body %>
+  <%= contact.is_read %>
+  <%= contact.created_at %><br>
 <% end %>
 
 <%= link_to "お問い合わせ新規作成", new_contact_path %>

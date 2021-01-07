@@ -29,6 +29,6 @@ class Users::RoomsController < ApplicationController
 
   # ルームを新規作成する際のメソッド
   def room_params
-    params.require(:room).permit(:name, :roompass, :is_deleted)
+    params.require(:room).permit(:name, :roompass,:roompass_confirmation)
   end
 end

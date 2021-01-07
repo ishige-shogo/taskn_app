@@ -23,5 +23,3 @@ class Users::ContactsController < ApplicationController
     params.require(:contact).permit(:title, :body)
   end
 end
-
-

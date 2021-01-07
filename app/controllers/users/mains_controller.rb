@@ -5,6 +5,8 @@ class Users::MainsController < ApplicationController
     @room = Room.find(params[:id])
     @user = User.find(current_user.id)
     @tasks = Task.where(room_id: params[:id])
+    @memo = Memo.new
+    @memos = Memo.where(room_id: params[:id])
   end
 
   def edit

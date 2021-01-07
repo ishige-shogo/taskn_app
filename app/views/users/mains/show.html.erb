@@ -1,7 +1,7 @@
 <h1>メイン画面</h1>
 
 <%= link_to "TODOリスト新規作成", new_list_path %><br>
-
+<div>TODO</div>
 <% @lists.each do |list| %>
     <%= list.body %>
     <%= list.importance %>
@@ -9,7 +9,18 @@
     <%= link_to "削除する", list_path(list.id), method: :delete %><br>
 <% end %>
 
-
+<div>memo</div>
+<%= form_with model: @memo, url: memos_path, local:true do |f| %>
+    <div class="field">
+        <%= f.label :body %>
+        <%= f.text_area :body %>
+    </div>
+    <%= f.submit "メモを作成する" %>
+<% end %>
+<br>
+<% @memos.each do |memo| %>
+    <%= memo.body %>
+<% end %>
 
 ここからテスト<br>
 ルーム作成者:<%= @room.user.name %><br>
@@ -17,6 +28,7 @@
 利用者:<%= @user.name %><br>
 利用者の現在所属するルームid:<%= @user.present_room %><br>
 
+<div>task</div>
 
 <% @tasks.each do |task| %>
     <%= task.body %>

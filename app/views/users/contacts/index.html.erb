@@ -1,5 +1,5 @@
 <h1>Users::Contacts#index</h1>
-お問い合わせ一覧<br>
+お問い合わせ一覧<br>全<%= @contacts.count %>件<br>
 
 <% @contacts.each do |contact| %>
   <%= contact.title %>

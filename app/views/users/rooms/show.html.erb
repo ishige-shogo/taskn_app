@@ -4,7 +4,7 @@
 <%= @room.id %>
 <%= @room.name %>
 <%= @room.user.name %>
-<%= form_with model: @user, url: room_path(current_user.id), method: :patch, local:true do |f| %>
+<%= form_with url: room_path, method: :patch, local:true do |f| %>
   <%= f.label :roomkey %>
   <%= f.text_field :roomkey %>
 <% end %>

@@ -1,2 +1,14 @@
 <h1>Users::Contacts#new</h1>
-<p>Find me in app/views/users/contacts/new.html.erb</p>
+お問い合わせ新規作成
+
+<%= form_with model: @contact, url: contacts_path, method: :post, local:true do |f| %>
+  <div class="field">
+    <%= f.label :title %><br>
+    <%= f.text_field :title %>
+  </div>
+  <div class="field">
+    <%= f.label :body %><br>
+    <%= f.password_field :body %>
+  </div>
+  <%= f.submit "お問い合わせを作成" %>
+<% end %>

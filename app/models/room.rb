@@ -6,7 +6,7 @@ class Room < ApplicationRecord
   has_many :room_users
   belongs_to :user
 
-  #gem attr_encrypted の記述、カラムの暗号化復号化に使用
+  # gem attr_encrypted の記述、カラムの暗号化復号化に使用
   attr_encrypted :roompass, key: ENV['ROOMPASS']
 
   # デフォルト値はfalse、管理者が無効処理をするとtrueに変更

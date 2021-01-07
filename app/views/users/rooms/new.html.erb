@@ -1,2 +1,15 @@
 <h1>Users::Rooms#new</h1>
-<p>Find me in app/views/users/rooms/new.html.erb</p>
+
+ルーム新規作成
+
+<%= form_with model: @room, url: rooms_path, method: :post, local:true do |f| %>
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :roompass %><br>
+    <%= f.password_field :roompass %>
+  </div>
+  <%= f.submit "ルームを作成" %>
+<% end %>

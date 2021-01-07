@@ -3,7 +3,8 @@
 <% @rooms.each do |room| %>
   <%= room.id %>
   <%= room.name %>
-  <%= room.user.name %>
+  <%= room.user.name %><%#ルームの作成者%>
+  <%= room.room_users.count %><%#ルームの参加人数%>
   <%= room.created_at %>
   <%= link_to "ルームに入る", room_path(room.id) %>
   <br>

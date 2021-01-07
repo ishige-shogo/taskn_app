@@ -9,15 +9,19 @@ class Users::ListsController < ApplicationController
     #ログイン中の利用者のpresent_room値をTODOリストのroom_idに代入
     user = User.find(current_user.id)
     @list.room_id = user.present_room
-
     if @list.save
-      redirect_to
+      redirect_to main_path(id: user.present_room)
     else
       render :new
     end
   end
 
   def destroy
+    list = List.find(params[:id])
+    # リダイレクト先のidを取得するためにデータを代入しておく
+    list_id = list.room_id
+    list.destroy
+    redirect_to main_path(id: list_id)
   end
 
   def update

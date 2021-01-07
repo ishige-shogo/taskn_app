@@ -1,8 +1,14 @@
 <h1>メイン画面</h1>
-<%# @lists.each do |list| %>
-    <%#= list.body %>
-    <%#= list.user.name %>
-<%# end %>
+
+<%= link_to "TODOリスト新規作成", new_list_path %><br>
+
+<% @lists.each do |list| %>
+    <%= list.body %>
+    <%= list.importance %>
+    <%= link_to "削除する", list_path(list.id), method: :delete %><br>
+<% end %>
+
+
 
 ここからテスト<br>
 ルーム作成者:<%= @room.user.name %><br>

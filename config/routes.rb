@@ -47,7 +47,7 @@ Rails.application.routes.draw do
   scope module: :users do
     resources :rooms, except: [:edit, :destroy]
     resources :contacts, only: [:index, :new, :create]
-    resources :mains, only: [:index, :edit, :update]
+    resources :mains, only: [:show, :edit, :update]
     resources :lists, only: [:new, :create, :update, :destroy]
     resources :memos, only: [:create, :destroy]
     # URLにidをもたせないため単数形

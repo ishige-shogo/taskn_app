@@ -1,2 +1,11 @@
 <h1>Users::Rooms#show</h1>
-<p>Find me in app/views/users/rooms/show.html.erb</p>
+ルームに参加する<br>
+
+<%= @room.id %>
+<%= @room.name %>
+<%= @room.user.name %>
+<%= form_with model: @user, url: room_path(current_user.id), method: :patch, local:true do |f| %>
+  <%= f.label :roomkey %>
+  <%= f.text_field :roomkey %>
+<% end %>
+

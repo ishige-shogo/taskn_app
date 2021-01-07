@@ -6,9 +6,9 @@ class Users::ListsController < ApplicationController
   def create
     @list = List.new(list_params)
     @list.user_id = current_user.id
-
-    room = Room.find(params[:id])
-    @list.room_id = room.id
+    #ログイン中の利用者のpresent_room値をTODOリストのroom_idに代入
+    user = User.find(current_user.id)
+    @list.room_id = user.present_room
 
     if @list.save
       redirect_to

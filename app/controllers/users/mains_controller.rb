@@ -1,5 +1,7 @@
 class Users::MainsController < ApplicationController
-  def index
+  def show
+    @room = Room.find(params[:id])
+    @user = User.find(current_user.id)
   end
 
   def edit

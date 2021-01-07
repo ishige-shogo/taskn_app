@@ -26,7 +26,7 @@ Rails.application.routes.draw do
   patch '/mypages/withdraw' => 'users/mypages#withdraw'
 
   # ルーム退出処理(keyカラムをnilに書き換える)
-  patch '/main/:id/exit' => 'users/mains#exit', as: 'exit'
+  patch '/main/:id/out' => 'users/mains#out', as: 'out'
 
   # タスクを開始したときの処理(タスクテーブルにデータが作成される)
   post '/lists/start' => 'users/lists#start'

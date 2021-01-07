@@ -1,2 +1,17 @@
 <h1>Users::Lists#new</h1>
-<p>Find me in app/views/users/lists/new.html.erb</p>
+
+TODOリスト新規作成
+
+<%= form_with model: @list, url: lists_path, local:true do |f| %>
+  <div class="field">
+    <%= f.label :body %><br>
+    <%= f.text_field :body %>
+  </div>
+  <div class="field">
+    <%= f.label :importance %><br>
+    <%= f.radio_button :importance, 0 %>赤<br>
+    <%= f.radio_button :importance, 1, checked: true %>黄<br>
+    <%= f.radio_button :importance, 2 %>青
+  </div>
+  <%= f.submit "TODOリストを作成" %>
+<% end %>

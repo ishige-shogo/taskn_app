@@ -8,6 +8,6 @@ class Users::MainsController < ApplicationController
   def update
   end
 
-  def exit
+  def out
   end
 end

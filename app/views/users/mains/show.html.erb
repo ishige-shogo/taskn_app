@@ -1,5 +1,7 @@
 <h1>メイン画面</h1>
 
+<h2><%= @room.goal %></h2>
+
 <%= link_to "TODOリスト新規作成", new_list_path %><br>
 <div>TODO</div>
 <% @lists.each do |list| %>

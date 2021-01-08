@@ -1,5 +1,11 @@
 <h1>Users::Analysis#show</h1>
 <p>Find me in app/views/users/analysis/show.html.erb</p>
+
+<% @room_users.each do |room_user| %>
+  <%= link_to "#{room_user.user.name}", edit_analysis_path(room_user) %>
+<% end %>
+
+
   <ul class="nav nav-tabs">
     <li class="nav-item">
       <a href="#photo1" class="nav-link active" data-toggle="tab">終了したタスク一覧</a>
@@ -21,13 +27,13 @@
       <% @finished_tasks.each do |finished_task| %>
         <%= finished_task.updated_at %>
         <%= finished_task.user.name %>
-        <%= finished_task.body %>
+        <%= finished_task.body %><br>
       <% end %>
     </div>
     <div id="photo2" class="tab-pane">
       <% @logs.each do |logs| %>
         <%= logs.created_at %>
-        <%= logs.body %>
+        <%= logs.body %><br>
       <% end %>
     </div>
     <div id="photo3" class="tab-pane">
@@ -39,7 +45,7 @@
       <% @on_task.each do |task| %>
         <%= task.created_at %>
         <%= task.user.name %>
-        <%= task.body %>
+        <%= task.body %><br>
       <% end %>
     </div>
   </div>

@@ -14,5 +14,4 @@ class Room < ApplicationRecord
 
   validates :name, presence: true, length: { minimum: 1, maximum: 20 }
   validates :roompass, presence: true, length: { minimum: 3, maximum: 20 }, confirmation: true
-  validates :roompass_confirmation, presence: true
 end

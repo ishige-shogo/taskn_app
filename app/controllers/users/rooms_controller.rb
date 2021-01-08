@@ -12,7 +12,7 @@ class Users::RoomsController < ApplicationController
   def update
     @room = Room.find(params[:id])
     @user = User.find(current_user.id)
-    #入力されたものとルームのパスワードが合致すればルームに入れる
+    # 入力されたものとルームのパスワードが合致すればルームに入れる
     if @room.roompass == params[:roomkey]
       @user.present_room = @room.id
       @user.save
@@ -21,10 +21,10 @@ class Users::RoomsController < ApplicationController
       room_user.user_id = User.find(current_user.id).id
       room_user.room_id = @room.id
       # 過去に一度でもルームに入ったことがあれば、RoomUserテーブルに保存されない(重複データを阻止)
-      unless RoomUser.find_by(user_id: room_user.user_id, room_id: room_user.room_id)
-        room_user.save
-      else
+      if RoomUser.find_by(user_id: room_user.user_id, room_id: room_user.room_id)
         room_user.destroy
+      else
+        room_user.save
       end
       redirect_to main_path(@room.id)
     else
@@ -63,6 +63,4 @@ class Users::RoomsController < ApplicationController
   def room_params
     params.require(:room).permit(:name, :goal, :roompass, :roompass_confirmation)
   end
-
-
 end

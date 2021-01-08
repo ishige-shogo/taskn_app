@@ -32,7 +32,7 @@ Rails.application.routes.draw do
   post '/lists/start' => 'users/lists#start'
 
   # メモを全て削除する処理
-  delete '/memo/:id/all' => 'users/memos#destroy_all', as: 'destroy_all'
+  delete '/memo/destroy_all/:id' => 'users/memos#destroy_all', as: 'destroy_all'
 
   # URLにadminsを含ませる
   namespace :admins do

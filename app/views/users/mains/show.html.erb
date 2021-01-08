@@ -9,7 +9,7 @@
     <%= link_to "削除する", list_path(list.id), method: :delete %><br>
 <% end %>
 
-<div>memo</div>
+<div>memo</div><p><%= link_to "全て削除する", destroy_all_path(@room.id), method: :delete %></p>
 <%= form_with model: @memo, url: memos_path, local:true do |f| %>
     <div class="field">
         <%= f.label :body %>
@@ -20,6 +20,7 @@
 <br>
 <% @memos.each do |memo| %>
     <%= memo.body %>
+    <%= link_to "削除する", memo_path(memo.id), method: :delete %><br>
 <% end %>
 
 ここからテスト<br>

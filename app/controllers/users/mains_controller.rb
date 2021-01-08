@@ -10,6 +10,7 @@ class Users::MainsController < ApplicationController
   end
 
   def edit
+
   end
 
   def update

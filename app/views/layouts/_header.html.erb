@@ -1,5 +1,13 @@
 <header>
   <% if user_signed_in? %>
+    <% if current_user.present_room %>
+      <li>
+        <%= link_to "ルームに戻る", main_path(current_user.present_room) %>
+      </li>
+      <li>
+        <%= link_to "ルーム設定変更", edit_main_path(current_user.present_room) %>
+      </li>
+    <% end %>
     <li>
       <%= link_to "お問い合わせ一覧", contacts_path %>
     </li>
@@ -10,7 +18,10 @@
       <%= link_to "ルーム新規作成", new_room_path %>
     </li>
     <li>
-      <%= link_to "マイページ", edit_mypages_path %>
+      <%= link_to "#{current_user.name}さんのマイページ", edit_mypages_path %>
+    </li>
+    <li>
+      <%= link_to "ホーム画面に戻る", root_path %>
     </li>
     <li>
       <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>

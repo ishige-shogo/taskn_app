@@ -47,6 +47,7 @@ Rails.application.routes.draw do
     resources :mains, only: [:show, :edit, :update]
     resources :lists, only: [:new, :create, :update, :destroy]
     resources :memos, only: [:create, :destroy]
+    resources :analysis, only: [:show, :edit]
     # URLにidをもたせないため単数形
     resource :mypages, only: [:edit, :update]
   end

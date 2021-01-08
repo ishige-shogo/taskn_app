@@ -25,7 +25,7 @@ class Users::MainsController < ApplicationController
   private
 
   def room_params
-    params.require(:room).permit(:name, :goal)
+    params.require(:room).permit(:name, :goal, :roompass, :roompass_confirmation)
   end
 
 

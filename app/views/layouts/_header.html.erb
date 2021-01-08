@@ -7,6 +7,9 @@
       <li>
         <%= link_to "ルーム設定変更", edit_main_path(current_user.present_room) %>
       </li>
+      <li>
+        <%= link_to "ルーム分析画面", analysis_path(current_user.present_room) %>
+      </li>
     <% end %>
     <li>
       <%= link_to "お問い合わせ一覧", contacts_path %>

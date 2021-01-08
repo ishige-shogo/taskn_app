@@ -25,14 +25,11 @@ Rails.application.routes.draw do
   # 利用者の退会処理(有効フラグカラムを退会済に変える)
   patch '/mypages/withdraw' => 'users/mypages#withdraw'
 
-  # ルーム退出処理(keyカラムをnilに書き換える)
-  patch '/main/:id/out' => 'users/mains#out', as: 'out'
-
   # タスクを開始したときの処理(タスクテーブルにデータが作成される)
   post '/lists/start' => 'users/lists#start'
 
   # メモを全て削除する処理
-  delete '/memo/:id/all' => 'users/memos#destroy_all', as: 'destroy_all'
+  delete '/memo/destroy_all/:id' => 'users/memos#destroy_all', as: 'destroy_all'
 
   # URLにadminsを含ませる
   namespace :admins do

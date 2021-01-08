@@ -1,5 +1,7 @@
 <h1>メイン画面</h1>
 
+<h2><%= @room.goal %></h2>
+
 <%= link_to "TODOリスト新規作成", new_list_path %><br>
 <div>TODO</div>
 <% @lists.each do |list| %>
@@ -9,7 +11,7 @@
     <%= link_to "削除する", list_path(list.id), method: :delete %><br>
 <% end %>
 
-<div>memo</div>
+<div>memo</div><p><%= link_to "全て削除する", destroy_all_path(@room.id), method: :delete %></p>
 <%= form_with model: @memo, url: memos_path, local:true do |f| %>
     <div class="field">
         <%= f.label :body %>
@@ -20,6 +22,7 @@
 <br>
 <% @memos.each do |memo| %>
     <%= memo.body %>
+    <%= link_to "削除する", memo_path(memo.id), method: :delete %><br>
 <% end %>
 
 ここからテスト<br>

@@ -4,11 +4,11 @@
 
 <%= link_to "TODOリスト新規作成", new_list_path %><br>
 <div>TODO</div>
-<% @lists.each do |list| %>
-    <%= list.body %>
-    <%= list.importance %>
-    <%= link_to "担当する", lists_start_path(id: list.id), method: :post %>
-    <%= link_to "削除する", list_path(list.id), method: :delete %><br>
+<% @off_tasks.each do |off_task| %>
+    <%= off_task.body %>
+    <%= off_task.importance %>
+    <%= link_to "担当する", lists_start_path(id: off_task.id), method: :patch %>
+    <%= link_to "削除する", list_path(off_task.id), method: :delete %><br>
 <% end %>
 
 <div>memo</div><p><%= link_to "全て削除する", destroy_all_path(@room.id), method: :delete %></p>
@@ -33,9 +33,9 @@
 
 <div>task</div>
 
-<% @tasks.each do |task| %>
+<% @on_tasks.each do |task| %>
     <%= task.body %>
     <%= task.importance %>
-    <%= task.is_finished %>
+    <%= task.status %>
     <%= link_to "タスク完了", list_path(task.id), method: :patch %><br>
 <% end %>

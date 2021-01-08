@@ -10,9 +10,7 @@
     <li class="nav-item">
       <a href="#photo1" class="nav-link active" data-toggle="tab">終了したタスク一覧</a>
     </li>
-    <li class="nav-item">
-      <a href="#photo2" class="nav-link" data-toggle="tab">全体ログ一覧</a>
-    </li>
+
     <li class="nav-item">
       <a href="#photo3" class="nav-link" data-toggle="tab">到達度</a>
     </li>
@@ -30,12 +28,7 @@
         <%= finished_task.body %><br>
       <% end %>
     </div>
-    <div id="photo2" class="tab-pane">
-      <% @logs.each do |logs| %>
-        <%= logs.created_at %>
-        <%= logs.body %><br>
-      <% end %>
-    </div>
+
     <div id="photo3" class="tab-pane">
       <%= pie_chart @all_tasks %><br>
       <%= "終了済タスク：#{@finished_tasks.count}" %>

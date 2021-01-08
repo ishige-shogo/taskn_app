@@ -2,7 +2,7 @@
 
 TODOリスト新規作成
 
-<%= form_with model: @list, url: lists_path, method: :post,  local:true do |f| %>
+<%= form_with model: @task, url: lists_path, method: :post,  local:true do |f| %>
   <div class="field">
     <%= f.label :body %><br>
     <%= f.text_field :body %>

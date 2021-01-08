@@ -5,8 +5,6 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :contacts
-  has_many :lists
-  has_many :logs
   has_many :memos
   has_many :rooms
   has_many :tasks

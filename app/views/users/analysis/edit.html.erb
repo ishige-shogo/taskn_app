@@ -7,9 +7,7 @@
     <li class="nav-item">
       <a href="#photo1" class="nav-link active" data-toggle="tab">終了したタスク一覧</a>
     </li>
-    <li class="nav-item">
-      <a href="#photo2" class="nav-link" data-toggle="tab">個別ログ一覧</a>
-    </li>
+
     <li class="nav-item">
       <a href="#photo3" class="nav-link" data-toggle="tab">実行中のタスク</a>
     </li>
@@ -23,12 +21,7 @@
         <%= finished_task.body %><br>
       <% end %>
     </div>
-    <div id="photo2" class="tab-pane">
-      <% @logs.each do |logs| %>
-        <%= logs.created_at %>
-        <%= logs.body %><br>
-      <% end %>
-    </div>
+
     <div id="photo3" class="tab-pane">
       <% @on_task.each do |task| %>
         <%= task.created_at %>

@@ -26,7 +26,7 @@ Rails.application.routes.draw do
   patch '/mypages/withdraw' => 'users/mypages#withdraw'
 
   # タスクを開始したときの処理(タスクテーブルにデータが作成される)
-  post '/lists/start' => 'users/lists#start'
+  patch '/lists/start' => 'users/lists#start'
 
   # メモを全て削除する処理
   delete '/memo/destroy_all/:id' => 'users/memos#destroy_all', as: 'destroy_all'

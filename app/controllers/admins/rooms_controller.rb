@@ -1,4 +1,5 @@
 class Admins::RoomsController < ApplicationController
+  before_action :authenticate_admin!
   def index
     @rooms = Room.all
   end

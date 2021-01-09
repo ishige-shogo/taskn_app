@@ -1,4 +1,5 @@
 class Users::MemosController < ApplicationController
+  before_action :authenticate_user!
   def create
     @memo = Memo.new(memo_params)
     @memo.user_id = current_user.id

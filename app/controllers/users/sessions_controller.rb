@@ -2,6 +2,7 @@
 
 class Users::SessionsController < Devise::SessionsController
   # before_action :configure_sign_in_params, only: [:create]
+  before_action :authenticate_user!
   before_action :reject_user, only: [:create]
   # GET /resource/sign_in
   # def new
@@ -22,7 +23,7 @@ class Users::SessionsController < Devise::SessionsController
 
   # ログイン後ルーム一覧に遷移する処理
   def after_sign_in_path_for(resource)
-    rooms_path
+    edit_mypages_path(current_user)
   end
 
   # 退会した利用者がログインできないようにする処理

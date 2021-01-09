@@ -18,3 +18,14 @@
 
 <%= link_to "パスワードを変更する", edit_user_registration_path %>
 <%= link_to "退会する", mypages_unsubscribe_path %>
+
+
+
+参加したことのあるルーム<br>
+<% @user_rooms.each do |user_room| %>
+    <%# ルームの作成者%>
+    <%= user_room.room.user.name %>
+    <%# ルーム名、リンクで入室ページにとびます%>
+    <%= link_to "#{user_room.room.name}", room_path(user_room.room.id) %><br>
+<% end %>
+

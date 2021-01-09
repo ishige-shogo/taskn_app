@@ -1,4 +1,11 @@
 <h1>Users::Rooms#index</h1>
+ルーム検索<br>
+<%= form_with url: search_room_path, method: :get, local:true do |f| %>
+  <%= f.label :search_room %>
+  <%= f.number_field :search_room, min: 1, max: @room_all.count %>
+  <%= f.submit "検索する" %>
+<% end %>
+
 ルーム一覧<br>
 <% @rooms.each do |room| %>
   <%= room.id %>

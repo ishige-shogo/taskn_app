@@ -1,12 +1,22 @@
 class Users::RoomsController < ApplicationController
+  before_action :authenticate_user!
+
   def index
     # 有効ステータスのルームのみ表示
     @rooms = Room.where(is_deleted: "有効")
+    @room_all = Room.all
   end
 
   def show
     @room = Room.find(params[:id])
     @user = User.find(current_user.id)
+    if @room.is_deleted == "無効"
+      redirect_to rooms_path
+    end
+  end
+
+  def search
+    redirect_to room_path(id: (params[:search_room]).to_i)
   end
 
   def update
@@ -56,6 +66,8 @@ class Users::RoomsController < ApplicationController
       render :new
     end
   end
+
+
 
   private
 

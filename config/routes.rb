@@ -31,6 +31,8 @@ Rails.application.routes.draw do
   # メモを全て削除する処理
   delete '/memo/destroy_all/:id' => 'users/memos#destroy_all', as: 'destroy_all'
 
+  get '/searchs/room' => 'users/rooms#search', as: 'search_room'
+
   # URLにadminsを含ませる
   namespace :admins do
     resources :contacts, only: [:index, :show, :update]

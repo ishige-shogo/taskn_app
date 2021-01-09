@@ -53,7 +53,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # The path used after sign up.
   def after_sign_up_path_for(resource)
-    edit_mypages_path(current_user)
+    rooms_path
   end
 
   # The path used after sign up for inactive accounts.

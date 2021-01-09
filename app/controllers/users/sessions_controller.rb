@@ -23,7 +23,7 @@ class Users::SessionsController < Devise::SessionsController
 
   # ログイン後ルーム一覧に遷移する処理
   def after_sign_in_path_for(resource)
-    rooms_path
+    edit_mypages_path(current_user)
   end
 
   # 退会した利用者がログインできないようにする処理

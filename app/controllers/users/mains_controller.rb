@@ -8,10 +8,18 @@ class Users::MainsController < ApplicationController
     @memo = Memo.new
     @memos = Memo.where(room_id: params[:id])
     @task = Task.new
+    # アクセス制限処理
+    if current_user.present_room != @room.id
+      redirect_to rooms_path
+    end
   end
 
   def edit
     @room = Room.find(params[:id])
+    # アクセス制限処理
+    if current_user.present_room != @room.id
+      redirect_to rooms_path
+    end
   end
 
   def update

@@ -1,8 +1,12 @@
 class Users::ListsController < ApplicationController
   before_action :authenticate_user!
+
+  # 使用しない可能性大
   def new
     @task = Task.new
   end
+
+
 
   def create
     @task = Task.new(task_params)

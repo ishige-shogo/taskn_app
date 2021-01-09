@@ -1,4 +1,5 @@
 class Users::AnalysisController < ApplicationController
+  before_action :authenticate_user!
   def show
     @room_users = RoomUser.where(room_id: current_user.present_room)
 

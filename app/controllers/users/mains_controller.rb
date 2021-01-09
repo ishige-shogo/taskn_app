@@ -1,4 +1,5 @@
 class Users::MainsController < ApplicationController
+  before_action :authenticate_user!
   def show
     @off_tasks = Task.where(room_id: params[:id], status: 0)
     @room = Room.find(params[:id])

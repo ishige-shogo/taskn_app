@@ -1,4 +1,5 @@
 class Users::MypagesController < ApplicationController
+  before_action :authenticate_user!
   def edit
     @user = User.find(current_user.id)
     @user_rooms = RoomUser.where(user_id: current_user.id)

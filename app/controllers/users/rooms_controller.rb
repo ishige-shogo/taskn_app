@@ -1,4 +1,6 @@
 class Users::RoomsController < ApplicationController
+  before_action :authenticate_user!
+
   def index
     # 有効ステータスのルームのみ表示
     @rooms = Room.where(is_deleted: "有効")

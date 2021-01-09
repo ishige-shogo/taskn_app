@@ -10,15 +10,16 @@ class Users::MainsController < ApplicationController
     @task = Task.new
     # アクセス制限処理
     if current_user.present_room != @room.id
-      redirect_to rooms_path
+      redirect_to main_path(@user.present_room)
     end
   end
 
   def edit
     @room = Room.find(params[:id])
+    user = User.find(current_user.id)
     # アクセス制限処理
     if current_user.present_room != @room.id
-      redirect_to rooms_path
+      redirect_to edit_main_path(user.present_room)
     end
   end
 

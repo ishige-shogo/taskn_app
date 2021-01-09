@@ -1,2 +1,22 @@
 <h1>Admins::Analysis#index</h1>
-<p>Find me in app/views/admins/analysis/index.html.erb</p>
+
+<ul class="nav nav-tabs">
+  <li class="nav-item">
+    <a href="#photo1" class="nav-link active" data-toggle="tab">会員増加数</a>
+  </li>
+
+  <li class="nav-item">
+    <a href="#photo3" class="nav-link" data-toggle="tab">ルーム増加数</a>
+  </li>
+</ul>
+
+<!-- 写真部分 -->
+<div class="tab-content">
+  <div id="photo1" class="tab-pane active">
+    <%= line_chart @users %>
+  </div>
+
+  <div id="photo3" class="tab-pane">
+    <%= line_chart @rooms %>
+  </div>
+</div>

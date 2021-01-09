@@ -20,6 +20,11 @@ class Admins::SessionsController < Devise::SessionsController
 
   # protected
 
+  #管理者ログイン後お問い合わせ一覧に遷移
+  def after_sign_in_path_for(resource)
+    admins_contacts_path
+  end
+
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_sign_in_params
   #   devise_parameter_sanitizer.permit(:sign_in, keys: [:attribute])

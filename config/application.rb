@@ -19,6 +19,6 @@ module TasknApp
     # viewでの表示を日本時間にする
     config.time_zone = "Tokyo"
     # データベースへの保存を日本時間にする
-    config.active_record.default_timezone = :local
+    #config.active_record.default_timezone = :local
   end
 end

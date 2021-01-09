@@ -36,7 +36,6 @@ Rails.application.routes.draw do
     resources :contacts, only: [:index, :show, :update]
     resources :rooms, only: [:index, :update]
     resources :users, only: [:index, :update]
-    resources :logs, only: [:index]
     resources :analysis, only: [:index]
   end
 

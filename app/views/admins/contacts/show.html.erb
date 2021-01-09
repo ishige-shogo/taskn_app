@@ -1,2 +1,9 @@
 <h1>Admins::Contacts#show</h1>
-<p>Find me in app/views/admins/contacts/show.html.erb</p>
+
+<%= @contact.id %><br>
+<%= @contact.user.name %><br>
+<%= @contact.created_at %><br>
+<%= @contact.title %><br>
+<%= @contact.body %><br>
+
+<%= link_to "一覧画面に戻る", admins_contacts_path %>

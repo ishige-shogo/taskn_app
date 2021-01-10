@@ -1,6 +1,7 @@
 class Users::AnalysisController < ApplicationController
   before_action :authenticate_user!
   def show
+    @room = Room.find(current_user.present_room)
     @room_users = RoomUser.where(room_id: current_user.present_room)
 
     # 未着手のタスク
@@ -26,6 +27,7 @@ class Users::AnalysisController < ApplicationController
   end
 
   def edit
+    @room = Room.find(current_user.present_room)
     @room_users = RoomUser.where(room_id: current_user.present_room)
     @room_user = RoomUser.find(params[:id])
     @on_task = Task.where(room_id: current_user.present_room,

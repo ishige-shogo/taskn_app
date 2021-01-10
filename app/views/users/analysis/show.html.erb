@@ -1,5 +1,5 @@
 <h1>Users::Analysis#show</h1>
-<p>Find me in app/views/users/analysis/show.html.erb</p>
+<p>「<%= @room.name %>」ルームの分析</p>
 
 <% @room_users.each do |room_user| %>
   <%= link_to "#{room_user.user.name}", edit_analysis_path(room_user) %>

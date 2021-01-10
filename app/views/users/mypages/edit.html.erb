@@ -1,5 +1,5 @@
 <h1>Users::Mypages#edit</h1>
-<% if @user.id != 1 %>
+<% unless @user.id == 1 %>
     <%= form_with model: @user, url: mypages_path, local:true do |f| %>
         <div class="field">
             <%= f.label :name %><br>
@@ -23,11 +23,14 @@
 <% end %>
 
 
-参加したことのあるルーム<br>
+<br>参加したことのあるルーム<br>
 <% @user_rooms.each do |user_room| %>
-    <%# ルームの作成者%>
-    <%= user_room.room.user.name %>
-    <%# ルーム名、リンクで入室ページにとびます%>
-    <%= link_to "#{user_room.room.name}", room_path(user_room.room.id) %><br>
+    <%# ルームステータスが有効なものだけ表示する %>
+    <% if user_room.room.is_deleted == "有効" %>
+        <%# ルームの作成者%>
+        <%= user_room.room.user.name %>
+        <%# ルーム名、リンクで入室ページにとびます%>
+        <%= link_to "#{user_room.room.name}", room_path(user_room.room.id) %><br>
+    <% end %>
 <% end %>
 

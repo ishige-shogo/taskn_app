@@ -29,6 +29,7 @@ class Users::ListsController < ApplicationController
 
   def start
     task = Task.find(params[:id])
+    task.user_id = current_user.id
     task.status = 1
     task.update(task_status_params)
     redirect_to main_path(current_user.present_room)

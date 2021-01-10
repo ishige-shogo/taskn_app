@@ -49,9 +49,10 @@ TODOリスト新規作成
 
 <div>task</div>
 
-<% @on_tasks.each do |task| %>
-    <%= task.body %>
-    <%= task.importance %>
-    <%= task.status %>
-    <%= link_to "タスク完了", list_path(task.id), method: :patch %><br>
+<% @on_tasks.each do |on_task| %>
+    <%= on_task.body %>
+    <%= on_task.importance %>
+    <%= on_task.status %>
+    <%= link_to "タスク完了", list_path(on_task.id), method: :patch %>
+    <%= link_to "削除する", list_path(on_task.id), method: :delete %><br>
 <% end %>

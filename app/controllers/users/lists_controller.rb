@@ -45,7 +45,7 @@ class Users::ListsController < ApplicationController
   private
 
   def task_params
-    params.permit(:body, :importance)
+    params.require(:task).permit(:body, :importance)
   end
 
   def task_status_params

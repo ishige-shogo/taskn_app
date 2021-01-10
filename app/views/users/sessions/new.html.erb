@@ -27,9 +27,29 @@
     </div>
   <% end %>
 
+
   <div class="actions">
     <%= f.submit "ログイン" %>
   </div>
 <% end %>
 
 <%= render "users/shared/links" %>
+
+<%= form_with model: @user, url: new_user_session_path, local: true do |f| %>
+
+  <div class="field">
+    <%= f.hidden_field :name, :value => @guest_name %>
+  </div>
+
+  <div class="field">
+    <%= f.hidden_field :email, :value => @guest_email %>
+  </div>
+
+  <div class="field">
+    <%= f.hidden_field :password, :value => @guest_password %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "ゲストログイン" %>
+  </div>
+<% end %>

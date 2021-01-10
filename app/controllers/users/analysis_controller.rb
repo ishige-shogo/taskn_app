@@ -19,9 +19,8 @@ class Users::AnalysisController < ApplicationController
     # ルームのすべてのタスク
     @all_task = Task.where(room_id: current_user.present_room).count
 
-    # アクセス制限再考の必要性あり
-    room = Room.find(current_user.present_room)
-    if current_user.present_room != room.id
+    # アクセス制限
+    if current_user.present_room != Room.find(params[:id]).id
       redirect_to analysis_path(current_user.present_room)
     end
   end
@@ -34,10 +33,9 @@ class Users::AnalysisController < ApplicationController
     @finished_tasks = Task.where(room_id: current_user.present_room,
                                  user_id: @room_user.user_id, status: 2)
 
-    # アクセス制限再考の必要性あり
-    room = Room.find(current_user.present_room)
-    if current_user.present_room != room.id
-      redirect_to edit_analysis_path(current_user.present_room)
+    # アクセス制限(同ルーム内の他のメンバーの分析画面へは遷移できる)
+    unless RoomUser.where(room_id: current_user.present_room).pluck(:id).include?(@room_user.id)
+      redirect_to analysis_path(current_user.present_room)
     end
   end
 end

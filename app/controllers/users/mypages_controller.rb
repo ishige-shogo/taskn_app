@@ -6,6 +6,9 @@ class Users::MypagesController < ApplicationController
   end
 
   def update
+    if current_user.id == 1
+      redirect_to edit_mypages_path(current_user.id)
+    end
     @user = User.find(current_user.id)
     # 　更新できたらルーム一覧ページに、NOなら利用者情報編集ページに遷移
     if @user.update(user_params)
@@ -16,6 +19,9 @@ class Users::MypagesController < ApplicationController
   end
 
   def unsubscribe
+    if current_user.id == 1
+      redirect_to edit_mypages_path(current_user.id)
+    end
   end
 
   # 退会処理(利用者の有効フラグが退会済になる)

@@ -1,5 +1,5 @@
 <h1>Users::Mypages#edit</h1>
-<% if @user.id != 1 %>
+<% unless @user.id == 1 %>
     <%= form_with model: @user, url: mypages_path, local:true do |f| %>
         <div class="field">
             <%= f.label :name %><br>

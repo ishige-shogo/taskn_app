@@ -3,6 +3,10 @@
 
 <h3><%= @room_user.user.name %>さんの分析</h3>
 
+<% @room_users.each do |room_user| %>
+  <%= link_to "#{room_user.user.name}", edit_analysis_path(room_user) %>
+<% end %>
+
 <ul class="nav nav-tabs">
     <li class="nav-item">
       <a href="#photo1" class="nav-link active" data-toggle="tab">終了したタスク一覧</a>

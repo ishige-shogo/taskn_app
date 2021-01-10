@@ -10,6 +10,7 @@ class Users::RoomsController < ApplicationController
   def show
     @room = Room.find(params[:id])
     @user = User.find(current_user.id)
+    # アクセス制限処理
     if @room.is_deleted == "無効"
       redirect_to rooms_path
     end

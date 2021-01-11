@@ -1,0 +1,23 @@
+<h1>Users::Rooms#new</h1>
+
+ルーム新規作成
+
+<%= form_with model: @room, url: rooms_path, method: :post, local:true do |f| %>
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :goal %><br>
+    <%= f.text_field :goal %>
+  </div>
+  <div class="field">
+    <%= f.label :roompass %><br>
+    <%= f.password_field :roompass %>
+  </div>
+  <div class="field">
+    <%= f.label :roompass_confirmation %><br />
+    <%= f.password_field :roompass_confirmation %>
+  </div>
+  <%= f.submit "ルームを作成" %>
+<% end %>

@@ -1,0 +1,45 @@
+<h1>Users::Analysis#show</h1>
+<p>「<%= @room.name %>」ルームの分析</p>
+
+<% @room_users.each do |room_user| %>
+  <%= link_to "#{room_user.user.name}", edit_analysis_path(room_user) %>
+<% end %>
+
+
+  <ul class="nav nav-tabs">
+    <li class="nav-item">
+      <a href="#photo1" class="nav-link active" data-toggle="tab">終了したタスク一覧</a>
+    </li>
+
+    <li class="nav-item">
+      <a href="#photo3" class="nav-link" data-toggle="tab">到達度</a>
+    </li>
+    <li class="nav-item">
+      <a href="#photo4" class="nav-link" data-toggle="tab">実行中タスク</a>
+    </li>
+  </ul>
+
+  <!-- 写真部分 -->
+  <div class="tab-content">
+    <div id="photo1" class="tab-pane active">
+      <% @finished_tasks.each do |finished_task| %>
+        <%= finished_task.updated_at %>
+        <%= finished_task.user.name %>
+        <%= finished_task.body %><br>
+      <% end %>
+    </div>
+
+    <div id="photo3" class="tab-pane">
+      <%= pie_chart @all_tasks %><br>
+      <%= "終了済タスク：#{@finished_tasks.count}" %>
+      <%= "全てのタスク：#{@all_task.to_i}" %>
+    </div>
+    <div id="photo4" class="tab-pane">
+      <% @on_task.each do |task| %>
+        <%= task.created_at %>
+        <%= task.user.name %>
+        <%= task.body %><br>
+      <% end %>
+    </div>
+  </div>
+

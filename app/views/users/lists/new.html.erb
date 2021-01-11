@@ -1,0 +1,17 @@
+<h1>Users::Lists#new</h1>
+<h1>使用しないよてい</h1>
+TODOリスト新規作成
+
+<%= form_with model: @task, url: lists_path, method: :post,  local:true do |f| %>
+  <div class="field">
+    <%= f.label :body %><br>
+    <%= f.text_field :body %>
+  </div>
+  <div class="field">
+    <%= f.label :importance %><br>
+    <%= f.radio_button :importance, "赤" %>赤<br>
+    <%= f.radio_button :importance, "黄", checked: true %>黄<br>
+    <%= f.radio_button :importance, "青" %>青
+  </div>
+  <%= f.submit "TODOリストを作成" %>
+<% end %>

@@ -6,3 +6,8 @@
 #     https: false
 #   )
 # end
+
+#.envファイルでキーを管理
+Refile.secret_key = ENV["CONFIG_REFILEKEY"]
+
+Groupdate.time_zone = false

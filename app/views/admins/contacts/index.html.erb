@@ -1,0 +1,12 @@
+<h1>Admins::Contacts#index</h1>
+
+<%="全#{@contacts.count}件" %>
+<% @contacts.each do |contact| %>
+  <%= contact.id %><br>
+  <%= contact.user_id %>
+  <%= contact.user.name %>
+  <%= contact.title %>
+  <%= contact.created_at %>
+  <%= contact.is_read %>
+  <%= link_to "詳細確認", admins_contact_path(contact.id), method: :patch %><br>
+<% end %>

@@ -1,0 +1,14 @@
+<h1>Users::Contacts#new</h1>
+お問い合わせ新規作成
+
+<%= form_with model: @contact, url: contacts_path, method: :post, local:true do |f| %>
+  <div class="field">
+    <%= f.label :title %><br>
+    <%= f.text_field :title %>
+  </div>
+  <div class="field">
+    <%= f.label :body %><br>
+    <%= f.text_area :body %>
+  </div>
+  <%= f.submit "お問い合わせを作成" %>
+<% end %>

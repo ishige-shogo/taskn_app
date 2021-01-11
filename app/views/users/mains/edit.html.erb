@@ -1,0 +1,15 @@
+<h1>Users::Mains#edit</h1>
+<p>ルームの設定変更</p>
+
+<%= form_with model: @room, url: main_path(@room.id), local:true do |f| %>
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :goal %><br>
+    <%= f.text_field :goal %>
+  </div>
+  <%= f.submit "ルームの設定を変更" %>
+<% end %>
+

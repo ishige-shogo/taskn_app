@@ -1,0 +1,62 @@
+<header>
+  <li>
+    <%= link_to "ホーム画面に戻る", root_path %>
+  </li>
+  <li>
+    <%= link_to "使い方", how_to_path %>
+  </li>
+  <% if user_signed_in? %>
+    <% if current_user.present_room %>
+      <li>
+        <%= link_to "ルームに戻る", main_path(current_user.present_room) %>
+      </li>
+      <li>
+        <%= link_to "ルーム設定変更", edit_main_path(current_user.present_room) %>
+      </li>
+      <li>
+        <%= link_to "ルーム分析画面", analysis_path(current_user.present_room) %>
+      </li>
+    <% end %>
+    <li>
+      <%= link_to "お問い合わせ一覧", contacts_path %>
+    </li>
+    <li>
+      <%= link_to "ルーム一覧", rooms_path %>
+    </li>
+    <li>
+      <%= link_to "ルーム新規作成", new_room_path %>
+    </li>
+    <li>
+      <%= link_to "#{current_user.name}さんのマイページ", edit_mypages_path %>
+    </li>
+    <li>
+      <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+    </li>
+  <% elsif admin_signed_in? %>
+    <li>
+      <%= link_to "お問い合わせ一覧", admins_contacts_path %>
+    </li>
+    <li>
+      <%= link_to "ルーム一覧", admins_rooms_path %>
+    </li>
+    <li>
+      <%= link_to "会員一覧", admins_users_path %>
+    </li>
+    <li>
+      <%= link_to "分析", admins_analysis_index_path %>
+    </li>
+    <li>
+      <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
+    </li>
+  <% else %>
+    <li>
+      <%= link_to "新規登録", new_user_registration_path %>
+    </li>
+    <li>
+      <%= link_to "ログイン", new_user_session_path %>
+    </li>
+    <li>
+      <%= link_to "管理者ログイン", new_admin_session_path %>
+    </li>
+  <% end %>
+</header>

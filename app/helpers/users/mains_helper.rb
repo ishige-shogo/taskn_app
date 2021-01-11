@@ -1,0 +1,2 @@
+module Users::MainsHelper
+end

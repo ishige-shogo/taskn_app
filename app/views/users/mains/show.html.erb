@@ -1,0 +1,58 @@
+<h1>メイン画面</h1>
+
+<h2><%= @room.goal %></h2>
+
+TODOリスト新規作成
+
+<%= form_with model: @task, url: lists_path, method: :post,  local:true do |f| %>
+  <div class="field">
+    <%= f.label :body %><br>
+    <%= f.text_field :body %>
+  </div>
+  <div class="field">
+    <%= f.label :importance %><br>
+    <%= f.radio_button :importance, "赤" %>赤<br>
+    <%= f.radio_button :importance, "黄", checked: true %>黄<br>
+    <%= f.radio_button :importance, "青" %>青
+  </div>
+  <%= f.submit "TODOリストを作成" %>
+<% end %>
+<%#使用しない予定%>
+<%#= link_to "TODOリスト新規作成", new_list_path %><br>
+<div>TODO</div>
+<% @off_tasks.each do |off_task| %>
+    <%= off_task.body %>
+    <%= off_task.importance %>
+    <%= link_to "担当する", lists_start_path(id: off_task.id), method: :patch %>
+    <%= link_to "削除する", list_path(off_task.id), method: :delete %><br>
+<% end %>
+
+<div>memo</div><p><%= link_to "全て削除する", destroy_all_path(@room.id), method: :delete %></p>
+<%= form_with model: @memo, url: memos_path, local:true do |f| %>
+    <div class="field">
+        <%= f.label :body %>
+        <%= f.text_area :body %>
+    </div>
+    <%= f.submit "メモを作成する" %>
+<% end %>
+<br>
+<% @memos.each do |memo| %>
+    <%= memo.body %>
+    <%= link_to "削除する", memo_path(memo.id), method: :delete %><br>
+<% end %>
+
+ここからテスト<br>
+ルーム作成者:<%= @room.user.name %><br>
+ルーム名:<%= @room.name %><br>
+利用者:<%= @user.name %><br>
+利用者の現在所属するルームid:<%= @user.present_room %><br>
+
+<div>task</div>
+
+<% @on_tasks.each do |on_task| %>
+    <%= on_task.body %>
+    <%= on_task.importance %>
+    <%= on_task.status %>
+    <%= link_to "タスク完了", list_path(on_task.id), method: :patch %>
+    <%= link_to "削除する", list_path(on_task.id), method: :delete %><br>
+<% end %>

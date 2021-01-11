@@ -1,0 +1,11 @@
+<h1>Admins::Users#index</h1>
+<% @users.each do |user| %>
+  <%= user.id %>
+  <%= user.name %>
+  <%= user.is_deleted %>
+  <%= form_with model: @user, url: admins_user_path(user.id), method: :patch, local:true do |f| %>
+    <%= f.radio_button :is_deleted, "有効" %>有効
+    <%= f.radio_button :is_deleted, "退会済" %>退会済
+    <%= f.submit "変更する" %>
+  <% end %>
+<% end %>

@@ -1,0 +1,32 @@
+<h1>Users::Mypages#edit</h1>
+    <%= form_with model: @user, url: mypages_path, local:true do |f| %>
+        <div class="field">
+            <%= f.label :name %><br>
+            <%= f.text_field :name %>
+        </div>
+        <div class="field">
+            <%= f.label :email %><br>
+            <%= f.email_field :email %>
+        </div>
+        <div class="field">
+            <%= f.label :image %><br>
+            <%= attachment_image_tag @user, :image, format: "jpeg", id: "img_prev", fallback: "no_image.jpg", size: "100x100" %><br>
+            <%= f.attachment_field :image %>
+        </div>
+        <%= f.submit "変更を保存" ,class: "btn btn-primary" %>
+    <% end %>
+    <%= link_to "パスワードを変更する", edit_user_registration_path %>
+    <%= link_to "退会する", mypages_unsubscribe_path %>
+
+
+<br>参加したことのあるルーム<br>
+<% @user_rooms.each do |user_room| %>
+    <%# ルームステータスが有効なものだけ表示する %>
+    <% if user_room.room.is_deleted == "有効" %>
+        <%# ルームの作成者%>
+        <%= user_room.room.user.name %>
+        <%# ルーム名、リンクで入室ページにとびます%>
+        <%= link_to "#{user_room.room.name}", room_path(user_room.room.id) %><br>
+    <% end %>
+<% end %>
+

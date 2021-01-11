@@ -1,0 +1,2 @@
+module Users::MemosHelper
+end

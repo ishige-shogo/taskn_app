@@ -1,0 +1,15 @@
+<h1>Admins::Rooms#index</h1>
+
+<% @rooms.each do |room| %>
+  <%= room.id %>
+  <%= room.name %>
+  <%= room.room_users.count %>
+  <%= room.user.name %>
+  <%= room.created_at %>
+  <%= room.is_deleted %>
+  <%= form_with model: @room, url: admins_room_path(room.id), method: :patch, local:true do |f| %>
+    <%= f.radio_button :is_deleted, "有効" %>有効
+    <%= f.radio_button :is_deleted, "無効" %>無効
+    <%= f.submit "変更する" %>
+  <% end %>
+<% end %>

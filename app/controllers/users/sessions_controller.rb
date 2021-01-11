@@ -5,12 +5,9 @@ class Users::SessionsController < Devise::SessionsController
   before_action :authenticate_user!
   before_action :reject_user, only: [:create]
   # GET /resource/sign_in
-  def new
-    @guest_name = ENV["GUEST_NAME"]
-    @guest_email = ENV["GUEST_EMAIL"]
-    @guest_password = ENV["GUEST_PASSWORD"]
-    super
-  end
+  # def new
+  #   super
+  # end
 
   # POST /resource/sign_in
   # def create

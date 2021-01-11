@@ -1,7 +1,6 @@
 
 <h2>パスワードを変更する</h2>
 
-<% unless current_user.id == 1 %>
 
   <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
     <%= render "users/shared/error_messages", resource: resource %>
@@ -24,10 +23,6 @@
     </div>
   <% end %>
 
-<% else %>
 
-  ゲストユーザーは変更できません
-
-<% end %>
 
 <%= link_to "マイページに戻る", edit_mypages_path(current_user.id) %>

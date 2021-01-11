@@ -15,6 +15,8 @@ Rails.application.routes.draw do
     passwords: 'users/passwords',
     registrations: 'users/registrations',
   }
+  # ゲストユーザーログイン
+  post '/homes/guest_sign_in', to: 'users/homes#new_guest'
 
   # 使い方ページの表示
   get '/how_to' => 'users/homes#how_to'

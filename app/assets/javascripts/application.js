@@ -40,16 +40,13 @@ $(function(){
   });
 });
 
+
 //ページが浮かび上がる機能
-
 function showElementAnimation() {
-
   var element = document.getElementsByClassName('js-animation');
   if(!element) return;
-
   var scrollY = window.pageYOffset;
   var windowH = window.innerHeight;
-
   for(var i=0;i<element.length;i++) { var elemClientRect = element[i].getBoundingClientRect(); var elemY = scrollY + elemClientRect.top; if(scrollY + windowH  > elemY) {
       element[i].classList.add('is-show');
     }
@@ -58,3 +55,10 @@ function showElementAnimation() {
 showElementAnimation();
 window.addEventListener('scroll', showElementAnimation);
 
+
+//画像スライダー機能(slick)
+$(function() {
+    $('.home_top_merit').slick({
+        dots: true,
+    });
+});

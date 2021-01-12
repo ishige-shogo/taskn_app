@@ -16,6 +16,8 @@
  @import "bootstrap";
  @import 'font-awesome-sprockets';
  @import 'font-awesome';
+ @import "slick-theme";
+ @import "slick";
 
 .field_with_errors {
   display: contents;
@@ -26,18 +28,33 @@
 
 body{
   background-color: #43c3dd;
+  font-family:
+    "Helvetica Neue",
+    Arial,
+    "Hiragino Kaku Gothic ProN",
+    "Hiragino Sans",
+    Meiryo,
+    sans-serif;
 }
+
+
 .header-line{
-  border-bottom: solid 5px #000;
+  border-bottom: solid 10px #000;
 }
 .fixed-top{
   height: 100px;
+  background-color: #43c3dd;
 }
 
 //ヘッダーのロゴ
 .logo-image{
   height: auto;
   width: 200px;
+}
+
+//ホームトップ画面のgifアニメーション
+.home_top{
+  margin-top: 150px;
 }
 
 .js-animation {
@@ -50,4 +67,47 @@ body{
   opacity: 1;
   visibility: visible;
   transform: translateY(0px);
+}
+
+ul,li{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+#accordion_menu a{
+    color: #000;
+}
+#accordion_menu a[data-toggle="collapse"]{
+    display: block;
+    padding: 27px;
+    text-decoration: none;
+    position: relative;
+    font-size: 20px;
+    font-weight: 300;
+}
+
+#accordion_menu a[data-toggle="collapse"]::after{
+    content:"";
+    display: block;
+    width: 20px;
+    height: 20px;
+    border-top: #666 4px solid;
+    border-right: #666 4px solid;
+    position: absolute;
+    right: 35px;
+    top: 13px;
+    bottom: 0;
+    margin: auto;
+}
+#accordion_menu a[aria-expanded=false]::after{
+    -webkit-transform: rotate(-45deg);
+    -ms-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+    transition-duration: 0.3s;
+}
+#accordion_menu a[aria-expanded=true]::after{
+    -webkit-transform: rotate(135deg);
+    -ms-transform: rotate(135deg);
+    transform: rotate(135deg);
+    transition-duration: 0.3s;
 }

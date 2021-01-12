@@ -1,71 +1,73 @@
 <header>
-  <nav class="navbar navbar-expand-md navbar-dark fixed-top">
-      <div class="container header-line">
+  <nav class="navbar navbar-expand-md navbar-dark">
+      <div class="container">
 
         <%=link_to root_path, class:"navbar-brand" do%>
             <%= image_tag 'logo.jpg', class:"logo-image" %>
         <% end %>
 
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
-        <ul class="navbar-nav ml-auto">
-          <li class="nav-link text-dark">
-            <%= link_to "使い方", how_to_path %>
-          </li>
-          <% if user_signed_in? %>
-            <% if current_user.present_room %>
-              <li class="nav-link text-dark">
-                <%= link_to "ルームに戻る", main_path(current_user.present_room) %>
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-link text-dark">
+              <%= link_to "使い方", how_to_path, class:"text-dark font-weight-bold text-decoration-none" %>
+            </li>
+            <% if user_signed_in? %>
+              <% if current_user.present_room %>
+                <li class="nav-link">
+                  <%= link_to "ルームに戻る", main_path(current_user.present_room) %>
+                </li>
+                <li class="nav-link">
+                  <%= link_to "ルーム設定変更", edit_main_path(current_user.present_room) %>
+                </li>
+                <li class="nav-link">
+                  <%= link_to "ルーム分析画面", analysis_path(current_user.present_room) %>
+                </li>
+              <% end %>
+              <li class="nav-link">
+                <%= link_to "お問い合わせ一覧", contacts_path %>
               </li>
-              <li class="nav-link text-dark">
-                <%= link_to "ルーム設定変更", edit_main_path(current_user.present_room) %>
+              <li class="nav-link">
+                <%= link_to "ルーム一覧", rooms_path %>
               </li>
-              <li class="nav-link text-dark">
-                <%= link_to "ルーム分析画面", analysis_path(current_user.present_room) %>
+              <li class="nav-link">
+                <%= link_to "ルーム新規作成", new_room_path %>
+              </li>
+              <li class="nav-link">
+                <%= link_to "#{current_user.name}さんのマイページ", edit_mypages_path %>
+              </li>
+              <li class="nav-link">
+                <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+              </li>
+            <% elsif admin_signed_in? %>
+              <li class="nav-link">
+                <%= link_to "お問い合わせ一覧", admins_contacts_path %>
+              </li>
+              <li class="nav-link">
+                <%= link_to "ルーム一覧", admins_rooms_path %>
+              </li>
+              <li class="nav-link">
+                <%= link_to "会員一覧", admins_users_path %>
+              </li>
+              <li class="nav-link">
+                <%= link_to "分析", admins_analysis_index_path %>
+              </li>
+              <li class="nav-link">
+                <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
+              </li>
+            <% else %>
+              <li class="nav-link">
+                <%= link_to "新規登録", new_user_registration_path, class:"text-dark font-weight-bold text-decoration-none" %>
+              </li>
+              <li class="nav-link">
+                <%= link_to "ログイン", new_user_session_path, class:"text-dark font-weight-bold text-decoration-none" %>
               </li>
             <% end %>
-            <li class="nav-link text-dark">
-              <%= link_to "お問い合わせ一覧", contacts_path %>
-            </li>
-            <li class="nav-link text-dark">
-              <%= link_to "ルーム一覧", rooms_path %>
-            </li>
-            <li class="nav-link text-dark">
-              <%= link_to "ルーム新規作成", new_room_path %>
-            </li>
-            <li class="nav-link text-dark">
-              <%= link_to "#{current_user.name}さんのマイページ", edit_mypages_path %>
-            </li>
-            <li class="nav-link text-dark">
-              <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
-            </li>
-          <% elsif admin_signed_in? %>
-            <li class="nav-link text-dark">
-              <%= link_to "お問い合わせ一覧", admins_contacts_path %>
-            </li>
-            <li class="nav-link text-dark">
-              <%= link_to "ルーム一覧", admins_rooms_path %>
-            </li>
-            <li class="nav-link text-dark">
-              <%= link_to "会員一覧", admins_users_path %>
-            </li>
-            <li class="nav-link text-dark">
-              <%= link_to "分析", admins_analysis_index_path %>
-            </li>
-            <li class="nav-link text-dark">
-              <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
-            </li>
-          <% else %>
-            <li class="nav-link text-dark">
-              <%= link_to "新規登録", new_user_registration_path %>
-            </li>
-            <li class="nav-link text-dark">
-              <%= link_to "ログイン", new_user_session_path %>
-            </li>
-            <li class="nav-link text-dark">
-              <%= link_to "管理者ログイン", new_admin_session_path %>
-            </li>
-          <% end %>
-        </ul>
+          </ul>
         </div>
       </div>
   </nav>

@@ -38,12 +38,12 @@ body{
 }
 
 
-.header-line{
-  border-bottom: solid 10px #000;
-}
-.fixed-top{
-  height: 100px;
+header{
   background-color: #43c3dd;
+  border-bottom: solid 5px #000;
+  position: fixed;
+  width: 100%;
+  z-index: 9999;
 }
 
 //ヘッダーのロゴ
@@ -53,8 +53,8 @@ body{
 }
 
 //ホームトップ画面のgifアニメーション
-.home_top{
-  margin-top: 150px;
+main{
+  padding-top: 150px;
 }
 
 .js-animation {

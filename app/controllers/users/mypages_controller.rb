@@ -4,7 +4,7 @@ class Users::MypagesController < ApplicationController
     @user = User.find(current_user.id)
     @user_rooms = RoomUser.where(user_id: current_user.id)
     # 参加したことのあるルームで状態が有効なものだけを抽出
-    @exist_user_rooms = @user_rooms.select{|n| n.room.is_deleted == "有効"}
+    @exist_user_rooms = @user_rooms.select { |n| n.room.is_deleted == "有効" }
   end
 
   def update

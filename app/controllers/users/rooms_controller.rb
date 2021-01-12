@@ -17,7 +17,8 @@ class Users::RoomsController < ApplicationController
   end
 
   def search
-    redirect_to room_path(id: (params[:search_room]).to_i)
+    # 検索されたルームidのキーを保持してshowアクションへ
+    redirect_to room_path(id: params[:search_room].to_i)
   end
 
   def update
@@ -67,8 +68,6 @@ class Users::RoomsController < ApplicationController
       render :new
     end
   end
-
-
 
   private
 

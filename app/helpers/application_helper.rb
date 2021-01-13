@@ -1,5 +1,4 @@
 module ApplicationHelper
-
   # 年月日表示
   def simple_date(date)
     date.strftime("%Y/%m/%d")
@@ -27,5 +26,4 @@ module ApplicationHelper
       "text-danger"
     end
   end
-
 end

@@ -19,6 +19,7 @@
  @import "slick-theme";
  @import "slick";
 
+//テーブルのボーダーを変更
 .table > thead > tr > th{
     border:1px solid #000;
 }
@@ -29,6 +30,7 @@
   width: 20%;
 }
 
+//テーブルの固定(文字が増えた場合テキストが折り返しになるように)
 table {
   width: 100%;
   table-layout: fixed;
@@ -156,6 +158,11 @@ ul,li{
   border-radius: 5px;
 }
 #user_password_confirmation{
+  width: 270px;
+  height: 40px;
+  border-radius: 5px;
+}
+#user_current_password{
   width: 270px;
   height: 40px;
   border-radius: 5px;

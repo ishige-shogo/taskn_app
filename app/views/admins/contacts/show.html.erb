@@ -1,9 +1,46 @@
-<h1>Admins::Contacts#show</h1>
 
-<%= @contact.id %><br>
-<%= @contact.user.name %><br>
-<%= @contact.created_at %><br>
-<%= @contact.title %><br>
-<%= @contact.body %><br>
+<div class = "container">
 
-<%= link_to "一覧画面に戻る", admins_contacts_path %>
+  <div class ="row">
+    <div class ="col text-center mx-auto">
+      <h1><strong><span class="text-light">お問い合わせ</span>詳細</strong></h1>
+    </div>
+  </div>
+
+  <div class ="row mt-3">
+    <div class ="col mx-auto">
+      <table class="table table-bordered">
+        <tr>
+          <td class="bg-dark text-light font-weight-bold">お問い合わせID</td>
+          <td class="bg-light"><%= @contact.id %></td>
+        </tr>
+        <tr>
+          <td class="bg-dark text-light font-weight-bold">利用者ID・名前</td>
+          <td class="bg-light">(<%= @contact.user_id %>) <%= @contact.user.name %></td>
+        </tr>
+        <tr>
+          <td class="bg-dark text-light font-weight-bold">送信時間</td>
+          <td class="bg-light"><%= simple_date(@contact.created_at) %></td>
+        </tr>
+        <tr>
+          <td class="bg-dark text-light font-weight-bold">タイトル</td>
+          <td class="bg-light"><%= @contact.title %></td>
+        </tr>
+        <tr>
+          <td class="bg-dark text-light font-weight-bold">内容</td>
+          <td class="bg-light"><%= @contact.body %></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+  <div class ="row mt-4">
+    <div class ="col text-center mx-auto">
+      <%= link_to "一覧画面に戻る", admins_contacts_path, class:"btn btn-light" %>
+    </div>
+  </div>
+
+</div>
+
+
+

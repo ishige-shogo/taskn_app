@@ -19,6 +19,10 @@
  @import "slick-theme";
  @import "slick";
 
+//ページャの中央寄せ
+.pagination {
+  justify-content: center;
+}
 
 //バリデーションエラー時に枠が赤くなる
 .field_with_errors {

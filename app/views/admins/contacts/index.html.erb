@@ -1,6 +1,6 @@
 <div class ="row">
   <div class ="col text-center mx-auto">
-    <h1><strong>お問い合わせ一覧</strong></h1><h4><%="全#{@contact_all.count}件" %></h4>
+    <h1><strong><span class="text-light">お問い合わせ</span>一覧</strong></h1><h5>全<span class="h4 font-weight-bold"> <%= @contact_all.count%></span> 件</h5>
   </div>
 </div>
 
@@ -9,10 +9,10 @@
     <table class="table table-sm table-hover">
       <thead class="thead-dark">
         <tr>
-          <th>お問い合わせ番号</th>
+          <th>お問い合わせID</th>
           <th>利用者ID</th>
           <th>利用者名</th>
-          <th>内容</th>
+          <th>タイトル</th>
           <th>送信時間</th>
           <th>ステータス</th>
           <th></th>
@@ -25,7 +25,7 @@
           <td><%= contact.user_id %></td>
           <td><%= contact.user.name %></td>
           <td><%= contact.title %></td>
-          <td><%= contact.created_at %></td>
+          <td><%= simple_date(contact.created_at) %></td>
           <!--既読なら緑、未読なら赤-->
           <% if contact.is_read == "既読" %>
             <td class="text-success">

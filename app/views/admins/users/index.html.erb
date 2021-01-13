@@ -1,6 +1,6 @@
 <div class ="row">
   <div class ="col text-center mx-auto">
-    <h1><strong>利用者一覧</strong></h1><h4><%="全#{@user_all.count}名" %></h4>
+    <h1><strong><span class="text-light">利用者</span>一覧</strong></h1><h5>全<span class="h4 font-weight-bold"> <%= @user_all.count%></span> 名</h5>
   </div>
 </div>
 
@@ -23,7 +23,7 @@
           <td><%= user.id %></td>
           <td class="font-weight-bold"><%= user.name %></td>
           <td><%= user.room_users.count %></td>
-          <td><%= user.created_at %></td>
+          <td><%= simple_date(user.created_at) %></td>
           <!--有効なら緑、無効なら赤-->
           <% if user.is_deleted == "有効" %>
             <td class="text-success">
@@ -47,3 +47,4 @@
 </div>
 
 <%= paginate @users %>
+

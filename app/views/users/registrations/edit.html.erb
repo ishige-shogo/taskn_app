@@ -2,7 +2,7 @@
   <div class ="row mt-3">
     <div class ="col text-center mx-auto">
       <%= form_with model: @user, url: user_registration_path, id: 'new_user', class: 'new_user', method: :put, local: true do |f| %>
-        <div class="field"><h1><strong>パスワードを変更する</strong></h1></div>
+        <div class="field"><h1><strong>ログインパスワード変更</strong></h1></div>
         <div class="field mt-5">
           <%= f.password_field :current_password, autocomplete: "current-password", placeholder:"現在のパスワード" %>
         </div>

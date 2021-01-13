@@ -16,10 +16,164 @@
  @import "bootstrap";
  @import 'font-awesome-sprockets';
  @import 'font-awesome';
+ @import "slick-theme";
+ @import "slick";
 
+.table > thead > tr > th{
+    border:1px solid #000;
+}
+.table > tbody > tr > td{
+    border:1px solid #000;
+}
+.contact-content{
+  width: 20%;
+}
+
+table {
+  width: 100%;
+  table-layout: fixed;
+}
+table td {
+  overflow-wrap : break-word;
+}
+
+//ページャの中央寄せ
+.pagination {
+  justify-content: center;
+}
+
+//バリデーションエラー時に枠が赤くなる
 .field_with_errors {
   display: contents;
   input {
     border: 4px solid red;
   }
+}
+
+//全体の背景色・文字フォント設定
+body{
+  background-color: #43c3dd;
+  font-family:
+    "Helvetica Neue",
+    Arial,
+    "Hiragino Kaku Gothic ProN",
+    "Hiragino Sans",
+    Meiryo,
+    sans-serif;
+}
+
+//ヘッダーを固定させ、最前面に設定
+header{
+  background-color: #43c3dd;
+  border-bottom: solid 5px #000;
+  position: fixed;
+  width: 100%;
+  z-index: 9999;
+}
+
+//ヘッダーのロゴ
+.logo-image{
+  height: auto;
+  width: 200px;
+}
+
+//ホームトップ画面のgifアニメーション
+main{
+  padding-top: 150px;
+}
+
+//文字が浮かび上がるアニメーション
+.js-animation {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(40px);
+  transition: all 1s;
+}
+.js-animation.is-show {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0px);
+}
+
+//トップページのQ&Aのアコーディオンメニュー
+ul,li{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+#accordion_menu a{
+    color: #000;
+}
+#accordion_menu a[data-toggle="collapse"]{
+    display: block;
+    padding: 15px;
+    text-decoration: none;
+    position: relative;
+    font-size: 20px;
+    font-weight: 300;
+}
+
+#accordion_menu a[data-toggle="collapse"]::after{
+    content:"";
+    display: block;
+    width: 20px;
+    height: 20px;
+    border-top: #666 4px solid;
+    border-right: #666 4px solid;
+    position: absolute;
+    right: 35px;
+    top: 13px;
+    bottom: 0;
+    margin: auto;
+}
+#accordion_menu a[aria-expanded=false]::after{
+    -webkit-transform: rotate(-45deg);
+    -ms-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+    transition-duration: 0.3s;
+}
+#accordion_menu a[aria-expanded=true]::after{
+    -webkit-transform: rotate(135deg);
+    -ms-transform: rotate(135deg);
+    transform: rotate(135deg);
+    transition-duration: 0.3s;
+}
+
+//利用者情報入力欄の設定
+#user_name{
+  width: 270px;
+  height: 40px;
+  border-radius: 5px;
+}
+#user_email{
+  width: 270px;
+  height: 40px;
+  border-radius: 5px;
+}
+#user_password{
+  width: 270px;
+  height: 40px;
+  border-radius: 5px;
+}
+#user_password_confirmation{
+  width: 270px;
+  height: 40px;
+  border-radius: 5px;
+}
+
+//管理者情報入力欄の設定
+#admin_name{
+  width: 270px;
+  height: 40px;
+  border-radius: 5px;
+}
+#admin_email{
+  width: 270px;
+  height: 40px;
+  border-radius: 5px;
+}
+#admin_password{
+  width: 270px;
+  height: 40px;
+  border-radius: 5px;
 }

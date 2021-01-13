@@ -1,2 +1,94 @@
-<h1>Users::Homes#top</h1>
-<p>Find me in app/views/users/homes/top.html.erb</p>
+  <div class = "container">
+
+    <div class = "row">
+      <div class = "col">
+        <%= image_tag 'home_top.gif', class:"img-fluid home_top" %>
+      </div>
+    </div>
+
+    <div class = "js-animation">
+      <div class = "row">
+        <div class = "col">
+          <%= image_tag 'home_top_explain.jpg', class:"img-fluid" %>
+        </div>
+      </div>
+
+
+      <div class = "row mt-5">
+        <div class = "col">
+          <%= image_tag 'home_top_about.jpg', class:"img-fluid" %>
+        </div>
+      </div>
+
+      <div class = "row mt-5">
+        <div class = "col">
+          <%= image_tag 'home_top_merit_banner.jpg', class:"img-fluid" %>
+        </div>
+      </div>
+    </div>
+
+
+    <div class = "row">
+      <div class = "col">
+      <div class = "home_top_merit">
+        <div class="nest-merit"><%= image_tag 'home_top_merit1.jpg', class:"img-fluid" %></div>
+        <div class="nest-merit"><%= image_tag 'home_top_merit2.jpg', class:"img-fluid" %></div>
+        <div class="nest-merit"><%= image_tag 'home_top_merit3.jpg', class:"img-fluid" %></div>
+        <div class="nest-merit"><%= image_tag 'home_top_merit4.jpg', class:"img-fluid" %></div>
+      </div>
+      </div>
+    </div>
+
+    <div class = "row mt-5">
+      <div class = "col">
+        <%= image_tag 'home_top_howto_banner.jpg', class:"img-fluid" %>
+      </div>
+    </div>
+
+    <div class = "row mt-5">
+      <div class = "col">
+        <%= image_tag 'home_top_qa_banner.jpg', class:"img-fluid" %>
+      </div>
+    </div>
+
+    <div class="row pb-5">
+      <div class="col">
+      <ul id="accordion_menu">
+        <li>
+          <a data-toggle="collapse" href="#menu01" aria-controls="#menu01" aria-expanded="false" class="card mb-3">
+            <div class="question">Q.....パスワードを忘れました。復元する方法はありますか？</div>
+          </a>
+        </li>
+        <ul id="menu01" class="collapse mt-3 mb-3">
+          <li class="answer">A.....申し訳ございませんが、現在そのような機能はありません。</li>
+        </ul>
+        <li>
+          <a data-toggle="collapse" href="#menu02" aria-controls="#menu02" aria-expanded="false" class="card mb-3">
+            <div class="question">Q.....チームでの使用の場合、上限人数はありますか？</div>
+          </a>
+        </li>
+        <ul id="menu02" class="collapse mt-3 mb-3">
+          <li class="answer">A.....上限は設けていないので何人でもOKです。ただし推奨は6.7人です。</li>
+        </ul>
+        <li>
+          <a data-toggle="collapse" href="#menu03" aria-controls="#menu03" aria-expanded="false" class="card mb-3">
+            <div class="question">Q.....アプリケーションについて改善して欲しいことがあります</div>
+          </a>
+        </li>
+        <ul id="menu03" class="collapse mt-3 mb-3">
+          <li class="answer">A.....貴重なご意見誠にありがとうございます。ログイン後のマイページにお問い合わせフォームがありますので、そちらから送信をお願い致します。</li>
+        </ul>
+        <li>
+          <a data-toggle="collapse" href="#menu04" aria-controls="#menu04" aria-expanded="false" class="card mb-3">
+            <div class="question">Q.....スマートフォンでも使用できますか？</div>
+          </a>
+        </li>
+        <ul id="menu04" class="collapse mt-3 mb-3">
+          <li class="answer">A.....PCでの使用を前提とした設計のため、スマホでの使用は推奨しておりません。</li>
+        </ul>
+      </ul>
+      </div>
+    </div>
+  </div>
+
+<%= render 'layouts/footer' %>

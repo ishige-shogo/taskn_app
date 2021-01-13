@@ -1,13 +1,14 @@
 class Admins::RoomsController < ApplicationController
   before_action :authenticate_admin!
   def index
-    @rooms = Room.all
+    @room_all = Room.all
+    @rooms = Room.page(params[:page]).per(10)
   end
 
   def update
     @room = Room.find(params[:id])
     @room.update(room_is_deleted_params)
-    redirect_to admins_rooms_path
+    redirect_to request.referer
   end
 
   private

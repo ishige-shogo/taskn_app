@@ -1,11 +1,47 @@
-<h1>Admins::Users#index</h1>
-<% @users.each do |user| %>
-  <%= user.id %>
-  <%= user.name %>
-  <%= user.is_deleted %>
-  <%= form_with model: @user, url: admins_user_path(user.id), method: :patch, local:true do |f| %>
-    <%= f.radio_button :is_deleted, "有効" %>有効
-    <%= f.radio_button :is_deleted, "退会済" %>退会済
-    <%= f.submit "変更する" %>
-  <% end %>
-<% end %>
+<div class ="row">
+  <div class ="col text-center mx-auto">
+    <h1><strong>利用者一覧</strong></h1><h4><%="全#{@users.count}名" %></h4>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col text-center mx-auto">
+    <table class="table table-sm table-hover">
+      <thead class="thead-dark">
+        <tr>
+          <th>利用者ID</th>
+          <th>利用者名</th>
+          <th>参加ルーム数</th>
+          <th>新規登録日時</th>
+          <th>ステータス</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody class ="table-bordered table-light">
+        <% @users.each do |user| %>
+        <tr>
+          <td><%= user.id %></td>
+          <td class="font-weight-bold"><%= user.name %></td>
+          <td><%= user.room_users.count %></td>
+          <td><%= user.created_at %></td>
+          <!--有効なら緑、無効なら赤-->
+          <% if user.is_deleted == "有効" %>
+            <td class="text-success">
+          <% else %>
+            <td class="text-danger">
+          <% end %>
+            <%= user.is_deleted %></td>
+          <!---->
+          <td>
+            <%= form_with model: @user, url: admins_user_path(user.id), method: :patch, local:true do |f| %>
+              <%= f.radio_button :is_deleted, "有効" %> 有効
+              <%= f.radio_button :is_deleted, "退会済" %> 退会済
+              <%= f.submit "変更する", class:"btn btn-sm btn-secondary" %>
+            <% end %>
+          </td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

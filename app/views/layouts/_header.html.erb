@@ -42,7 +42,7 @@
                 <%= link_to "#{current_user.name}さんのマイページ", edit_mypages_path %>
               </li>
               <li class="nav-link">
-                <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+                <%= link_to "ログアウト", destroy_user_session_path, method: :delete, data:{confirm: " [確認]　ログアウトしますか?"} %>
               </li>
             <% elsif admin_signed_in? %>
               <li class="nav-link">
@@ -61,7 +61,7 @@
                 <%= link_to "分析", admins_analysis_index_path, class:"text-dark font-weight-bold text-decoration-none" %>
               </li>
               <li class="nav-link">
-                <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class:"text-dark font-weight-bold text-decoration-none" %>
+                <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class:"text-dark font-weight-bold text-decoration-none", data:{confirm: " [確認]　ログアウトしますか?"} %>
               </li>
             <% else %>
               <li class="nav-link">
@@ -71,7 +71,7 @@
                 <%= link_to " ログイン", new_user_session_path, class:"fas fa-sign-in-alt text-dark font-weight-bold text-decoration-none" %>
               </li>
               <li class="nav-link">
-                <%= link_to "ゲストログイン", homes_guest_sign_in_path, method: :post, class:"fas fa-user-tag text-dark font-weight-bold text-decoration-none" %>
+                <%= link_to "ゲストログイン", homes_guest_sign_in_path, method: :post, class:"fas fa-user-tag text-dark font-weight-bold text-decoration-none", data:{confirm: " [確認]ゲストログインではメールとパスワードが自動で生成されます"} %>
               </li>
             <% end %>
           </ul>

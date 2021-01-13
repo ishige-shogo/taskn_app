@@ -1,3 +1,4 @@
+<div class="container">
 <div class ="row">
   <div class ="col text-center mx-auto">
     <h1><strong><span class="text-light">お問い合わせ</span>一覧</strong></h1><h5>全<span class="h4 font-weight-bold"> <%= @contact_all.count%></span> 件</h5>
@@ -24,22 +25,16 @@
           <td><%= contact.id %></td>
           <td><%= contact.user_id %></td>
           <td><%= contact.user.name %></td>
-          <td><%= contact.title %></td>
-          <td><%= simple_date(contact.created_at) %></td>
-          <!--既読なら緑、未読なら赤-->
-          <% if contact.is_read == "既読" %>
-            <td class="text-success">
-          <% else %>
-            <td class="text-danger">
-          <% end %>
-            <%= contact.is_read %></td>
-          <!---->
+          <td><%= simple_body(contact.title) %></td>
+          <td><%= simple_date(contact.created_at) %><br><%= simple_time(contact.created_at) %></td>
+          <td class=<%= status_color(contact.is_read) %>><%= contact.is_read %></td>
           <td><%= link_to "詳細確認", admins_contact_path(contact.id), method: :patch, class:"font-weight-bold" %></td>
         </tr>
         <% end %>
       </tbody>
     </table>
   </div>
+</div>
 </div>
 
 <%= paginate @contacts %>

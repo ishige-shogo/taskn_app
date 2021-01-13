@@ -1,3 +1,4 @@
+<div class="container">
 <div class ="row">
   <div class ="col text-center mx-auto">
     <h1><strong><span class="text-light">利用者</span>一覧</strong></h1><h5>全<span class="h4 font-weight-bold"> <%= @user_all.count%></span> 名</h5>
@@ -21,17 +22,10 @@
         <% @users.each do |user| %>
         <tr>
           <td><%= user.id %></td>
-          <td class="font-weight-bold"><%= user.name %></td>
+          <td class="font-weight-bold"><%= simple_body(user.name) %></td>
           <td><%= user.room_users.count %></td>
-          <td><%= simple_date(user.created_at) %></td>
-          <!--有効なら緑、無効なら赤-->
-          <% if user.is_deleted == "有効" %>
-            <td class="text-success">
-          <% else %>
-            <td class="text-danger">
-          <% end %>
-            <%= user.is_deleted %></td>
-          <!---->
+          <td><%= simple_date(user.created_at) %><br><%= simple_time(user.created_at) %></td>
+          <td class=<%= status_color(user.is_deleted) %>><%= user.is_deleted %></td>
           <td>
             <%= form_with model: @user, url: admins_user_path(user.id), method: :patch, local:true do |f| %>
               <%= f.radio_button :is_deleted, "有効" %> 有効
@@ -44,6 +38,7 @@
       </tbody>
     </table>
   </div>
+</div>
 </div>
 
 <%= paginate @users %>

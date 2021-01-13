@@ -11,23 +11,23 @@
     <div class ="col mx-auto">
       <table class="table table-bordered">
         <tr>
-          <td class="bg-dark text-light font-weight-bold">お問い合わせID</td>
+          <td class="bg-dark text-light font-weight-bold contact-content">お問い合わせID</td>
           <td class="bg-light"><%= @contact.id %></td>
         </tr>
         <tr>
-          <td class="bg-dark text-light font-weight-bold">利用者ID・名前</td>
-          <td class="bg-light">(<%= @contact.user_id %>) <%= @contact.user.name %></td>
+          <td class="bg-dark text-light font-weight-bold contact-content">利用者名(ID)</td>
+          <td class="bg-light"><%= @contact.user.name %> (<%= @contact.user_id %>)</td>
         </tr>
         <tr>
-          <td class="bg-dark text-light font-weight-bold">送信時間</td>
-          <td class="bg-light"><%= simple_date(@contact.created_at) %></td>
+          <td class="bg-dark text-light font-weight-bold contact-content">送信時間</td>
+          <td class="bg-light"><%= simple_date(@contact.created_at) %>&emsp;<%= simple_time(@contact.created_at) %></td>
         </tr>
         <tr>
-          <td class="bg-dark text-light font-weight-bold">タイトル</td>
+          <td class="bg-dark text-light font-weight-bold contact-content">タイトル</td>
           <td class="bg-light"><%= @contact.title %></td>
         </tr>
         <tr>
-          <td class="bg-dark text-light font-weight-bold">内容</td>
+          <td class="bg-dark text-light font-weight-bold contact-content">内容</td>
           <td class="bg-light"><%= @contact.body %></td>
         </tr>
       </table>

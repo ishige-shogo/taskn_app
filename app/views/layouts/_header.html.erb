@@ -1,81 +1,53 @@
 <header>
   <nav class="navbar navbar-expand-md navbar-dark">
-      <div class="container">
+    <div class="container">
 
-        <%=link_to root_path, class:"navbar-brand" do%>
-            <%= image_tag 'logo.jpg', class:"logo-image" %>
-        <% end %>
+      <%= link_to root_path, class:"navbar-brand" do %>
+          <%= image_tag 'logo.jpg', class:"logo-image" %>
+      <% end %>
 
 
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
 
-        <div class="collapse navbar-collapse" id="navbarNavDropdown">
-          <ul class="navbar-nav ml-auto">
-
-            <% if user_signed_in? %>
-              <% if current_user.present_room %>
-                <li class="nav-link">
-                  <%= link_to "ルームに戻る", main_path(current_user.present_room) %>
-                </li>
-                <li class="nav-link">
-                  <%= link_to "ルーム設定変更", edit_main_path(current_user.present_room) %>
-                </li>
-                <li class="nav-link">
-                  <%= link_to "ルーム分析画面", analysis_path(current_user.present_room) %>
-                </li>
-              <% end %>
-              <li class="nav-link">
-                <%= link_to " 使い方", how_to_path, class:" fas fa-question-circle text-dark font-weight-bold text-decoration-none" %>
-              </li>
-              <li class="nav-link">
-                <%= link_to "お問い合わせ一覧", contacts_path %>
-              </li>
-              <li class="nav-link">
-                <%= link_to "ルーム一覧", rooms_path %>
-              </li>
-              <li class="nav-link">
-                <%= link_to "ルーム新規作成", new_room_path %>
-              </li>
-              <li class="nav-link">
-                <%= link_to "#{current_user.name}さんのマイページ", edit_mypages_path %>
-              </li>
-              <li class="nav-link">
-                <%= link_to "ログアウト", destroy_user_session_path, method: :delete, data:{confirm: " [確認]　ログアウトしますか?"} %>
-              </li>
-            <% elsif admin_signed_in? %>
-              <li class="nav-link">
-                <div class="text-danger font-weight-bold">管理者ログイン中</div>
-              </li>
-              <li class="nav-link">
-                <%= link_to "お問い合わせ一覧", admins_contacts_path, class:"text-dark font-weight-bold text-decoration-none" %>
-              </li>
-              <li class="nav-link">
-                <%= link_to "利用者一覧", admins_users_path, class:"text-dark font-weight-bold text-decoration-none" %>
-              </li>
-              <li class="nav-link">
-                <%= link_to "ルーム一覧", admins_rooms_path, class:"text-dark font-weight-bold text-decoration-none" %>
-              </li>
-              <li class="nav-link">
-                <%= link_to "分析", admins_analysis_index_path, class:"text-dark font-weight-bold text-decoration-none" %>
-              </li>
-              <li class="nav-link">
-                <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class:"text-dark font-weight-bold text-decoration-none", data:{confirm: " [確認]　ログアウトしますか?"} %>
-              </li>
-            <% else %>
-              <li class="nav-link">
-                <%= link_to " アカウント作成", new_user_registration_path, class:"fas fa-user-plus text-dark font-weight-bold text-decoration-none" %>
-              </li>
-              <li class="nav-link">
-                <%= link_to " ログイン", new_user_session_path, class:"fas fa-sign-in-alt text-dark font-weight-bold text-decoration-none" %>
-              </li>
-              <li class="nav-link">
-                <%= link_to "ゲストログイン", homes_guest_sign_in_path, method: :post, class:"fas fa-user-tag text-dark font-weight-bold text-decoration-none", data:{confirm: " [確認]ゲストログインではメールアドレスとパスワードが自動で生成されます"} %>
-              </li>
-            <% end %>
-          </ul>
-        </div>
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav ml-auto">
+          <% if admin_signed_in? %>
+            <li class="nav-link">
+              <div class="text-danger font-weight-bold">管理者ログイン中</div>
+            </li>
+            <li class="nav-link">
+              <%= link_to "お問い合わせ一覧", admins_contacts_path, class:"text-dark font-weight-bold text-decoration-none" %>
+            </li>
+            <li class="nav-link">
+              <%= link_to "利用者一覧", admins_users_path, class:"text-dark font-weight-bold text-decoration-none" %>
+            </li>
+            <li class="nav-link">
+              <%= link_to "ルーム一覧", admins_rooms_path, class:"text-dark font-weight-bold text-decoration-none" %>
+            </li>
+            <li class="nav-link">
+              <%= link_to "分析", admins_analysis_index_path, class:"text-dark font-weight-bold text-decoration-none" %>
+            </li>
+            <li class="nav-link">
+              <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class:"text-dark font-weight-bold text-decoration-none", data:{confirm: " [確認]　ログアウトしますか?"} %>
+            </li>
+          <% else %>
+            <li class="nav-link">
+              <%= link_to " 使い方", how_to_path, class:" fas fa-question-circle text-dark font-weight-bold text-decoration-none" %>
+            </li>
+            <li class="nav-link">
+              <%= link_to " アカウント作成", new_user_registration_path, class:"fas fa-user-plus text-primary font-weight-bold text-decoration-none" %>
+            </li>
+            <li class="nav-link">
+              <%= link_to " ログイン", new_user_session_path, class:"fas fa-sign-in-alt text-success font-weight-bold text-decoration-none" %>
+            </li>
+            <li class="nav-link">
+              <%= link_to "ゲストログイン", homes_guest_sign_in_path, method: :post, class:"fas fa-user-tag text-warning font-weight-bold text-decoration-none", data:{confirm: " [確認]ゲストログインではメールアドレスとパスワードが自動で生成されます"} %>
+            </li>
+          <% end %>
+        </ul>
       </div>
+    </div>
   </nav>
 </header>

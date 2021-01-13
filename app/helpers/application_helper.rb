@@ -9,10 +9,10 @@ module ApplicationHelper
     time.strftime("%H:%M:%S")
   end
 
-  # テキストの内容表示(13文字以上なら「12文字...」と表示する)
+  # テキストの内容表示(11文字以上なら「10文字...」と表示する)
   def simple_body(body)
-    if body.length >= 13
-      body[0..11] + "..."
+    if body.length >= 11
+      body[0..9] + "..."
     else
       body
     end

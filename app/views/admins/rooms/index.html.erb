@@ -1,15 +1,49 @@
-<h1>Admins::Rooms#index</h1>
+  <div class ="row">
+    <div class ="col text-center mx-auto">
+      <h1><strong>ルーム一覧</strong></h1><h4><%="全#{@rooms.count}件" %></h4>
+    </div>
+  </div>
 
-<% @rooms.each do |room| %>
-  <%= room.id %>
-  <%= room.name %>
-  <%= room.room_users.count %>
-  <%= room.user.name %>
-  <%= room.created_at %>
-  <%= room.is_deleted %>
-  <%= form_with model: @room, url: admins_room_path(room.id), method: :patch, local:true do |f| %>
-    <%= f.radio_button :is_deleted, "有効" %>有効
-    <%= f.radio_button :is_deleted, "無効" %>無効
-    <%= f.submit "変更する" %>
-  <% end %>
-<% end %>
+  <div class="row">
+    <div class="col text-center mx-auto">
+      <table class="table table-sm table-hover">
+        <thead class="thead-dark">
+          <tr>
+            <th>ルームID</th>
+            <th>ルーム名</th>
+            <th>作成者名</th>
+            <th>参加人数</th>
+            <th>作成日時</th>
+            <th>ステータス</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody class ="table-bordered table-light">
+          <% @rooms.each do |room| %>
+          <tr>
+            <td><%= room.id %></td>
+            <td class="font-weight-bold"><%= room.name %></td>
+            <td><%= room.user.name %></td>
+            <td><%= room.room_users.count %></td>
+            <td><%= room.created_at %></td>
+            <!--有効なら緑、無効なら赤-->
+            <% if room.is_deleted == "有効" %>
+              <td class="text-success">
+            <% else %>
+              <td class="text-danger">
+            <% end %>
+              <%= room.is_deleted %></td>
+            <!---->
+            <td>
+              <%= form_with model: @room, url: admins_room_path(room.id), method: :patch, local:true do |f| %>
+                <%= f.radio_button :is_deleted, "有効" %> 有効
+                <%= f.radio_button :is_deleted, "無効" %> 無効
+                <%= f.submit "変更する", class:"btn btn-sm btn-secondary" %>
+              <% end %>
+            </td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>

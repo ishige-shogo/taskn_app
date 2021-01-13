@@ -13,9 +13,7 @@
 
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
           <ul class="navbar-nav ml-auto">
-            <li class="nav-link text-dark">
-              <%= link_to " 使い方", how_to_path, class:" fas fa-question-circle text-dark font-weight-bold text-decoration-none" %>
-            </li>
+
             <% if user_signed_in? %>
               <% if current_user.present_room %>
                 <li class="nav-link">
@@ -28,6 +26,9 @@
                   <%= link_to "ルーム分析画面", analysis_path(current_user.present_room) %>
                 </li>
               <% end %>
+              <li class="nav-link">
+                <%= link_to " 使い方", how_to_path, class:" fas fa-question-circle text-dark font-weight-bold text-decoration-none" %>
+              </li>
               <li class="nav-link">
                 <%= link_to "お問い合わせ一覧", contacts_path %>
               </li>
@@ -44,6 +45,9 @@
                 <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
               </li>
             <% elsif admin_signed_in? %>
+              <li class="nav-link">
+                <div class="text-danger font-weight-bold">管理者ログイン中</div>
+              </li>
               <li class="nav-link">
                 <%= link_to "お問い合わせ一覧", admins_contacts_path, class:"text-dark font-weight-bold text-decoration-none" %>
               </li>

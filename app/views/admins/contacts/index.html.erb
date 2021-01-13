@@ -1,12 +1,43 @@
-<h1>Admins::Contacts#index</h1>
+  <div class ="row">
+    <div class ="col text-center mx-auto">
+      <h1><strong>お問い合わせ一覧</strong></h1><h4><%="全#{@contacts.count}件" %></h4>
+    </div>
+  </div>
 
-<%="全#{@contacts.count}件" %>
-<% @contacts.each do |contact| %>
-  <%= contact.id %><br>
-  <%= contact.user_id %>
-  <%= contact.user.name %>
-  <%= contact.title %>
-  <%= contact.created_at %>
-  <%= contact.is_read %>
-  <%= link_to "詳細確認", admins_contact_path(contact.id), method: :patch %><br>
-<% end %>
+  <div class="row">
+    <div class="col text-center mx-auto">
+      <table class="table table-sm table-hover">
+        <thead class="thead-dark">
+          <tr>
+            <th>お問い合わせ番号</th>
+            <th>利用者ID</th>
+            <th>利用者名</th>
+            <th>内容</th>
+            <th>送信時間</th>
+            <th>ステータス</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody class ="table-bordered table-secondary">
+          <% @contacts.each do |contact| %>
+          <tr>
+            <td><%= contact.id %></td>
+            <td><%= contact.user_id %></td>
+            <td><%= contact.user.name %></td>
+            <td><%= contact.title %></td>
+            <td><%= contact.created_at %></td>
+            <!--既読なら緑、未読なら赤-->
+            <% if contact.is_read == "既読" %>
+              <td class="text-success">
+            <% else %>
+              <td class="text-danger">
+            <% end %>
+              <%= contact.is_read %></td>
+            <!---->
+            <td><%= link_to "詳細確認", admins_contact_path(contact.id), method: :patch, class:"font-weight-bold" %></td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>

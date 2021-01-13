@@ -14,7 +14,7 @@
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
           <ul class="navbar-nav ml-auto">
             <li class="nav-link text-dark">
-              <%= link_to "使い方", how_to_path, class:"text-dark font-weight-bold text-decoration-none" %>
+              <%= link_to " 使い方", how_to_path, class:" fas fa-question-circle text-dark font-weight-bold text-decoration-none" %>
             </li>
             <% if user_signed_in? %>
               <% if current_user.present_room %>
@@ -45,26 +45,29 @@
               </li>
             <% elsif admin_signed_in? %>
               <li class="nav-link">
-                <%= link_to "お問い合わせ一覧", admins_contacts_path %>
+                <%= link_to "お問い合わせ一覧", admins_contacts_path, class:"text-dark font-weight-bold text-decoration-none" %>
               </li>
               <li class="nav-link">
-                <%= link_to "ルーム一覧", admins_rooms_path %>
+                <%= link_to "ルーム一覧", admins_rooms_path, class:"text-dark font-weight-bold text-decoration-none" %>
               </li>
               <li class="nav-link">
-                <%= link_to "会員一覧", admins_users_path %>
+                <%= link_to "会員一覧", admins_users_path, class:"text-dark font-weight-bold text-decoration-none" %>
               </li>
               <li class="nav-link">
-                <%= link_to "分析", admins_analysis_index_path %>
+                <%= link_to "分析", admins_analysis_index_path, class:"text-dark font-weight-bold text-decoration-none" %>
               </li>
               <li class="nav-link">
-                <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
+                <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class:"text-dark font-weight-bold text-decoration-none" %>
               </li>
             <% else %>
               <li class="nav-link">
-                <%= link_to "新規登録", new_user_registration_path, class:"text-dark font-weight-bold text-decoration-none" %>
+                <%= link_to " アカウント作成", new_user_registration_path, class:"fas fa-user-plus text-dark font-weight-bold text-decoration-none" %>
               </li>
               <li class="nav-link">
-                <%= link_to "ログイン", new_user_session_path, class:"text-dark font-weight-bold text-decoration-none" %>
+                <%= link_to " ログイン", new_user_session_path, class:"fas fa-sign-in-alt text-dark font-weight-bold text-decoration-none" %>
+              </li>
+              <li class="nav-link">
+                <%= link_to "ゲストログイン", homes_guest_sign_in_path, method: :post, class:"fas fa-user-tag text-dark font-weight-bold text-decoration-none" %>
               </li>
             <% end %>
           </ul>

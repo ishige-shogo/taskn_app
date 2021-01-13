@@ -19,6 +19,8 @@
  @import "slick-theme";
  @import "slick";
 
+
+//バリデーションエラー時に枠が赤くなる
 .field_with_errors {
   display: contents;
   input {
@@ -26,6 +28,7 @@
   }
 }
 
+//全体の背景色・文字フォント設定
 body{
   background-color: #43c3dd;
   font-family:
@@ -37,7 +40,7 @@ body{
     sans-serif;
 }
 
-
+//ヘッダーを固定させ、最前面に設定
 header{
   background-color: #43c3dd;
   border-bottom: solid 5px #000;
@@ -57,6 +60,7 @@ main{
   padding-top: 150px;
 }
 
+//文字が浮かび上がるアニメーション
 .js-animation {
   opacity: 0;
   visibility: hidden;
@@ -69,6 +73,7 @@ main{
   transform: translateY(0px);
 }
 
+//トップページのQ&Aのアコーディオンメニュー
 ul,li{
     margin: 0;
     padding: 0;
@@ -79,7 +84,7 @@ ul,li{
 }
 #accordion_menu a[data-toggle="collapse"]{
     display: block;
-    padding: 27px;
+    padding: 15px;
     text-decoration: none;
     position: relative;
     font-size: 20px;
@@ -112,24 +117,40 @@ ul,li{
     transition-duration: 0.3s;
 }
 
+//利用者情報入力欄の設定
 #user_name{
   width: 270px;
   height: 40px;
   border-radius: 5px;
 }
-
 #user_email{
   width: 270px;
   height: 40px;
   border-radius: 5px;
 }
-
 #user_password{
   width: 270px;
   height: 40px;
   border-radius: 5px;
 }
 #user_password_confirmation{
+  width: 270px;
+  height: 40px;
+  border-radius: 5px;
+}
+
+//管理者情報入力欄の設定
+#admin_name{
+  width: 270px;
+  height: 40px;
+  border-radius: 5px;
+}
+#admin_email{
+  width: 270px;
+  height: 40px;
+  border-radius: 5px;
+}
+#admin_password{
   width: 270px;
   height: 40px;
   border-radius: 5px;

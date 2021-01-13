@@ -1,6 +1,6 @@
 <div class ="row">
   <div class ="col text-center mx-auto">
-    <h1><strong>利用者一覧</strong></h1><h4><%="全#{@users.count}名" %></h4>
+    <h1><strong>利用者一覧</strong></h1><h4><%="全#{@user_all.count}名" %></h4>
   </div>
 </div>
 
@@ -45,3 +45,5 @@
     </table>
   </div>
 </div>
+
+<%= paginate @users %>

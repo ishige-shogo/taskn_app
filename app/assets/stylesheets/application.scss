@@ -111,3 +111,26 @@ ul,li{
     transform: rotate(135deg);
     transition-duration: 0.3s;
 }
+
+#user_name{
+  width: 270px;
+  height: 40px;
+  border-radius: 5px;
+}
+
+#user_email{
+  width: 270px;
+  height: 40px;
+  border-radius: 5px;
+}
+
+#user_password{
+  width: 270px;
+  height: 40px;
+  border-radius: 5px;
+}
+#user_password_confirmation{
+  width: 270px;
+  height: 40px;
+  border-radius: 5px;
+}

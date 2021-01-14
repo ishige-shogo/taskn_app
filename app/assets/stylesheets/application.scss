@@ -19,6 +19,9 @@
  @import "slick-theme";
  @import "slick";
 
+.small-table{
+  width: 15%;
+}
 //テーブルのボーダーを変更
 .table > thead > tr > th{
     border:2px solid #000;

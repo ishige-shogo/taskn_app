@@ -191,19 +191,16 @@ ul,li{
   height: 40px;
   border-radius: 5px;
 }
-
 #room_goal{
   width: 270px;
   height: 40px;
   border-radius: 5px;
 }
-
 #room_roompass{
   width: 270px;
   height: 40px;
   border-radius: 5px;
 }
-
 #room_roompass_confirmation{
   width: 270px;
   height: 40px;
@@ -219,5 +216,16 @@ ul,li{
 #roomkey{
   width: 270px;
   height: 40px;
+  border-radius: 5px;
+}
+//お問い合わせ入力欄の設定
+#contact_title{
+  width: 270px;
+  height: 40px;
+  border-radius: 5px;
+}
+#contact_body{
+  width: 270px;
+  height: 160px;
   border-radius: 5px;
 }

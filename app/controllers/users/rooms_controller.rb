@@ -44,6 +44,7 @@ class Users::RoomsController < ApplicationController
   end
 
   def create
+    @rooms = Room.all
     @room = Room.new(room_params)
     # ルームのuser_idは現在ログインしている利用者ID(作成した人のデータ)
     @room.user_id = current_user.id

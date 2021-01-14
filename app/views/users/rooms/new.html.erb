@@ -25,12 +25,13 @@
     <div class="col-6 text-center">
       <%= form_with url: search_room_path, method: :get, local:true do |f| %>
         <div class="field"><h1><strong>ルーム検索</strong></h1></div>
-        <div class="field mt-3">
+        <div class="field mt-2">
           一度参加したルームにつきましては<br>
           マイページに登録されておりますので、<br>
-          そちらをご活用ください。(別途ルームパスワードは必要です)
+          そちらをご活用ください。<br>
+          (別途ルームパスワードは必要です)
         </div>
-        <div class="field mt-3">
+        <div class="field mt-2">
           <%= f.number_field :search_room, min: 1, max: @rooms.count, placeholder:"ルームID" %>
         </div>
         <div class="field mt-3">
@@ -40,7 +41,7 @@
           あらかじめご了承ください。
         </div>
 
-        <div class="actions mt-4">
+        <div class="actions mt-3">
           <%= f.submit "ルームを検索", class:"btn btn-lg btn-warning" %>
         </div>
       <% end %>

@@ -11,7 +11,7 @@ class Users::MypagesController < ApplicationController
     @user = User.find(current_user.id)
     # 　更新できたらルーム一覧ページに、NOなら利用者情報編集ページに遷移
     if @user.update(user_params)
-      redirect_to rooms_path
+      redirect_to new_room_path
     else
       render :edit
     end

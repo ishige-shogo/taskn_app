@@ -1,22 +1,35 @@
 <div class = "container">
   <div class ="row mt-3">
     <div class ="col text-center mx-auto">
+
       <div class="field"><h1><strong>ルームパスワード入力画面</strong></h1></div>
+
       <div class="field mt-4">
-        <%= @room.id %>
+        <table class="table">
+          <thead class="thead-light">
+            <tr>
+              <th>ルームID</th>
+              <th>ルーム名</th>
+              <th>ルームの作成者</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><%= @room.id %></td>
+              <td><%= @room.name %></td>
+              <td><%= @room.user.name %></td>
+            </tr>
+          </tbody>
+        </table>
       </div>
-      <div class="field mt-4">
-        <%= @room.name %>
-      </div>
-      <div class="field mt-4">
-        <%= @room.user.name %>
-      </div>
+
       <div class="field mt-4">
         <%= form_with url: room_path, method: :patch, local:true do |f| %>
           <%= f.label :roomkey %>
           <%= f.text_field :roomkey %>
         <% end %>
       </div>
+
     </div>
   </div>
 </div>

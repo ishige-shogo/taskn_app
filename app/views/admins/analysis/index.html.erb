@@ -1,22 +1,29 @@
-<h1>Admins::Analysis#index</h1>
+<div class="container">
 
-<ul class="nav nav-tabs">
-  <li class="nav-item">
-    <a href="#photo1" class="nav-link active" data-toggle="tab">会員増加数</a>
-  </li>
-
-  <li class="nav-item">
-    <a href="#photo3" class="nav-link" data-toggle="tab">ルーム増加数</a>
-  </li>
-</ul>
-
-<!-- 写真部分 -->
-<div class="tab-content">
-  <div id="photo1" class="tab-pane active">
-    <%= line_chart @users %>
+  <div class ="row">
+    <div class ="col text-center mx-auto">
+      <h1><strong><span class="text-light">タスクん</span>分析</strong></h1>
+    </div>
   </div>
 
-  <div id="photo3" class="tab-pane">
-    <%= line_chart @rooms %>
+  <ul class="nav nav-tabs nav-justified mt-5">
+    <li class="nav-item">
+      <a href="#photo1" class="nav-link active text-dark font-weight-bold" data-toggle="tab">利用者増加数</a>
+    </li>
+
+    <li class="nav-item">
+      <a href="#photo3" class="nav-link text-dark font-weight-bold" data-toggle="tab">ルーム増加数</a>
+    </li>
+  </ul>
+
+  <div class="tab-content">
+    <div id="photo1" class="tab-pane active">
+      <%= column_chart @users %>
+    </div>
+
+    <div id="photo3" class="tab-pane">
+      <%= column_chart @rooms %>
+    </div>
   </div>
+
 </div>

@@ -1,18 +1,16 @@
 class Users::ContactsController < ApplicationController
   before_action :authenticate_user!
-  def index
-    @contacts = Contact.where(user_id: current_user.id)
-  end
-
   def new
     @contact = Contact.new
+    @contacts = Contact.where(user_id: current_user.id).reverse_order
   end
 
   def create
+    @contacts = Contact.where(user_id: current_user.id)
     @contact = Contact.new(contact_params)
     @contact.user_id = current_user.id
     if @contact.save
-      redirect_to contacts_path
+      redirect_to new_contact_path
     else
       render :new
     end

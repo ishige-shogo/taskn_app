@@ -1,28 +1,26 @@
-
-<h2>パスワードを変更する</h2>
-
-
-  <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-    <%= render "users/shared/error_messages", resource: resource %>
-    <div class="field">
-      <%= f.label :password %><br>
-      <%= f.password_field :password, autocomplete: "new-password" %>
+<div class = "container">
+  <div class ="row mt-3">
+    <div class ="col text-center mx-auto">
+      <%= form_with model: @user, url: user_registration_path, id: 'new_user', class: 'new_user', method: :put, local: true do |f| %>
+        <div class="field"><h1><strong>ログインパスワード変更</strong></h1></div>
+        <div class="field mt-5">
+          <%= f.password_field :current_password, autocomplete: "current-password", placeholder:"現在のパスワード" %>
+        </div>
+        <div class="field mt-4">
+          <%= f.password_field :password, autocomplete: "new-password", placeholder:"新しいパスワード" %>
+        </div>
+        <div class="field mt-2">
+          <%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder:"新しいパスワード(再確認)" %>
+        </div>
+        <div class="actions mt-4">
+          <%= f.submit "パスワードを変更する", class:"btn btn-lg btn-secondary" %>
+        </div>
+      <% end %>
+        <div class="action mt-5">
+          <%= link_to "マイページに戻る", edit_mypages_path(current_user.id), class:"btn btn-light" %>
+        </div>
     </div>
-
-    <div class="field">
-      <%= f.label :password_confirmation %><br>
-      <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-    </div>
-
-    <div class="field">
-      <%= f.label :current_password %><br>
-      <%= f.password_field :current_password, autocomplete: "current-password" %>
-    </div>
-    <div class="actions">
-      <%= f.submit "Update" %>
-    </div>
-  <% end %>
+  </div>
+</div>
 
 
-
-<%= link_to "マイページに戻る", edit_mypages_path(current_user.id) %>

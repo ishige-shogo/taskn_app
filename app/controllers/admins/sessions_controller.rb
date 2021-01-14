@@ -21,7 +21,7 @@ class Admins::SessionsController < Devise::SessionsController
 
   # protected
 
-  #管理者ログイン後お問い合わせ一覧に遷移
+  # 管理者ログイン後お問い合わせ一覧に遷移
   def after_sign_in_path_for(resource)
     admins_contacts_path
   end

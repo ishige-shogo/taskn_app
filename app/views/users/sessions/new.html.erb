@@ -1,39 +1,34 @@
-<h2>ログイン</h2>
-<% if flash[:notice] %>
-  <p><%= flash[:notice] %></p>
-<% end %>
-
-<%= form_with model: @user, url: new_user_session_path, local: true do |f| %>
-
-  <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name, autofocus: true %>
-  </div>
-
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
-
-  <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+<div class = "container">
+  <div class ="row mt-3">
+    <div class ="col text-center mx-auto">
+      <%= form_with model: @user, url: new_user_session_path, local: true do |f| %>
+        <div class="field"><h1><strong>ログイン</strong></h1></div>
+        <div class="field mt-4">
+          <%= f.text_field :name, autofocus: true, placeholder:"ニックネーム" %>
+        </div>
+        <div class="field mt-4">
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder:"メールアドレス" %>
+        </div>
+        <div class="field mt-4">
+          <%= f.password_field :password, autocomplete: "current-password", placeholder:"パスワード" %>
+        </div>
+        <div class="actions mt-4">
+          <%= f.submit "ログイン", class:"btn btn-lg btn-success" %>
+        </div>
+      <% end %>
+      <div class ="field mt-5 font-weight-bold">
+        タスクんのご利用ははじめてですか？
+      </div>
+      <div class="action">
+        <%= link_to "アカウントを作成する", new_user_registration_path, class:"btn btn-info" %>
+      </div>
+      <div class="field mt-4 font-weight-bold">
+        アカウントを登録せずにログインできます
+      </div>
+      <div class="action">
+        <%= link_to "ゲストログイン", homes_guest_sign_in_path, method: :post, class:"btn btn-warning", data:{confirm: " [確認]ゲストログインではメールアドレスとパスワードが自動で生成されます"} %>
+      </div>
     </div>
-  <% end %>
-
-
-  <div class="actions">
-    <%= f.submit "ログイン" %>
   </div>
-<% end %>
+</div>
 
-<%= render "users/shared/links" %>
-
-
-<%= link_to 'ゲストログイン（閲覧用）', homes_guest_sign_in_path, method: :post %>

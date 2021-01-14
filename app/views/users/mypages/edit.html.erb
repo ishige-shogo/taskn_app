@@ -1,32 +1,69 @@
-<h1>Users::Mypages#edit</h1>
-    <%= form_with model: @user, url: mypages_path, local:true do |f| %>
-        <div class="field">
-            <%= f.label :name %><br>
-            <%= f.text_field :name %>
-        </div>
-        <div class="field">
-            <%= f.label :email %><br>
-            <%= f.email_field :email %>
-        </div>
-        <div class="field">
-            <%= f.label :image %><br>
-            <%= attachment_image_tag @user, :image, format: "jpeg", id: "img_prev", fallback: "no_image.jpg", size: "100x100" %><br>
-            <%= f.attachment_field :image %>
-        </div>
-        <%= f.submit "変更を保存" ,class: "btn btn-primary" %>
-    <% end %>
-    <%= link_to "パスワードを変更する", edit_user_registration_path %>
-    <%= link_to "退会する", mypages_unsubscribe_path %>
+<div class ="row mt-3">
 
+    <div class ="col-4 text-center">
+        <%= form_with model: @user, url: mypages_path, local:true do |f| %>
+        <div class="field"><h1><strong>ユーザー設定変更</strong></h1></div>
+            <div class="field mt-4">
+                <strong>ニックネーム</strong>
+            </div>
+            <div class="field mt-2">
+                <%= f.text_field :name %>
+            </div>
+            <div class="field mt-4">
+                <strong>メールアドレス</strong>
+            </div>
+            <div class="field mt-2">
+                <%= f.email_field :email %>
+            </div>
+            <div class="field mt-4">
+                <strong>ユーザーアイコン</strong>
+            </div>
+            <div class="field mt-2">
+                <%= attachment_image_tag @user, :image, format: "jpeg", id: "img_prev", fallback: "no_image.jpg", size: "100x100" %>
+            </div>
+            <div class="field mt-2">
+                <%= f.attachment_field :image %>
+            </div>
+            <div class="actions mt-4">
+                <%= f.submit "変更を保存" ,class: "btn btn-lg btn-secondary" %>
+            </div>
+        <% end %>
+            <div class ="field mt-5 font-weight-bold">
+                パスワードを変更しますか？(別画面に遷移します)
+            </div>
+            <div class="action mt-2">
+                <%= link_to "パスワードを変更する", edit_user_registration_path, class:"btn btn-info" %>
+            </div>
+            <div class ="field mt-3 font-weight-bold">
+                タスクんのご利用を辞めますか？
+            </div>
+            <div class="action mt-2">
+                <%= link_to "退会する", mypages_unsubscribe_path, class:"btn btn-danger" %>
+            </div>
+    </div>
 
-<br>参加したことのあるルーム<br>
-<% @user_rooms.each do |user_room| %>
-    <%# ルームステータスが有効なものだけ表示する %>
-    <% if user_room.room.is_deleted == "有効" %>
-        <%# ルームの作成者%>
-        <%= user_room.room.user.name %>
-        <%# ルーム名、リンクで入室ページにとびます%>
-        <%= link_to "#{user_room.room.name}", room_path(user_room.room.id) %><br>
-    <% end %>
-<% end %>
+    <div class ="col-6 text-center">
+        <div class="field"><span class="h1"><strong>参加ルーム一覧</strong></span><span class="h3"> <%= @exist_user_rooms.count %>件</span></div>
+        <table class="table table-light table-sm mt-4">
+            <thead class="thead-dark">
+                <tr>
+                    <th class="small-table">ルームID</th>
+                    <th>ルーム名</th>
+                    <th>ルーム作成者</th>
+                    <th class="small-table"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <% @exist_user_rooms.each do |user_room| %>
+                <tr>
+                    <td><%= user_room.room.id %></td>
+                    <td><%= simple_body(user_room.room.name) %></td>
+                    <td><%= simple_body(user_room.room.user.name) %></td>
+                    <td><%= link_to "参加する", room_path(user_room.room.id), class:"btn btn-sm btn-success" %><br></td>
+                </tr>
+                <% end %>
+            </tbody>
+        </table>
+    </div>
 
+</div>

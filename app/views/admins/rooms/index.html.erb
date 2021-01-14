@@ -1,15 +1,46 @@
-<h1>Admins::Rooms#index</h1>
+<div class="container">
+<div class ="row">
+  <div class ="col text-center mx-auto">
+    <h1><strong><span class="text-light">ルーム</span>一覧</strong></h1><h5>全<span class="h4 font-weight-bold"> <%= @room_all.count %></span> ルーム</h5>
+  </div>
+</div>
 
-<% @rooms.each do |room| %>
-  <%= room.id %>
-  <%= room.name %>
-  <%= room.room_users.count %>
-  <%= room.user.name %>
-  <%= room.created_at %>
-  <%= room.is_deleted %>
-  <%= form_with model: @room, url: admins_room_path(room.id), method: :patch, local:true do |f| %>
-    <%= f.radio_button :is_deleted, "有効" %>有効
-    <%= f.radio_button :is_deleted, "無効" %>無効
-    <%= f.submit "変更する" %>
-  <% end %>
-<% end %>
+<div class="row">
+  <div class="col text-center mx-auto">
+    <table class="table table-sm table-hover">
+      <thead class="thead-dark">
+        <tr>
+          <th>ルームID</th>
+          <th>ルーム名</th>
+          <th>作成者名</th>
+          <th>参加人数</th>
+          <th>作成日時</th>
+          <th>ステータス</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody class ="table-bordered table-light">
+        <% @rooms.each do |room| %>
+        <tr>
+          <td><%= room.id %></td>
+          <td class="font-weight-bold"><%= simple_body(room.name) %></td>
+          <td><%= room.user.name %></td>
+          <td><%= room.room_users.count %></td>
+          <td><%= simple_date(room.created_at) %><br><%= simple_time(room.created_at) %></td>
+          <td class=<%= status_color(room.is_deleted) %>><%= room.is_deleted %></td>
+          <td>
+            <%= form_with model: @room, url: admins_room_path(room.id), method: :patch, local:true do |f| %>
+              <%= f.radio_button :is_deleted, "有効" %> 有効
+              <%= f.radio_button :is_deleted, "無効" %> 無効
+              <%= f.submit "変更する", class:"btn btn-sm btn-secondary" %>
+            <% end %>
+          </td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
+</div>
+
+<%= paginate @rooms %>

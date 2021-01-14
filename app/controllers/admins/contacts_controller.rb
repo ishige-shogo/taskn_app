@@ -2,7 +2,8 @@ class Admins::ContactsController < ApplicationController
   before_action :authenticate_admin!
 
   def index
-    @contacts = Contact.all.order(id: "DESC")
+    @contact_all = Contact.all
+    @contacts = Contact.page(params[:page]).per(15).reverse_order
   end
 
   def show

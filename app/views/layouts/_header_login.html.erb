@@ -1,0 +1,51 @@
+<!--利用者ログイン後のヘッダー-->
+<header>
+  <nav class="navbar navbar-expand-sm navbar-dark">
+
+    <%= link_to root_path, class:"navbar-brand" do %>
+        <%= image_tag 'logo.jpg', class:"logo-image" %>
+    <% end %>
+
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav ml-auto">
+
+        <% if current_user.present_room %>
+          <li class="nav-link">
+            <%= link_to " ルームに戻る", main_path(current_user.present_room), class:"fas fa-comment-dots text-dark font-weight-bold text-decoration-none" %>
+          </li>
+          <li class="nav-link">
+            <%= link_to " ルーム設定変更", edit_main_path(current_user.present_room), class:"fas fa-cogs text-dark font-weight-bold text-decoration-none" %>
+          </li>
+          <li class="nav-link">
+            <%= link_to " ルーム分析画面", analysis_path(current_user.present_room), class:"fas fa-chart-bar text-dark font-weight-bold text-decoration-none" %>
+          </li>
+        <% end %>
+
+
+        <li class="nav-link">
+          <%= link_to " ルーム作成・検索", new_room_path, class:"fas fa-comment-medical text-dark font-weight-bold text-decoration-none" %>
+        </li>
+        <li class="nav-link">
+          <%= link_to edit_mypages_path, class:"fas fa-user-cog text-dark font-weight-bold text-decoration-none" do %>
+            <span class ="text-light"><%= simple_body(current_user.name) %></span>さんのマイページ
+          <% end %>
+        </li>
+        <li class="nav-link">
+          <%= link_to " お問い合わせ", new_contact_path, class:"fas fa-paper-plane text-dark font-weight-bold text-decoration-none" %>
+        </li>
+        <li class="nav-link">
+          <%= link_to " 使い方", how_to_path, class:" fas fa-question-circle text-dark font-weight-bold text-decoration-none" %>
+        </li>
+        <li class="nav-link">
+          <%= link_to " ログアウト", destroy_user_session_path, method: :delete, data:{confirm: " [確認]　ログアウトしますか?"}, class:"fas fa-sign-out-alt text-danger font-weight-bold text-decoration-none" %>
+        </li>
+      </ul>
+    </div>
+
+  </nav>
+</header>

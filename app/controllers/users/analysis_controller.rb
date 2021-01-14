@@ -5,20 +5,20 @@ class Users::AnalysisController < ApplicationController
     @room_users = RoomUser.where(room_id: current_user.present_room)
 
     # 未着手のタスク
-    off_tasks = Task.where(room_id: current_user.present_room, status: 0)
+    @off_tasks = Task.where(room_id: current_user.present_room, status: 0)
     # 実行中のタスク
-    @on_task = Task.where(room_id: current_user.present_room, status: 1)
+    @on_tasks = Task.where(room_id: current_user.present_room, status: 1).order(updated_at: :asc)
     # 終了したタスク
-    @finished_tasks = Task.where(room_id: current_user.present_room, status: 2)
+    @finished_tasks = Task.where(room_id: current_user.present_room, status: 2).order(created_at: :asc)
     # グラフ作成のための配列
-    @all_tasks = {
-      "未着手" => off_tasks.count,
-      "実行中" => @on_task.count,
+    @all_task = {
+      "未着手" => @off_tasks.count,
+      "実行中" => @on_tasks.count,
       "終了済" => @finished_tasks.count,
     }
 
     # ルームのすべてのタスク
-    @all_task = Task.where(room_id: current_user.present_room).count
+    @all_tasks = Task.where(room_id: current_user.present_room)
 
     # アクセス制限
     if current_user.present_room != Room.find(params[:id]).id

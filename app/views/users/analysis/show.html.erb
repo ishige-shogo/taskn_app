@@ -1,45 +1,50 @@
-<h1>Users::Analysis#show</h1>
-<p>「<%= @room.name %>」ルームの分析</p>
+<div class = "row mt-3">
+  <div class=" col-6 offset-3">
+    <div class="field"><h1><span class="text-light font-weight-bold"><%= @room.name %></span><span class="h4 font-weight-bold">ルームの分析</span></h1></div>
+  </div>
+</div>
 
-<% @room_users.each do |room_user| %>
-  <%= link_to "#{room_user.user.name}", edit_analysis_path(room_user) %>
-<% end %>
+<div class = "row mt-3">
+  <div class="col-2 offset-1 text-center mt-5">
+    <div class="field mb-2"><%= link_to "#{simple_body(@room.name)}", analysis_path(current_user.present_room),class:"text-light font-weight-bold h5" %></div>
+    <% @room_users.each do |room_user| %>
+      <div class="field mb-2">
+        <%= link_to "#{room_user.user.name}", edit_analysis_path(room_user), class:"text-light font-weight-bold" %>
+      </div>
+    <% end %>
+  </div>
+  <div class ="col-6">
+    <ul class="nav nav-tabs nav-justified mt-5">
+      <li class="nav-item">
+        <a href="#photo1" class="nav-link active text-dark font-weight-bold" data-toggle="tab">タスク到達度</a>
+      </li>
+      <li class="nav-item">
+        <a href="#photo2" class="nav-link text-dark font-weight-bold" data-toggle="tab">実行中のタスク</a>
+      </li>
+      <li class="nav-item">
+        <a href="#photo3" class="nav-link text-dark font-weight-bold" data-toggle="tab">終了したタスク</a>
+      </li>
+    </ul>
 
-
-  <ul class="nav nav-tabs">
-    <li class="nav-item">
-      <a href="#photo1" class="nav-link active" data-toggle="tab">終了したタスク一覧</a>
-    </li>
-
-    <li class="nav-item">
-      <a href="#photo3" class="nav-link" data-toggle="tab">到達度</a>
-    </li>
-    <li class="nav-item">
-      <a href="#photo4" class="nav-link" data-toggle="tab">実行中タスク</a>
-    </li>
-  </ul>
-
-  <!-- 写真部分 -->
-  <div class="tab-content">
-    <div id="photo1" class="tab-pane active">
-      <% @finished_tasks.each do |finished_task| %>
-        <%= finished_task.updated_at %>
-        <%= finished_task.user.name %>
-        <%= finished_task.body %><br>
-      <% end %>
-    </div>
-
-    <div id="photo3" class="tab-pane">
-      <%= pie_chart @all_tasks %><br>
-      <%= "終了済タスク：#{@finished_tasks.count}" %>
-      <%= "全てのタスク：#{@all_task.to_i}" %>
-    </div>
-    <div id="photo4" class="tab-pane">
-      <% @on_task.each do |task| %>
-        <%= task.created_at %>
-        <%= task.user.name %>
-        <%= task.body %><br>
-      <% end %>
+    <div class="tab-content">
+      <div id="photo1" class="tab-pane active">
+        <%= pie_chart @all_tasks %><br>
+        <%= "終了済タスク：#{@finished_tasks.count}" %>
+        <%= "全てのタスク：#{@all_task.to_i}" %>
+      </div>
+      <div id="photo2" class="tab-pane">
+        <% @on_task.each do |task| %>
+          <%= task.created_at %>
+          <%= task.user.name %>
+          <%= task.body %><br>
+        <% end %>
+      </div>
+      <div id="photo3" class="tab-pane">
+        <% @finished_tasks.each do |finished_task| %>
+          <%= finished_task.updated_at %>
+          <%= finished_task.user.name %>
+          <%= finished_task.body %><br>
+        <% end %>
+      </div>
     </div>
   </div>
-

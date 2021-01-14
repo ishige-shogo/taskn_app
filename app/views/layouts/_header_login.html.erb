@@ -28,10 +28,7 @@
 
 
         <li class="nav-link">
-          <%= link_to " ルーム一覧", rooms_path %>
-        </li>
-        <li class="nav-link">
-          <%= link_to " ルーム新規作成", new_room_path, class:"fas fa-comment-medical text-dark font-weight-bold text-decoration-none" %>
+          <%= link_to " ルーム作成・検索", new_room_path, class:"fas fa-comment-medical text-dark font-weight-bold text-decoration-none" %>
         </li>
         <li class="nav-link">
           <%= link_to edit_mypages_path, class:"fas fa-user-cog text-dark font-weight-bold text-decoration-none" do %>
@@ -39,7 +36,7 @@
           <% end %>
         </li>
         <li class="nav-link">
-          <%= link_to " お問い合わせ", contacts_path, class:"fas fa-paper-plane text-dark font-weight-bold text-decoration-none" %>
+          <%= link_to " お問い合わせ", new_contact_path, class:"fas fa-paper-plane text-dark font-weight-bold text-decoration-none" %>
         </li>
         <li class="nav-link">
           <%= link_to " 使い方", how_to_path, class:" fas fa-question-circle text-dark font-weight-bold text-decoration-none" %>

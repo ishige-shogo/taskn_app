@@ -19,12 +19,15 @@
  @import "slick-theme";
  @import "slick";
 
+.small-table{
+  width: 15%;
+}
 //テーブルのボーダーを変更
 .table > thead > tr > th{
-    border:1px solid #000;
+    border:2px solid #000;
 }
 .table > tbody > tr > td{
-    border:1px solid #000;
+    border:2px solid #000;
 }
 .contact-content{
   width: 20%;
@@ -182,5 +185,50 @@ ul,li{
 #admin_password{
   width: 270px;
   height: 40px;
+  border-radius: 5px;
+}
+
+//ルームの情報入力欄の設定
+#room_name{
+  width: 270px;
+  height: 40px;
+  border-radius: 5px;
+}
+#room_goal{
+  width: 270px;
+  height: 40px;
+  border-radius: 5px;
+}
+#room_roompass{
+  width: 270px;
+  height: 40px;
+  border-radius: 5px;
+}
+#room_roompass_confirmation{
+  width: 270px;
+  height: 40px;
+  border-radius: 5px;
+}
+
+//ルーム検索欄の設定
+#search_room{
+  width: 270px;
+  height: 40px;
+  border-radius: 5px;
+}
+#roomkey{
+  width: 270px;
+  height: 40px;
+  border-radius: 5px;
+}
+//お問い合わせ入力欄の設定
+#contact_title{
+  width: 270px;
+  height: 40px;
+  border-radius: 5px;
+}
+#contact_body{
+  width: 270px;
+  height: 160px;
   border-radius: 5px;
 }

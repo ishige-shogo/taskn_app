@@ -1,15 +1,25 @@
-<h1>Users::Mains#edit</h1>
-<p>ルームの設定変更</p>
-
-<%= form_with model: @room, url: main_path(@room.id), local:true do |f| %>
-  <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
+<div class = "container">
+  <div class ="row mt-3">
+    <div class ="col text-center mx-auto">
+      <%= form_with model: @room, url: main_path(@room.id), local:true do |f| %>
+        <div class="field"><h1><strong>ルーム設定変更</strong></h1></div>
+        <div class="field mt-4">
+          <strong>ルーム名</strong>
+        </div>
+        <div class="field mt-2">
+          <%= f.text_field :name, placeholder:"ルーム名" %>
+        </div>
+        <div class="field mt-4">
+          <strong>ルームの目標</strong>
+        </div>
+        <div class="field mt-2">
+          <%= f.text_field :goal, placeholder:"ルームの目標" %>
+        </div>
+        <div class="actions mt-4">
+          <%= f.submit "変更を保存", class:"btn btn-lg btn-secondary" %>
+        </div>
+      <% end %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :goal %><br>
-    <%= f.text_field :goal %>
-  </div>
-  <%= f.submit "ルームの設定を変更" %>
-<% end %>
+</div>
 

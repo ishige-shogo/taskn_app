@@ -1,18 +1,12 @@
 class Users::RoomsController < ApplicationController
   before_action :authenticate_user!
 
-  def index
-    # 有効ステータスのルームのみ表示
-    @rooms = Room.where(is_deleted: "有効")
-    @room_all = Room.all
-  end
-
   def show
     @room = Room.find(params[:id])
     @user = User.find(current_user.id)
     # アクセス制限処理
     if @room.is_deleted == "無効"
-      redirect_to rooms_path
+      redirect_to new_room_path
     end
   end
 
@@ -45,10 +39,12 @@ class Users::RoomsController < ApplicationController
   end
 
   def new
+    @rooms = Room.all
     @room = Room.new
   end
 
   def create
+    @rooms = Room.all
     @room = Room.new(room_params)
     # ルームのuser_idは現在ログインしている利用者ID(作成した人のデータ)
     @room.user_id = current_user.id

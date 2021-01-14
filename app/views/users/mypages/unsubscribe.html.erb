@@ -1,6 +1,24 @@
-<h1>Users::Mypages#unsubscribe</h1>
-本当に退会しますか？
+<div class = "container">
+  <div class ="row mt-3">
+    <div class ="col text-center mx-auto">
+      <div class="field"><h1><strong>退会確認画面</strong></h1></div>
+      <div class="field mt-5">
+        <h3><strong>今までのご利用ありがとうございました。</strong></h3>
+      </div>
+      <div class="field mt-4">
+        退会すると過去のデータを閲覧することはできません。<br>
+        退会ご希望の場合は「退会する」ボタンを押してください。
+      </div>
+      <div class="actions mt-4">
+        <%= link_to "退会する", mypages_withdraw_path, method: :patch, class:"btn btn-lg btn-danger"%>
+      </div>
+      <div class="field mt-4">
+        ご利用を続ける場合は「マイページに戻る」ボタンを押してください。
+      </div>
+      <div class="actions mt-4">
+        <%= link_to "マイページに戻る", edit_mypages_path(current_user.id), class:"btn btn-light" %>
+      </div>
+    </div>
+  </div>
+</div>
 
-<%= link_to "マイページに戻る", edit_mypages_path %>
-
-<%= link_to "退会する", mypages_withdraw_path, method: :patch %>

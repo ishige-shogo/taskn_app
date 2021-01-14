@@ -45,8 +45,8 @@ Rails.application.routes.draw do
 
   # URLにusersを含ませない
   scope module: :users do
-    resources :rooms, except: [:edit, :destroy]
-    resources :contacts, only: [:index, :new, :create]
+    resources :rooms, except: [:index, :edit, :destroy]
+    resources :contacts, only: [:new, :create]
     resources :mains, only: [:show, :edit, :update]
     resources :lists, only: [:new, :create, :update, :destroy]
     resources :memos, only: [:create, :destroy]

@@ -1,11 +1,40 @@
-<h1>Users::Rooms#show</h1>
-ルームに参加する<br>
+<div class = "container">
+  <div class ="row mt-3">
+    <div class ="col-8 offset-2 text-center mx-auto">
 
-<%= @room.id %>
-<%= @room.name %>
-<%= @room.user.name %>
-<%= form_with url: room_path, method: :patch, local:true do |f| %>
-  <%= f.label :roomkey %>
-  <%= f.text_field :roomkey %>
-<% end %>
+      <div class="field"><h1><strong>ルームパスワード入力画面</strong></h1></div>
+
+      <div class="field mt-5">
+        <table class="table table-light">
+          <thead class="thead-dark">
+            <tr>
+              <th>ルームID</th>
+              <th>ルーム名</th>
+              <th>ルームの作成者</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><%= @room.id %></td>
+              <td><%= simple_body(@room.name) %></td>
+              <td><%= simple_body(@room.user.name) %></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="field mt-5">
+        <%= form_with url: room_path, method: :patch, local:true do |f| %>
+          <div class="field mt-5">
+            <%= f.password_field :roomkey, placeholder:"ルームパスワード" %>
+          </div>
+          <div class="actions mt-5">
+            <%= f.submit "ルームに参加する", class:"btn btn-lg btn-success" %>
+          </div>
+        <% end %>
+      </div>
+
+    </div>
+  </div>
+</div>
 

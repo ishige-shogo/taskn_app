@@ -1,6 +1,6 @@
 <div class = "row mt-3">
   <div class=" col-6 offset-3">
-    <div class="field"><h1><span class="text-light font-weight-bold"><%= @room_user.user.name %></span><span class="h4 font-weight-bold">さんの分析</span></h1></div>
+    <div class="field"><h2><span class="text-light font-weight-bold"><%= @room_user.user.name %></span><span class="h4 font-weight-bold">さんの分析</span></h2></div>
   </div>
 </div>
 
@@ -31,7 +31,7 @@
       </li>
     </ul>
 
-    <div class="tab-content">
+    <div class="tab-content mt-3">
       <div id="photo1" class="tab-pane active">
         <div class="field mt-3 text-center mx-auto">
           <table class="table table-sm table-light">
@@ -47,7 +47,7 @@
               <% @on_tasks.each do |task| %>
               <tr>
                 <td><%= task.body %></td>
-                <td><%= task.importance %></td>
+                <td class="<%=importance_color(task.importance)%>"><%= task.importance %></td>
                 <td><%= simple_body(task.user.name) %></td>
                 <td><%= simple_date(task.updated_at) %> &emsp;<%= simple_time(task.updated_at) %></td>
               </tr>
@@ -72,7 +72,7 @@
               <% @finished_tasks.each do |finished_task| %>
               <tr>
                 <td><%= finished_task.body %></td>
-                <td><%= finished_task.importance %></td>
+                <td class="<%=importance_color(finished_task.importance)%>"><%= finished_task.importance %></td>
                 <td><%= simple_body(finished_task.user.name) %></td>
                 <td><%= simple_date(finished_task.updated_at) %> &emsp;<%= simple_time(finished_task.updated_at) %></td>
               </tr>

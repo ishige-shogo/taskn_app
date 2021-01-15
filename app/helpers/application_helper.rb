@@ -18,12 +18,23 @@ module ApplicationHelper
     end
   end
 
-  # 既読/有効なら緑、未読/無効/退会済なら赤が返る
+  # 既読/有効なら緑、未読/無効/退会済なら赤
   def status_color(status)
     if (status == "既読") || (status == "有効")
       "text-success"
     else
       "text-danger"
+    end
+  end
+
+  # 重要度がHIGHなら赤、MIDDLEなら黄、LOWなら緑
+  def importance_color(importance)
+    if importance == "HIGH"
+      "text-danger"
+    elsif importance == "MIDDLE"
+      "text-warning"
+    else
+      "text-success"
     end
   end
 end

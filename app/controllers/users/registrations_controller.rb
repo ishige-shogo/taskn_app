@@ -52,8 +52,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   # The path used after sign up.
+  # 新規登録後は使い方ページへ遷移
   def after_sign_up_path_for(resource)
-    rooms_path
+    how_to_path
   end
 
   # The path used after sign up for inactive accounts.

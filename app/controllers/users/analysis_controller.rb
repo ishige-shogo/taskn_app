@@ -8,7 +8,7 @@ class Users::AnalysisController < ApplicationController
     # 実行中のタスク
     @on_tasks = Task.where(room_id: current_user.present_room, status: 1).order(updated_at: :asc)
     # 終了したタスク
-    @finished_tasks = Task.where(room_id: current_user.present_room, status: 2).order(created_at: :asc)
+    @finished_tasks = Task.where(room_id: current_user.present_room, status: 2).order(updated_at: :desc)
     # グラフ作成のための配列
     @all_task = {
       "未着手" => @off_tasks.count,

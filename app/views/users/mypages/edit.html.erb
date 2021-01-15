@@ -59,7 +59,7 @@
                     <td><%= user_room.room.id %></td>
                     <td><%= simple_body(user_room.room.name) %></td>
                     <td><%= simple_body(user_room.room.user.name) %></td>
-                    <td><%= link_to "参加する", room_path(user_room.room.id), class:"btn btn-sm btn-success" %><br></td>
+                    <td><%= link_to "参加", room_path(user_room.room.id), class:"btn btn-sm btn-success" %><br></td>
                 </tr>
                 <% end %>
             </tbody>

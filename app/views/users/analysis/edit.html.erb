@@ -34,7 +34,7 @@
     <div class="tab-content mt-3">
       <div id="photo1" class="tab-pane active">
         <div class="field mt-3 text-center mx-auto">
-          <table class="table table-sm table-light">
+          <table class="table table-sm table-light table-hover">
             <thead class="thead-dark">
               <tr>
                 <th>内容</th>
@@ -47,7 +47,7 @@
               <% @on_tasks.each do |task| %>
               <tr>
                 <td><%= task.body %></td>
-                <td class="<%=importance_color(task.importance)%>"><%= task.importance %></td>
+                <td class="<%=status_color(task.importance)%>"><%= task.importance %></td>
                 <td><%= simple_body(task.user.name) %></td>
                 <td><%= simple_date(task.updated_at) %> &emsp;<%= simple_time(task.updated_at) %></td>
               </tr>
@@ -59,7 +59,7 @@
 
       <div id="photo2" class="tab-pane">
         <div class="field mt-3 text-center mx-auto">
-          <table class="table table-sm table-light">
+          <table class="table table-sm table-light table-hover">
             <thead class="thead-dark">
               <tr>
                 <th>内容</th>
@@ -72,7 +72,7 @@
               <% @finished_tasks.each do |finished_task| %>
               <tr>
                 <td><%= finished_task.body %></td>
-                <td class="<%=importance_color(finished_task.importance)%>"><%= finished_task.importance %></td>
+                <td class="<%=status_color(finished_task.importance)%>"><%= finished_task.importance %></td>
                 <td><%= simple_body(finished_task.user.name) %></td>
                 <td><%= simple_date(finished_task.updated_at) %> &emsp;<%= simple_time(finished_task.updated_at) %></td>
               </tr>

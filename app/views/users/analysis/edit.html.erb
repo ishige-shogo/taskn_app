@@ -1,35 +1,88 @@
-<h1>Users::Analysis#Edit</h1>
-<p class="text-center"><%= link_to "#{@room.name}ルーム", analysis_path(current_user.present_room) %></p>
-
-<h3><%= @room_user.user.name %>さんの分析</h3>
-
-<% @room_users.each do |room_user| %>
-  <%= link_to "#{room_user.user.name}", edit_analysis_path(room_user) %>
-<% end %>
-
-<ul class="nav nav-tabs">
-    <li class="nav-item">
-      <a href="#photo1" class="nav-link active" data-toggle="tab">終了したタスク一覧</a>
-    </li>
-
-    <li class="nav-item">
-      <a href="#photo3" class="nav-link" data-toggle="tab">実行中のタスク</a>
-    </li>
-  </ul>
-
-  <!-- 写真部分 -->
-  <div class="tab-content">
-    <div id="photo1" class="tab-pane active">
-      <% @finished_tasks.each do |finished_task| %>
-        <%= finished_task.updated_at %>
-        <%= finished_task.body %><br>
-      <% end %>
-    </div>
-
-    <div id="photo3" class="tab-pane">
-      <% @on_task.each do |task| %>
-        <%= task.created_at %>
-        <%= task.body %><br>
-      <% end %>
-    </div>
+<div class = "row mt-3">
+  <div class=" col-6 offset-3">
+    <div class="field"><h1><span class="text-light font-weight-bold"><%= @room_user.user.name %></span><span class="h4 font-weight-bold">さんの分析</span></h1></div>
   </div>
+</div>
+
+<div class="row mt-3">
+  <div class="col-2 offset-1 text-center mt-5">
+    <div class="field mb-2">
+      <span class="text-light font-weight-bold h5">ルーム</span>
+    </div>
+    <div class="field mb-2"><%= link_to "#{simple_body(@room.name)}", analysis_path(current_user.present_room),class:"text-dark font-weight-bold h6" %></div>
+    <div class="field mb-2">
+      <span class="text-light font-weight-bold h5">メンバー</span>
+    </div>
+    <% @room_users.each do |room_user| %>
+      <div class="field mb-2">
+        <%= link_to "#{room_user.user.name}", edit_analysis_path(room_user), class:"text-dark h6" %>
+      </div>
+    <% end %>
+  </div>
+
+  <div class ="col-8">
+    <ul class="nav nav-tabs nav-justified mt-5">
+      <li class="nav-item">
+        <a href="#photo1" class="nav-link active text-dark font-weight-bold" data-toggle="tab">実行中のタスク</a>
+      </li>
+
+      <li class="nav-item">
+        <a href="#photo2" class="nav-link text-dark font-weight-bold" data-toggle="tab">終了済のタスク</a>
+      </li>
+    </ul>
+
+    <div class="tab-content">
+      <div id="photo1" class="tab-pane active">
+        <div class="field mt-3 text-center mx-auto">
+          <table class="table table-sm table-light">
+            <thead class="thead-dark">
+              <tr>
+                <th>内容</th>
+                <th class="small-table">重要度</th>
+                <th>タスク担当者</th>
+                <th>タスク開始日時</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @on_tasks.each do |task| %>
+              <tr>
+                <td><%= task.body %></td>
+                <td><%= task.importance %></td>
+                <td><%= simple_body(task.user.name) %></td>
+                <td><%= simple_date(task.updated_at) %> &emsp;<%= simple_time(task.updated_at) %></td>
+              </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div id="photo2" class="tab-pane">
+        <div class="field mt-3 text-center mx-auto">
+          <table class="table table-sm table-light">
+            <thead class="thead-dark">
+              <tr>
+                <th>内容</th>
+                <th class="small-table">重要度</th>
+                <th>タスク担当者</th>
+                <th>タスク終了日時</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @finished_tasks.each do |finished_task| %>
+              <tr>
+                <td><%= finished_task.body %></td>
+                <td><%= finished_task.importance %></td>
+                <td><%= simple_body(finished_task.user.name) %></td>
+                <td><%= simple_date(finished_task.updated_at) %> &emsp;<%= simple_time(finished_task.updated_at) %></td>
+              </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+

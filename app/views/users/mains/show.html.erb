@@ -8,7 +8,7 @@
 </div>
 
 <div class="row mt-4">
-    <div class="col-6 offset-1 text-center mx-auto">
+    <div class="col-6 text-center mx-auto">
         <div class="field"><h3><span class="text-dark font-weight-bold">TODOリスト</span></h3></div>
         <div class="field text-left mt-3">
         <%= form_with model: @task, url: lists_path, method: :post,  local:true do |f| %>
@@ -30,17 +30,20 @@
             <% end %>
         </table>
     </div>
-    <div class="col-2">
-        <div class="field"><h3><span class="text-dark font-weight-bold">掲示板メモ</span></h3></div>
+    <div class="col-4 mx-auto">
+        <div class="field text-center"><h3><span class="text-dark font-weight-bold">掲示板メモ</span></h3></div>
         <div class="field text-left mt-3">
             <%= form_with model: @memo, url: memos_path, local:true do |f| %>
-                <%= f.text_field :body , placeholder:"メモを残す  (例・15時～会議)"%>
+                <%= f.text_field :body , placeholder:"メモを残す  (例・本日15時～16時不在)"%>
             <% end %>
         </div>
         <table class="table table-sm table-hover mt-3">
             <% @memos.each do |memo| %>
             <tr>
+                <td class="small-table"><%= attachment_image_tag memo.user, :image, size: "30x30", format: 'jpg', fallback: "no_image.jpg", class: "" %></td>
                 <td><%= memo.body %></td>
+                <td class="small-table"><%=super_simple_date(memo.created_at)%></td>
+                <td class="small-table"><%=super_simple_time(memo.created_at)%></td>
                 <td class="small-table"><%= link_to "消", memo_path(memo.id), method: :delete %></td>
             </tr>
             <% end %>
@@ -52,6 +55,5 @@
             </tr>
         </table>
     </div>
-    <div class="col-1"></div>
 </div>
 

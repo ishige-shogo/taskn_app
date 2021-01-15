@@ -3,10 +3,18 @@ module ApplicationHelper
   def simple_date(date)
     date.strftime("%Y/%m/%d")
   end
+  # 月日表示
+  def super_simple_date(date)
+    date.strftime("%m/%d")
+  end
 
   # 時間表示
   def simple_time(time)
     time.strftime("%H:%M:%S")
+  end
+  # 時間(秒なし)表示
+  def super_simple_time(time)
+    time.strftime("%H:%M")
   end
 
   # テキストの内容表示(11文字以上なら「10文字...」と表示する)

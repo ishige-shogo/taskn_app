@@ -5,7 +5,7 @@
 </div>
 
 <div class="row mt-3">
-  <div class="col-2 offset-1 text-center mt-5">
+  <div class="col-2 offset-1 mt-5">
     <div class="field mb-2">
       <span class="text-light font-weight-bold h5">ルーム</span>
     </div>
@@ -15,6 +15,7 @@
     </div>
     <% @room_users.each do |room_user| %>
       <div class="field mb-2">
+        <%= attachment_image_tag room_user.user, :image, size: "20x20", format: 'jpg', fallback: "no_image.jpg", class: "" %>
         <%= link_to "#{room_user.user.name}", edit_analysis_path(room_user), class:"text-dark h6" %>
       </div>
     <% end %>

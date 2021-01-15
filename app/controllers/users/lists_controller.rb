@@ -1,10 +1,6 @@
 class Users::ListsController < ApplicationController
   before_action :authenticate_user!
 
-  # 使用しない可能性大
-  def new
-    @task = Task.new
-  end
 
   def create
     @task = Task.new(task_params)
@@ -38,7 +34,7 @@ class Users::ListsController < ApplicationController
     # Task終了フラグ(終了済)にする
     task.status = 2
     task.update(task_status_params)
-    redirect_to main_path(current_user.present_room)
+    redirect_to  analysis_path(current_user.present_room)
   end
 
   private

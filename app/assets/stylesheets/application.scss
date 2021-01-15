@@ -19,16 +19,17 @@
  @import "slick-theme";
  @import "slick";
 
+//テーブルの枠変更用
 .small-table{
-  width: 15%;
+  width: 10%;
 }
 //テーブルのボーダーを変更
-.table > thead > tr > th{
-    border:2px solid #000;
-}
-.table > tbody > tr > td{
-    border:2px solid #000;
-}
+// .table > thead > tr > th{
+//     border:2px solid #000;
+// }
+// .table > tbody > tr > td{
+//     border:2px solid #000;
+// }
 .contact-content{
   width: 20%;
 }
@@ -230,5 +231,16 @@ ul,li{
 #contact_body{
   width: 270px;
   height: 160px;
+  border-radius: 5px;
+}
+
+#task_body{
+  width: 60%;
+  height: 40px;
+  border-radius: 5px;
+}
+#memo_body{
+  width: 100%;
+  height: 40px;
   border-radius: 5px;
 }

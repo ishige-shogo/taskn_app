@@ -8,11 +8,8 @@ class Users::ListsController < ApplicationController
     # ログイン中の利用者のpresent_room値をTODOリストのroom_idに代入
     @task.room_id = current_user.present_room
     @task.status = 0
-    if @task.save
-      redirect_to main_path(current_user.present_room)
-    else
-      render :new
-    end
+    @task.save
+    redirect_to main_path(current_user.present_room)
   end
 
   def destroy
@@ -23,6 +20,7 @@ class Users::ListsController < ApplicationController
 
   def start
     task = Task.find(params[:id])
+    # Taskステータスを実行中にする
     task.user_id = current_user.id
     task.status = 1
     task.update(task_status_params)
@@ -31,7 +29,7 @@ class Users::ListsController < ApplicationController
 
   def update
     task = Task.find(params[:id])
-    # Task終了フラグ(終了済)にする
+    # Taskステータスを終了済にする
     task.status = 2
     task.update(task_status_params)
     redirect_to  analysis_path(current_user.present_room)
@@ -47,3 +45,4 @@ class Users::ListsController < ApplicationController
     params.permit(:status)
   end
 end
+

@@ -33,6 +33,7 @@ Rails.application.routes.draw do
   # メモを全て削除する処理
   delete '/memo/destroy_all/:id' => 'users/memos#destroy_all', as: 'destroy_all'
 
+  # ルームを検索する処理
   get '/searchs/room' => 'users/rooms#search', as: 'search_room'
 
   # URLにadminsを含ませる
@@ -47,8 +48,8 @@ Rails.application.routes.draw do
   scope module: :users do
     resources :rooms, except: [:index, :edit, :destroy]
     resources :contacts, only: [:new, :create]
-    resources :mains, only: [:show, :edit, :update]
-    resources :lists, only: [:new, :create, :update, :destroy]
+    resources :mains, only: [:show, :update]
+    resources :lists, only: [:create, :update, :destroy]
     resources :memos, only: [:create, :destroy]
     resources :analysis, only: [:show, :edit]
     # URLにidをもたせないため単数形

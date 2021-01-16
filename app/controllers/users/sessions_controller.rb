@@ -21,7 +21,7 @@ class Users::SessionsController < Devise::SessionsController
 
   # protected
 
-  # ログイン後ルーム一覧に遷移する処理
+  # ログイン後マイページに遷移する処理
   def after_sign_in_path_for(resource)
     edit_mypages_path(current_user)
   end

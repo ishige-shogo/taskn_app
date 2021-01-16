@@ -10,8 +10,10 @@ class Users::ContactsController < ApplicationController
     @contact = Contact.new(contact_params)
     @contact.user_id = current_user.id
     if @contact.save
+      flash[:notice_contact] = "お問い合わせが送信されました。"
       redirect_to new_contact_path
     else
+      flash.now[:alert_contact] = "タイトル・お問い合わせ内容を確認してください。"
       render :new
     end
   end

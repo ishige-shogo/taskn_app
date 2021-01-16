@@ -31,6 +31,9 @@
       <li class="nav-item">
         <a href="#photo3" class="nav-link text-dark font-weight-bold" data-toggle="tab">終了済のタスク</a>
       </li>
+      <li class="nav-item">
+        <a href="#photo4" class="nav-link text-dark font-weight-bold" data-toggle="tab">ルーム設定変更</a>
+      </li>
     </ul>
 
     <div class="tab-content mt-3">
@@ -111,7 +114,27 @@
             </tbody>
           </table>
         </div>
-
+      </div>
+      <div id="photo4" class="tab-pane">
+        <div class="field mt-3 text-center mx-auto">
+          <%= form_with model: @room, url: main_path(@room.id), local:true do |f| %>
+            <div class="field mt-4">
+              <strong>ルーム名</strong>
+            </div>
+            <div class="field mt-2">
+              <%= f.text_field :name, placeholder:"ルーム名" %>
+            </div>
+            <div class="field mt-4">
+              <strong>ルームの目標</strong>
+            </div>
+            <div class="field mt-2">
+              <%= f.text_field :goal, placeholder:"ルームの目標" %>
+            </div>
+            <div class="actions mt-4">
+              <%= f.submit "変更を保存", class:"btn btn-lg btn-secondary" %>
+            </div>
+          <% end %>
+        </div>
       </div>
     </div>
   </div>

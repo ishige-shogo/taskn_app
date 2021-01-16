@@ -16,11 +16,11 @@
 
         <% if current_user.present_room %>
           <li class="nav-link">
-            <%= link_to " ルームに戻る", main_path(current_user.present_room), class:"fas fa-comment-dots text-dark font-weight-bold text-decoration-none" %>
+            <%= link_to " メインルーム", main_path(current_user.present_room), class:"fas fa-comment-dots text-dark font-weight-bold text-decoration-none" %>
           </li>
-          <li class="nav-link">
-            <%= link_to " ルーム設定変更", edit_main_path(current_user.present_room), class:"fas fa-cogs text-dark font-weight-bold text-decoration-none" %>
-          </li>
+          <!--<li class="nav-link">-->
+          <!--  <%= link_to " ルーム設定変更", edit_main_path(current_user.present_room), class:"fas fa-cogs text-dark font-weight-bold text-decoration-none" %>-->
+          <!--</li>-->
           <li class="nav-link">
             <%= link_to " ルーム分析画面", analysis_path(current_user.present_room), class:"fas fa-chart-bar text-dark font-weight-bold text-decoration-none" %>
           </li>

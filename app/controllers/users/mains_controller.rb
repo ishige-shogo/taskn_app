@@ -28,7 +28,13 @@ class Users::MainsController < ApplicationController
     if @room.update(room_params)
       redirect_to main_path(@room.id)
     else
-      render :edit
+      @off_tasks = Task.where(room_id: params[:id], status: 0)
+      @on_tasks = Task.where(room_id: params[:id], status: 1)
+      @user = User.find(current_user.id)
+      @memo = Memo.new
+      @memos = Memo.where(room_id: params[:id])
+      @task = Task.new
+      render :show
     end
   end
 

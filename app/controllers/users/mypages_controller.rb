@@ -13,6 +13,8 @@ class Users::MypagesController < ApplicationController
     if @user.update(user_params)
       redirect_to edit_mypages_path(current_user.id)
     else
+      @user_rooms = RoomUser.where(user_id: current_user.id)
+      @exist_user_rooms = @user_rooms.select { |n| n.room.is_deleted == "有効" }
       render :edit
     end
   end

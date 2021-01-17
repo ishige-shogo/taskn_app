@@ -88,10 +88,10 @@ describe "[STEP1] ユーザーログイン前のテスト" do
         expect(page).to have_button "アカウントを作成"
       end
       it "ログインボタンが表示される" do
-        expect(page).to have_button "ログイン"
+        expect(page).to have_link "ログイン"
       end
       it "ゲストログインボタンが表示される" do
-        expect(page).to have_button "ゲストログイン"
+        expect(page).to have_link "ゲストログイン"
       end
     end
 
@@ -122,10 +122,10 @@ describe "[STEP1] ユーザーログイン前のテスト" do
 
     context "表示内容の確認" do
       it "URLが正しい" do
-        expect(current_path).to eq "/users/sign_up"
+        expect(current_path).to eq "/users/sign_in"
       end
-      it "「アカウント作成」と表示される" do
-        expect(page).to have_content "アカウント作成"
+      it "「ログイン」と表示される" do
+        expect(page).to have_content "ログイン"
       end
       it "nameフォームが表示される" do
         expect(page).to have_field "user[name]"
@@ -136,17 +136,17 @@ describe "[STEP1] ユーザーログイン前のテスト" do
       it "passwordフォームが表示される" do
         expect(page).to have_field "user[password]"
       end
-      it "password_confirmationフォームが表示される" do
+      it "password_confirmationフォームが表示されない" do
         expect(page).not_to have_field "user[password_confirmation]"
-      end
-      it "アカウント作成ボタンが表示される" do
-        expect(page).to have_button "アカウントを作成"
       end
       it "ログインボタンが表示される" do
         expect(page).to have_button "ログイン"
       end
+      it "アカウント作成ボタンが表示される" do
+        expect(page).to have_link "アカウントを作成する"
+      end
       it "ゲストログインボタンが表示される" do
-        expect(page).to have_button "ゲストログイン"
+        expect(page).to have_link "ゲストログイン"
       end
     end
 
@@ -159,10 +159,7 @@ describe "[STEP1] ユーザーログイン前のテスト" do
       end
 
       it "ログイン後の遷移先が、ログインしたユーザーのマイページになっている" do
-        expect(current_path).to eq "/mypages/edit"
-      end
-      it "ログイン後の遷移先が、ログインしたユーザーのマイページになっている" do
-        expect(current_path).to have_content user.name
+        expect(current_path).to eq "/mypages/edit." + user.id.to_s
       end
     end
 

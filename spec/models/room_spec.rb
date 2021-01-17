@@ -2,26 +2,81 @@
 
 require 'rails_helper'
 
-RSpec.describe Room, "モデルに関するテスト", type: :model do
+RSpec.describe Room, "Roomモデルに関するテスト", type: :model do
+
   describe "実際に保存する" do
     it "有効なルーム新規作成の場合は保存されるか" do
       expect(FactoryBot.build(:room)).to be_valid
     end
   end
-  context "空白のバリデーションチェック" do
-    it "ルーム名が空白の場合にエラーメッセージが表示されるか" do
-      room = Room.new(name: "", goal: "hoge", roompass: "hoge", user_id: 1)
-      expect(room).to be_invalid
-      expect(room.errors[:name]).to include("can't be blank")
+
+  describe "空白のバリデーションテスト" do
+    subject { room.valid? }
+
+    let(:user) { create(:user) }
+    let!(:room) { build(:room, user_id: user.id) }
+
+    context "nameカラム" do
+      it "空欄でないこと" do
+        room.name = ""
+        is_expected.to eq false
+      end
+      it "20文字以内であること：20文字はo" do
+        room.name = Faker::Lorem.characters(number: 20)
+        is_expected.to eq true
+      end
+      it "20文字以内であること：21文字はx" do
+        room.name = Faker::Lorem.characters(number: 21)
+        is_expected.to eq false
+      end
     end
-    it "目標が空白の場合でも新規作成できるか" do
-      room = Room.new(name: "hoge", goal: "", roompass: "hoge", user_id: 1)
-      expect(room).to be_valid
+
+    context "goalカラム" do
+      it "空欄でも保存されること" do
+        room.goal = ""
+        is_expected.to eq true
+      end
     end
-    it "ルームパスワードが空白の場合にエラーメッセージが表示されるか" do
-      room = Room.new(name: "hoge", goal: "hoge", roompass: "", user_id: 1)
-      expect(room).to be_invalid
-      expect(room.errors[:roompass]).to include("can't be blank")
+
+    context "roompassカラム" do
+      it "空欄でないこと" do
+        room.roompass = ""
+        room.roompass_confirmation = ""
+        is_expected.to eq false
+      end
+      it "3文字以上であること：2文字はx" do
+        room.roompass = Faker::Lorem.characters(number: 2)
+        room.roompass_confirmation = room.roompass
+        is_expected.to eq false
+      end
+      it "3文字以上であること：3文字はo" do
+        room.roompass = Faker::Lorem.characters(number: 3)
+        room.roompass_confirmation = room.roompass
+        is_expected.to eq true
+      end
+      it "20文字以内であること：20文字はo" do
+        room.roompass = Faker::Lorem.characters(number: 20)
+        room.roompass_confirmation = room.roompass
+        is_expected.to eq true
+      end
+      it "20文字以上であること：21文字はx" do
+        room.roompass = Faker::Lorem.characters(number: 21)
+        room.roompass_confirmation = room.roompass
+        is_expected.to eq false
+      end
+      it "再入力と値が異なっていた時に作成されないこと" do
+        room.roompass = Faker::Lorem.characters(number: 10)
+        room.roompass_confirmation = Faker::Lorem.characters(number: 11)
+        is_expected.to eq false
+      end
+    end
+  end
+
+  describe "アソシエーションのテスト" do
+    context "Userモデルとの関係" do
+      it "N:1となっている" do
+        expect(Room.reflect_on_association(:user).macro).to eq :belongs_to
+      end
     end
   end
 end

@@ -239,5 +239,15 @@ describe "[STEP3] ログイン後：マイページのテスト" do
       expect(current_path).to eq new_user_session_path
       expect(page).to have_content "このアカウントは利用できません。"
     end
+    it "退会後、他のユーザーのログイン" do
+      click_on "退会する"
+      click_on "退会する"
+      visit new_user_session_path
+      fill_in "user[name]", with: other_user.name
+      fill_in "user[email]", with: other_user.email
+      fill_in "user[password]", with: other_user.password
+      click_button "ログイン"
+      expect(current_path).to eq "/mypages/edit." + other_user.id.to_s
+    end
   end
 end

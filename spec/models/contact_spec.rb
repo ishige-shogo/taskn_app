@@ -9,7 +9,7 @@ RSpec.describe Contact, "Contactモデルに関するテスト", type: :model do
       expect(FactoryBot.build(:contact)).to be_valid
     end
     it "お問い合わせ作成時に未読状態で保存されるか" do
-      expect(FactoryBot.build(:contact)).status.to eq false
+      expect(FactoryBot.build(:contact).is_read).to eq "未読"
     end
   end
 

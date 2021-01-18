@@ -1,3 +1,4 @@
+<p class="text-center text-danger"><%= flash[:alert_analysis] %></p>
 <div class = "row mt-3">
   <div class=" col-6 offset-3">
     <div class="field"><h1><span class="text-light font-weight-bold"><%= @room.name %></span><span class="h4 font-weight-bold">ルームの分析</span></h1></div>
@@ -119,7 +120,7 @@
         <div class="field mt-3 text-center mx-auto">
           <%= form_with model: @room, url: main_path(@room.id), local:true do |f| %>
             <div class="field mt-4">
-              <strong>ルーム名</strong>
+              <strong>ルーム名(1~20文字)</strong>
             </div>
             <div class="field mt-2">
               <%= f.text_field :name, placeholder:"ルーム名" %>

@@ -10,8 +10,6 @@ describe "[STEP5] アクセス制限のテスト" do
   let!(:other_room) { create(:room, user: other_user) }
 
   describe "ログインしていない場合のアクセス制限のテスト" do
-
-
     subject { current_path }
 
     it "マイページ" do
@@ -110,6 +108,7 @@ describe "[STEP5] アクセス制限のテスト" do
       fill_in "roomkey", with: room.roompass
       click_on "ルームに参加する"
     end
+
     it "他人が作成した参加中のルーム：成功" do
       visit analysis_path(room)
       expect(current_path).to eq analysis_path(Room.all.count)

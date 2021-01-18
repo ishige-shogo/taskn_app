@@ -27,6 +27,7 @@ describe "[STEP4] ログイン後：ルームのテスト" do
     before do
       visit new_room_path
     end
+
     context "フォームの値の内容" do
       it 'ルーム名に値が入っていない' do
         expect(find_field('room[name]').text).to be_blank
@@ -55,6 +56,7 @@ describe "[STEP4] ログイン後：ルームのテスト" do
         fill_in "room[roompass]", with: room.roompass
         fill_in "room[roompass_confirmation]", with: room.roompass_confirmation
       end
+
       it "ルームが新しく保存される" do
         expect { click_button "ルームを作成" }.to change(user.rooms, :count).by(1)
       end
@@ -82,6 +84,7 @@ describe "[STEP4] ログイン後：ルームのテスト" do
         fill_in "room[roompass_confirmation]", with: room.roompass_confirmation
         click_on "ルームを作成"
       end
+
       it "ヘッダー：メインルームのリンクが表示" do
         expect(page).to have_link "メインルーム"
       end
@@ -122,6 +125,7 @@ describe "[STEP4] ログイン後：ルームのテスト" do
       click_on "ルームを作成"
       click_on "ルーム作成・検索"
     end
+
     context "フォームの値の内容" do
       it '検索フォームに値が入っていない' do
         expect(find_field('search_room').text).to be_blank
@@ -133,6 +137,7 @@ describe "[STEP4] ログイン後：ルームのテスト" do
         fill_in "search_room", with: Room.all.count
         click_on "ルームを検索"
       end
+
       it "画面の遷移が正しい" do
         expect(current_path).to eq room_path(Room.all.count)
       end
@@ -167,5 +172,4 @@ describe "[STEP4] ログイン後：ルームのテスト" do
       end
     end
   end
-
 end

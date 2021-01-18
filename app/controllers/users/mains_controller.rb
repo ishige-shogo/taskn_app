@@ -14,7 +14,6 @@ class Users::MainsController < ApplicationController
     end
   end
 
-
   def update
     @room = Room.find(params[:id])
     if @room.update(room_params)

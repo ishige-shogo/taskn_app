@@ -3,7 +3,6 @@
 require 'rails_helper'
 
 RSpec.describe Memo, "Memoモデルに関するテスト", type: :model do
-
   describe "実際に保存する" do
     it "有効なメモ新規作成の場合は保存されるか" do
       expect(FactoryBot.build(:memo)).to be_valid
@@ -31,6 +30,7 @@ RSpec.describe Memo, "Memoモデルに関するテスト", type: :model do
         expect(Memo.reflect_on_association(:user).macro).to eq :belongs_to
       end
     end
+
     context "Roomモデルとの関係" do
       it "N:1となっている" do
         expect(Memo.reflect_on_association(:room).macro).to eq :belongs_to

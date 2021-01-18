@@ -9,12 +9,13 @@ class Users::MypagesController < ApplicationController
 
   def update
     @user = User.find(current_user.id)
-    # 　更新できたらルーム一覧ページに、NOなら利用者情報編集ページに遷移
     if @user.update(user_params)
+      flash[:notice_mypage] = "ユーザー情報が変更されました。"
       redirect_to edit_mypages_path(current_user.id)
     else
       @user_rooms = RoomUser.where(user_id: current_user.id)
       @exist_user_rooms = @user_rooms.select { |n| n.room.is_deleted == "有効" }
+      flash.now[:alert_mypage] = "ニックネーム・メールアドレスを確認してください。(すでに使用されているメールアドレスは別アカウントに登録できません)"
       render :edit
     end
   end

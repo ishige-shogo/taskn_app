@@ -69,11 +69,17 @@ describe "[STEP2] ログイン後：お問い合わせ機能のテスト" do
     end
 
     context "投稿失敗のテスト" do
-      it "エラーメッセージが表示される" do
+      before do
         fill_in "contact[title]", with: ""
         fill_in "contact[body]", with: ""
+      end
+
+      it "エラーメッセージが表示される" do
         click_on "お問い合わせを作成"
         expect(page).to have_content "タイトル・お問い合わせ内容を確認してください。"
+      end
+      it "投稿が保存されない" do
+        expect { click_button "お問い合わせを作成" }.to change(user.contacts, :count).by(0)
       end
     end
   end

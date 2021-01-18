@@ -5,7 +5,6 @@ require "rails_helper"
 describe "[STEP5] アクセス制限のテスト" do
   let(:user) { create(:user) }
   let!(:other_user) { create(:user) }
-  let!(:other2_user) { create(:user) }
   let!(:room) { create(:room, user: user) }
   let!(:other_room) { create(:room, user: other_user) }
 
@@ -73,6 +72,10 @@ describe "[STEP5] アクセス制限のテスト" do
       visit main_path(room)
       expect(current_path).to eq main_path(Room.all.count)
     end
+    it "他人のメイン画面：失敗のメッセージ" do
+      visit main_path(room)
+      expect(page).to have_content "他のルームに参加するためにはパスワードが必要です。"
+    end
     it "自分のルーム分析画面：成功" do
       visit analysis_path(other_room)
       expect(current_path).to eq analysis_path(Room.all.count)
@@ -80,6 +83,10 @@ describe "[STEP5] アクセス制限のテスト" do
     it "他人のルーム分析画面：失敗" do
       visit analysis_path(room)
       expect(current_path).to eq analysis_path(Room.all.count)
+    end
+    it "他人のルーム分析画面：失敗のメッセージ" do
+      visit analysis_path(room)
+      expect(page).to have_content "他のルームの分析画面は閲覧できません。"
     end
   end
 

@@ -4,10 +4,7 @@ require "rails_helper"
 
 describe "[STEP4] ログイン後：ルームのテスト" do
   let(:user) { create(:user) }
-  let(:other1_user) { create(:user) }
-  let(:other2_user) { create(:user) }
   let!(:room) { create(:room) }
-  let!(:other_room) { create(:room) }
 
   before do
     visit new_user_session_path

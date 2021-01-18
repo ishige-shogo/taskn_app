@@ -6,13 +6,19 @@ class Users::RoomsController < ApplicationController
     @user = User.find(current_user.id)
     # アクセス制限処理
     if @room.is_deleted == "無効"
+      flash[:alert_search] = "検索したIDのルームは無効となっています。"
       redirect_to new_room_path
     end
   end
 
   def search
+    if params[:search_room]==""
+      flash[:alert_search] = "ルームIDを入力してください。"
+      redirect_to new_room_path
+    else
     # 検索されたルームidのキーを保持してshowアクションへ
     redirect_to room_path(id: params[:search_room].to_i)
+    end
   end
 
   def update
@@ -32,8 +38,10 @@ class Users::RoomsController < ApplicationController
       else
         room_user.save
       end
+      flash[:notice_enter_room] = "ルームに入室しました。"
       redirect_to main_path(@room.id)
     else
+      flash.now[:alert_enter_room] = "パスワードが違います。"
       render :show
     end
   end
@@ -59,8 +67,10 @@ class Users::RoomsController < ApplicationController
       room_user.room_id = @room.id
       room_user.save
       # 作成したルームに遷移する
+      flash[:notice_enter_room] = "ルームを新しく作成しました。"
       redirect_to main_path(@room.id)
     else
+      flash.now[:alert_new_room] = "ルーム名・パスワードを正しく設定してください。"
       render :new
     end
   end

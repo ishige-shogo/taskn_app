@@ -15,7 +15,7 @@ class Users::HomesController < ApplicationController
     user.password = SecureRandom.alphanumeric(10)
     user.save
     sign_in user
-    redirect_to edit_mypages_path(current_user)
+    redirect_to how_to_path
   end
 
   private

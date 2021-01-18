@@ -4,9 +4,19 @@ module ApplicationHelper
     date.strftime("%Y/%m/%d")
   end
 
+  # 月日表示
+  def super_simple_date(date)
+    date.strftime("%m/%d")
+  end
+
   # 時間表示
   def simple_time(time)
     time.strftime("%H:%M:%S")
+  end
+
+  # 時間(秒なし)表示
+  def super_simple_time(time)
+    time.strftime("%H:%M")
   end
 
   # テキストの内容表示(11文字以上なら「10文字...」と表示する)
@@ -18,10 +28,12 @@ module ApplicationHelper
     end
   end
 
-  # 既読/有効なら緑、未読/無効/退会済なら赤が返る
+  # テキストの色が既読/有効/低いなら緑、普通なら黄、未読/無効/退会済/高いなら赤
   def status_color(status)
-    if (status == "既読") || (status == "有効")
+    if (status == "既読") || (status == "有効") || (status == "LOW")
       "text-success"
+    elsif status == "MIDDLE"
+      "text-warning"
     else
       "text-danger"
     end

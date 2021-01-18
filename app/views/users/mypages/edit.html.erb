@@ -1,5 +1,6 @@
+<p class="text-center text-danger"><%= flash[:alert_mypage] %></p>
+<p class="text-center text-success"><%= flash[:notice_mypage] %></p>
 <div class ="row mt-3">
-
     <div class ="col-4 text-center">
         <%= form_with model: @user, url: mypages_path, local:true do |f| %>
         <div class="field"><h1><strong>ユーザー設定変更</strong></h1></div>
@@ -59,7 +60,7 @@
                     <td><%= user_room.room.id %></td>
                     <td><%= simple_body(user_room.room.name) %></td>
                     <td><%= simple_body(user_room.room.user.name) %></td>
-                    <td><%= link_to "参加する", room_path(user_room.room.id), class:"btn btn-sm btn-success" %><br></td>
+                    <td><%= link_to "参加", room_path(user_room.room.id), class:"btn btn-sm btn-success" %><br></td>
                 </tr>
                 <% end %>
             </tbody>

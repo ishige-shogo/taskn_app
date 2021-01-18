@@ -16,10 +16,11 @@ class User < ApplicationRecord
   # デフォルト値はfalse、退会処理をするとtrueに変更
   enum is_deleted: { 有効: false, 退会済: true }
 
-  # is_deletedカラムが有効であればtrueを返す
+  # is_deletedカラムが有効であればtrueを返す(退会処理用)
   def active_for_authentication?
     super && (is_deleted == "有効")
   end
 
-  validates :name, presence: true, length: { minimum: 3 }
+  # 利用者名は1文字以上
+  validates :name, presence: true, length: { minimum: 1 }
 end

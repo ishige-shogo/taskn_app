@@ -1,11 +1,13 @@
-
+<% if resource.errors.any? %>
+  <p class="text-center text-danger">ニックネーム・メールアドレス・パスワードを正しく設定してください。</p>
+<% end %>
 <div class = "container">
   <div class ="row mt-3">
     <div class ="col text-center mx-auto">
       <%= form_with model: @user, url: user_registration_path, id: 'new_user', class: 'new_user', local: true do |f| %>
         <div class="field"><h1><strong>アカウント作成</strong></h1></div>
         <div class="field mt-4">
-          <%= f.text_field :name, autofocus: true, placeholder:"ニックネーム(3文字以上)" %>
+          <%= f.text_field :name, autofocus: true, placeholder:"ニックネーム" %>
         </div>
 
         <div class="field mt-4">

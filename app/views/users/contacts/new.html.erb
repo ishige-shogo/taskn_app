@@ -1,6 +1,7 @@
 
+<p class="text-center text-danger"><%= flash[:alert_contact] %></p>
+<p class="text-center text-success"><%= flash[:notice_contact] %></p>
 <div class ="row mt-3">
-
   <div class ="col-4 text-center">
     <%= form_with model: @contact, url: contacts_path, method: :post, local:true do |f| %>
       <div class="field"><h1><strong>お問い合わせ</strong></h1></div>
@@ -10,10 +11,10 @@
         あらかじめご了承ください。
       </div>
       <div class="field mt-4">
-        <%= f.text_field :title, placeholder:"タイトル" %>
+        <%= f.text_field :title, placeholder:"タイトル (30文字以内)" %>
       </div>
       <div class="field mt-4">
-        <%= f.text_area :body, placeholder:"お問い合わせ内容" %>
+        <%= f.text_area :body, placeholder:"お問い合わせ内容 (10~400文字以内)" %>
       </div>
       <div class="actions mt-4">
         <%= f.submit "お問い合わせを作成", class:"btn btn-lg btn-info" %>

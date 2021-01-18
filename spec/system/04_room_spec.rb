@@ -106,7 +106,7 @@ describe "[STEP4] ログイン後：ルームのテスト" do
       end
 
       it "ルームが保存されない" do
-        expect { click_button "ルームを作成" }.to change(user.rooms, :count).by(0)
+        expect { click_button "ルームを作成" }.not_to change(user.rooms, :count)
       end
       it "失敗のメッセージが表示される" do
         click_on "ルームを作成"
@@ -169,6 +169,19 @@ describe "[STEP4] ログイン後：ルームのテスト" do
         fill_in "roomkey", with: ""
         click_on "ルームに参加する"
         expect(page).to have_content "パスワードが違います。"
+      end
+    end
+
+    context "検索の失敗" do
+      before do
+        fill_in "search_room", with: ""
+        click_on "ルームを検索"
+      end
+      it "空欄で入力の場合：画面の遷移" do
+        expect(current_path).to eq new_room_path
+      end
+      it "空欄で入力の場合：失敗のメッセージ" do
+        expect(page).to have_content "ルームIDを入力してください。"
       end
     end
   end

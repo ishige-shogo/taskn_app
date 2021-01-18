@@ -6,7 +6,7 @@ describe "[STEP2] ログイン後：お問い合わせ機能のテスト" do
   let(:user) { create(:user) }
   let(:other_user) { create(:user) }
   let!(:contact) { create(:contact, user: user) }
-  let!(:other_contact) { create(:contact, user: other_user)}
+  let!(:other_contact) { create(:contact, user: other_user) }
 
   before do
     visit new_user_session_path
@@ -29,6 +29,7 @@ describe "[STEP2] ログイン後：お問い合わせ機能のテスト" do
     before do
       visit new_contact_path
     end
+
     context "フォームに値が入ってない" do
       it 'タイトルに値が入っていない' do
         expect(find_field('contact[title]').text).to be_blank

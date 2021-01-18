@@ -3,6 +3,7 @@ module ApplicationHelper
   def simple_date(date)
     date.strftime("%Y/%m/%d")
   end
+
   # 月日表示
   def super_simple_date(date)
     date.strftime("%m/%d")
@@ -12,6 +13,7 @@ module ApplicationHelper
   def simple_time(time)
     time.strftime("%H:%M:%S")
   end
+
   # 時間(秒なし)表示
   def super_simple_time(time)
     time.strftime("%H:%M")
@@ -36,5 +38,4 @@ module ApplicationHelper
       "text-danger"
     end
   end
-
 end

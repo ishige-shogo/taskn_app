@@ -28,8 +28,8 @@ class Users::AnalysisController < ApplicationController
     @room_users = RoomUser.where(room_id: current_user.present_room)
     @room_user = RoomUser.find(params[:id])
     @on_tasks = Task.where(room_id: current_user.present_room,
-                          user_id: @room_user.user_id,
-                          status: 1).order(updated_at: :asc)
+                           user_id: @room_user.user_id,
+                           status: 1).order(updated_at: :asc)
 
     @finished_tasks = Task.where(room_id: current_user.present_room,
                                  user_id: @room_user.user_id,

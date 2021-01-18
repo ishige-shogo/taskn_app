@@ -6,7 +6,7 @@ describe "[STEP3] ログイン後：マイページのテスト" do
   let(:user) { create(:user) }
   let(:other_user) { create(:user) }
 
-   before do
+  before do
     visit new_user_session_path
     fill_in "user[name]", with: user.name
     fill_in "user[email]", with: user.email
@@ -27,6 +27,7 @@ describe "[STEP3] ログイン後：マイページのテスト" do
     before do
       visit edit_mypages_path
     end
+
     context "フォームの値の内容" do
       it "ニックネームのフォームにユーザー名が入っている" do
         expect(page).to have_field 'user[name]', with: user.name
@@ -73,6 +74,7 @@ describe "[STEP3] ログイン後：マイページのテスト" do
         fill_in "user[email]", with: ""
         click_on "変更を保存"
       end
+
       it "エラーメッセージが表示される" do
         expect(page).to have_content "ニックネーム・メールアドレスを確認してください。(すでに使用されているメールアドレスは別アカウントに登録できません)"
       end
@@ -93,10 +95,11 @@ describe "[STEP3] ログイン後：マイページのテスト" do
       visit edit_mypages_path
       click_on "パスワードを変更する"
     end
-    it "リンクのテスト" do
+
+    it "リンクのテスト：パスワード変更画面" do
       expect(current_path).to eq "/users/edit"
     end
-    it "リンクのテスト" do
+    it "リンクのテスト：マイページに戻る" do
       click_on "マイページに戻る"
       expect(current_path).to eq "/mypages/edit." + user.id.to_s
     end

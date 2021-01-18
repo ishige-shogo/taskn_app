@@ -3,9 +3,7 @@
 require 'rails_helper'
 
 RSpec.describe Task, "Taskモデルに関するテスト", type: :model do
-
   describe "実際に保存する" do
-
     it "有効なTODOリスト新規作成の場合は保存されるか" do
       expect(FactoryBot.build(:task)).to be_valid
     end
@@ -32,6 +30,7 @@ RSpec.describe Task, "Taskモデルに関するテスト", type: :model do
         expect(Task.reflect_on_association(:user).macro).to eq :belongs_to
       end
     end
+
     context "Roomモデルとの関係" do
       it "N:1となっている" do
         expect(Task.reflect_on_association(:room).macro).to eq :belongs_to

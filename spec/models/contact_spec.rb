@@ -3,7 +3,6 @@
 require 'rails_helper'
 
 RSpec.describe Contact, "Contactモデルに関するテスト", type: :model do
-
   describe "実際に保存する" do
     it "有効なお問い合わせ新規作成の場合は保存されるか" do
       expect(FactoryBot.build(:contact)).to be_valid

@@ -1,7 +1,6 @@
 class Users::ListsController < ApplicationController
   before_action :authenticate_user!
 
-
   def create
     @task = Task.new(task_params)
     @task.user_id = current_user.id
@@ -45,4 +44,3 @@ class Users::ListsController < ApplicationController
     params.permit(:status)
   end
 end
-

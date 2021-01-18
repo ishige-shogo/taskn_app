@@ -12,8 +12,13 @@ class Users::RoomsController < ApplicationController
   end
 
   def search
+    if params[:search_room]==""
+      flash[:alert_search] = "ルームIDを入力してください。"
+      redirect_to new_room_path
+    else
     # 検索されたルームidのキーを保持してshowアクションへ
     redirect_to room_path(id: params[:search_room].to_i)
+    end
   end
 
   def update

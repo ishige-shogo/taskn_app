@@ -33,6 +33,7 @@
               <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class:"text-dark font-weight-bold text-decoration-none", data:{confirm: " [確認]　ログアウトしますか?"} %>
             </li>
           <% else %>
+            <li class="nav-link">このアプリケーションはポートフォリオ作品です。</li>
             <li class="nav-link">
               <%= link_to " 使い方", how_to_path, class:" fas fa-question-circle text-dark font-weight-bold text-decoration-none" %>
             </li>

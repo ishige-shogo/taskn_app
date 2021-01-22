@@ -143,10 +143,6 @@ describe "[STEP5] アクセス制限のテスト" do
       visit new_admin_session_path
       is_expected.to eq new_admin_session_path
     end
-    it "新規登録ページ" do
-      visit new_admin_registration_path
-      is_expected.to raise_error(ActiveRecord::RecordNotFound)
-    end
     it "お問い合わせ一覧ページ" do
       visit admins_contacts_path
       is_expected.to eq new_admin_session_path
@@ -156,6 +152,16 @@ describe "[STEP5] アクセス制限のテスト" do
       is_expected.to eq new_admin_session_path
     end
     it "ルーム一覧ページ" do
+      visit admins_rooms_path
+      is_expected.to eq new_admin_session_path
+    end
+    it "会員一覧ページ" do
+      visit admins_users_path
+      is_expected.to eq new_admin_session_path
+    end
+    it "分析ページ" do
+      visit admins_analysis_index_path
+      is_expected.to eq new_admin_session_path
     end
   end
 end

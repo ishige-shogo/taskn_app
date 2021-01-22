@@ -132,4 +132,30 @@ describe "[STEP5] アクセス制限のテスト" do
       expect(page).to have_content other_user.name
     end
   end
+
+  describe "管理者のアクセス制限のテスト" do
+
+    let(:admin) { create(:admin) }
+    let(:contact) { create(:contact) }
+    subject { current_path }
+
+    it "ログインページ" do
+      visit new_admin_session_path
+      is_expected.to eq new_admin_session_path
+    end
+    it "新規登録ページ" do
+      visit new_admin_registration_path
+      is_expected.to raise_error(ActiveRecord::RecordNotFound)
+    end
+    it "お問い合わせ一覧ページ" do
+      visit admins_contacts_path
+      is_expected.to eq new_admin_session_path
+    end
+    it "お問い合わせ詳細ページ" do
+      visit admins_contact_path(contact)
+      is_expected.to eq new_admin_session_path
+    end
+    it "ルーム一覧ページ" do
+    end
+  end
 end

@@ -6,7 +6,6 @@ Rails.application.routes.draw do
   devise_for :admins, controllers: {
     sessions: 'admins/sessions',
     passwords: 'admins/passwords',
-    registrations: 'admins/registrations',
   }
 
   # gem devise 利用者

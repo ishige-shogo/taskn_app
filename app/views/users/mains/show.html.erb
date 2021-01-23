@@ -13,7 +13,7 @@
     <div class="col-6 text-center mx-auto">
         <div class="field"><h3><span class="text-dark font-weight-bold">TODOリスト</span></h3></div>
         <div class="field text-left mt-3">
-        <%= form_with model: @task, url: lists_path, method: :post,  local:true do |f| %>
+        <%= form_with model: @task, url: lists_path, method: :post, remote:true do |f| %>
             <%= f.text_field :body , placeholder:"タスクを追加する  (例・プレゼンの表紙を作成)"%>
             <%= f.radio_button :importance, "HIGH" %>HIGH
             <%= f.radio_button :importance, "MIDDLE", checked: true %>MIDDLE
@@ -21,19 +21,19 @@
             <%= f.submit "タスクを作成", class:"btn btn-sm btn-success" %>
         <% end %>
         </div>
-        <%= render "users/mains/task", off_tasks: @off_tasks %>
+        <div id ="task_table"><%= render "users/mains/task", off_tasks: @off_tasks %></div>
     </div>
     <div class="col-4 mx-auto">
         <div class="field text-center"><h3><span class="text-dark font-weight-bold">掲示板メモ</span></h3></div>
         <div class="field text-left mt-3">
-            <%= form_with model: @memo, url: memos_path, local:true do |f| %>
+            <%= form_with model: @memo, url: memos_path, remote:true do |f| %>
                 <%= f.text_field :body , placeholder:"メモを残す  (例・本日15時～16時不在)"%>
             <% end %>
         </div>
-        <%= render "users/mains/memo", memos: @memos %>
+            <div id ="memo_table"><%= render "users/mains/memo", memos: @memos %></div>
         <table>
             <tr>
-                <td class="text-right"><%= link_to "メモを全て削除", destroy_all_path(@room.id), method: :delete %></td>
+                <td class="text-right"><%= link_to "メモを全て削除", destroy_all_path(@room.id), method: :delete, remote:true %></td>
             </tr>
         </table>
     </div>

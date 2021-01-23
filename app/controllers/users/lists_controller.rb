@@ -8,13 +8,13 @@ class Users::ListsController < ApplicationController
     @task.room_id = current_user.present_room
     @task.status = 0
     @task.save
-    redirect_to main_path(current_user.present_room)
+    @off_tasks = Task.where(room_id: current_user.present_room, status: 0)
   end
 
   def destroy
-    task = Task.find(params[:id])
-    task.destroy
-    redirect_to main_path(current_user.present_room)
+    @off_tasks = Task.where(room_id: current_user.present_room, status: 0)
+    @task = Task.find(params[:id])
+    @task.destroy
   end
 
   def start

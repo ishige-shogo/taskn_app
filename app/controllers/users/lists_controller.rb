@@ -12,10 +12,17 @@ class Users::ListsController < ApplicationController
   end
 
   def destroy
-    @off_tasks = Task.where(room_id: current_user.present_room, status: 0)
-    @on_tasks = Task.where(room_id: current_user.present_room, status: 1)
     @task = Task.find(params[:id])
     @task.destroy
+    @all_tasks = Task.where(room_id: current_user.present_room)
+    @off_tasks = Task.where(room_id: current_user.present_room, status: 0)
+    @on_tasks = Task.where(room_id: current_user.present_room, status: 1)
+    @finished_tasks = Task.where(room_id: current_user.present_room, status: 2).order(updated_at: :desc)
+    @all_task = {
+      "未着手" => @off_tasks.count,
+      "実行中" => @on_tasks.count,
+      "終了済" => @finished_tasks.count,
+    }
   end
 
   def start
@@ -28,12 +35,19 @@ class Users::ListsController < ApplicationController
   end
 
   def update
-    @on_tasks = Task.where(room_id: current_user.present_room, status: 1)
-    @finished_tasks = Task.where(room_id: current_user.present_room, status: 2).order(updated_at: :desc)
     task = Task.find(params[:id])
     # Taskステータスを終了済にする
     task.status = 2
     task.update(task_status_params)
+    @all_tasks = Task.where(room_id: current_user.present_room)
+    @off_tasks = Task.where(room_id: current_user.present_room, status: 0)
+    @on_tasks = Task.where(room_id: current_user.present_room, status: 1)
+    @finished_tasks = Task.where(room_id: current_user.present_room, status: 2).order(updated_at: :desc)
+    @all_task = {
+      "未着手" => @off_tasks.count,
+      "実行中" => @on_tasks.count,
+      "終了済" => @finished_tasks.count,
+    }
   end
 
   private

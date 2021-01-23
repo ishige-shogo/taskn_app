@@ -13,25 +13,27 @@ class Users::ListsController < ApplicationController
 
   def destroy
     @off_tasks = Task.where(room_id: current_user.present_room, status: 0)
+    @on_tasks = Task.where(room_id: current_user.present_room, status: 1)
     @task = Task.find(params[:id])
     @task.destroy
   end
 
   def start
+    @off_tasks = Task.where(room_id: current_user.present_room, status: 0)
     task = Task.find(params[:id])
     # Taskステータスを実行中にする
     task.user_id = current_user.id
     task.status = 1
     task.update(task_status_params)
-    redirect_to main_path(current_user.present_room)
   end
 
   def update
+    @on_tasks = Task.where(room_id: current_user.present_room, status: 1)
+    @finished_tasks = Task.where(room_id: current_user.present_room, status: 2).order(updated_at: :desc)
     task = Task.find(params[:id])
     # Taskステータスを終了済にする
     task.status = 2
     task.update(task_status_params)
-    redirect_to  analysis_path(current_user.present_room)
   end
 
   private

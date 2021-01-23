@@ -3,7 +3,7 @@
     <tr>
         <td class="<%= status_color(off_task.importance)%> small-table"><%= off_task.importance%></td>
         <td class="text-left"><%= off_task.body %></td>
-        <td class="small-table"><%= link_to "担当", lists_start_path(id: off_task.id), method: :patch, class:"btn btn-sm btn-primary" %></td>
+        <td class="small-table"><%= link_to "担当", lists_start_path(id: off_task.id), method: :patch, remote:true, class:"btn btn-sm btn-primary" %></td>
         <td class="small-table"><%= link_to "削除", list_path(off_task.id), method: :delete, remote:true %></td>
     </tr>
     <% end %>

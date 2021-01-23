@@ -1,0 +1,11 @@
+<table class="table table-sm table-hover mt-3">
+    <% memos.each do |memo| %>
+    <tr>
+        <td class="small-table"><%= attachment_image_tag memo.user, :image, size: "30x30", format: 'jpg', fallback: "no_image.jpg", class: "" %></td>
+        <td><%= memo.body %></td>
+        <td class="small-table"><%=super_simple_date(memo.created_at)%></td>
+        <td class="small-table"><%=super_simple_time(memo.created_at)%></td>
+        <td class="small-table"><%= link_to "消", memo_path(memo.id), method: :delete %></td>
+    </tr>
+    <% end %>
+</table>

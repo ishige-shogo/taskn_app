@@ -43,4 +43,3 @@ class Users::AnalysisController < ApplicationController
     end
   end
 end
-

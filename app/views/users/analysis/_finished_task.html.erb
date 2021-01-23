@@ -1,0 +1,20 @@
+<table class="table table-sm table-light table-hover">
+  <thead class="thead-dark">
+    <tr>
+      <th>内容</th>
+      <th class="small-table">重要度</th>
+      <th>タスク担当者</th>
+      <th>タスク終了日時</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% finished_tasks.each do |finished_task| %>
+    <tr>
+      <td><%= finished_task.body %></td>
+      <td class="<%=status_color(finished_task.importance)%>"><%= finished_task.importance %></td>
+      <td><%= simple_body(finished_task.user.name) %></td>
+      <td><%= simple_date(finished_task.updated_at) %> &emsp;<%= simple_time(finished_task.updated_at) %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>

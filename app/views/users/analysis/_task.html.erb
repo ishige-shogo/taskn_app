@@ -1,0 +1,24 @@
+<table class="table table-sm table-light table-hover">
+  <thead class="thead-dark">
+    <tr>
+      <th>内容</th>
+      <th class="small-table">重要度</th>
+      <th>タスク担当者</th>
+      <th>タスク開始日時</th>
+      <th class="small-table"></th>
+      <th class="small-table"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% on_tasks.each do |task| %>
+    <tr>
+      <td><%= task.body %></td>
+      <td class="<%=status_color(task.importance)%>"><%= task.importance %></td>
+      <td><%= simple_body(task.user.name) %></td>
+      <td><%= simple_date(task.updated_at) %> &emsp;<%= simple_time(task.updated_at) %></td>
+      <td><%= link_to "タスク完了", list_path(task.id), method: :patch, remote:true, class:"btn btn-sm btn-primary" %></td>
+      <td><%= link_to "削除", list_path(task.id), method: :delete, remote:true %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>

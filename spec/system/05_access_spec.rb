@@ -134,10 +134,10 @@ describe "[STEP5] アクセス制限のテスト" do
   end
 
   describe "管理者のアクセス制限のテスト" do
+    subject { current_path }
 
     let(:admin) { create(:admin) }
     let(:contact) { create(:contact) }
-    subject { current_path }
 
     it "ログインページ" do
       visit new_admin_session_path

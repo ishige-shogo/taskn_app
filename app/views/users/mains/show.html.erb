@@ -21,16 +21,7 @@
             <%= f.submit "タスクを作成", class:"btn btn-sm btn-success" %>
         <% end %>
         </div>
-        <table class="table table-sm table-hover table-light mt-3">
-            <% @off_tasks.each do |off_task| %>
-            <tr>
-                <td class="<%= status_color(off_task.importance)%> small-table"><%= off_task.importance%></td>
-                <td class="text-left"><%= off_task.body %></td>
-                <td class="small-table"><%= link_to "担当", lists_start_path(id: off_task.id), method: :patch, class:"btn btn-sm btn-primary" %></td>
-                <td class="small-table"><%= link_to "削除", list_path(off_task.id), method: :delete %></td>
-            </tr>
-            <% end %>
-        </table>
+        <%= render "users/mains/task", off_tasks: @off_tasks %>
     </div>
     <div class="col-4 mx-auto">
         <div class="field text-center"><h3><span class="text-dark font-weight-bold">掲示板メモ</span></h3></div>
@@ -39,18 +30,7 @@
                 <%= f.text_field :body , placeholder:"メモを残す  (例・本日15時～16時不在)"%>
             <% end %>
         </div>
-        <table class="table table-sm table-hover mt-3">
-            <% @memos.each do |memo| %>
-            <tr>
-                <td class="small-table"><%= attachment_image_tag memo.user, :image, size: "30x30", format: 'jpg', fallback: "no_image.jpg", class: "" %></td>
-                <td><%= memo.body %></td>
-                <td class="small-table"><%=super_simple_date(memo.created_at)%></td>
-                <td class="small-table"><%=super_simple_time(memo.created_at)%></td>
-                <td class="small-table"><%= link_to "消", memo_path(memo.id), method: :delete %></td>
-            </tr>
-            <% end %>
-
-        </table>
+        <%= render "users/mains/memo", memos: @memos %>
         <table>
             <tr>
                 <td class="text-right"><%= link_to "メモを全て削除", destroy_all_path(@room.id), method: :delete %></td>

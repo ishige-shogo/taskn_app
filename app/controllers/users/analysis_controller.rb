@@ -27,7 +27,6 @@ class Users::AnalysisController < ApplicationController
     end
   end
 
-
   private
 
   def analysis_variable

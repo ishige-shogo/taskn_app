@@ -7,10 +7,8 @@ class Room < ApplicationRecord
   # gem attr_encrypted の記述、カラムの暗号化復号化に使用
   attr_encrypted :roompass, key: ENV['ROOMPASS']
 
-  # デフォルト値はfalse、管理者が無効処理をするとtrueに変更
   enum is_deleted: { 有効: false, 無効: true }
 
-  # ルーム名は1文字以上20文字以内、パスワードは3文字以上20文字以内
   validates :name, presence: true, length: { minimum: 1, maximum: 20 }
   validates :roompass, presence: true, length: { minimum: 3, maximum: 20 }, confirmation: true
 end

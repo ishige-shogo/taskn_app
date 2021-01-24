@@ -2,9 +2,6 @@ class Users::AnalysisController < ApplicationController
   before_action :authenticate_user!
   def show
     set_analysis
-    @all_tasks = Task.where(room_id: current_user.present_room)
-    @off_tasks = Task.where(room_id: current_user.present_room,
-                            status: 0)
     @all_tasks_graph = {
       "未着手" => @off_tasks.count,
       "実行中" => @on_tasks.count,
@@ -34,6 +31,9 @@ class Users::AnalysisController < ApplicationController
   def set_analysis
     @room           = Room.find(current_user.present_room)
     @room_users     = RoomUser.where(room_id: current_user.present_room)
+    @all_tasks      = Task.where(room_id: current_user.present_room)
+    @off_tasks      = Task.where(room_id: current_user.present_room,
+                                 status: 0)
     @on_tasks       = Task.where(room_id: current_user.present_room,
                                  status: 1).order(updated_at: :asc)
     @finished_tasks = Task.where(room_id: current_user.present_room,

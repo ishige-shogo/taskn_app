@@ -1,6 +1,7 @@
 class Users::AnalysisController < ApplicationController
-  before_action :authenticate_user!, :analysis_variable
+  before_action :authenticate_user!
   def show
+    set_analysis
     @all_tasks = Task.where(room_id: current_user.present_room)
     @off_tasks = Task.where(room_id: current_user.present_room,
                             status: 0)
@@ -17,8 +18,9 @@ class Users::AnalysisController < ApplicationController
   end
 
   def edit
-    @room_user = RoomUser.find(params[:id])
-    @on_tasks_user = @on_tasks.where(user_id: @room_user.user_id)
+    set_analysis
+    @room_user           = RoomUser.find(params[:id])
+    @on_tasks_user       = @on_tasks.where(user_id: @room_user.user_id)
     @finished_tasks_user = @finished_tasks.where(user_id: @room_user.user_id)
     # アクセス制限
     unless RoomUser.where(room_id: current_user.present_room).pluck(:id).include?(@room_user.id)
@@ -29,11 +31,11 @@ class Users::AnalysisController < ApplicationController
 
   private
 
-  def analysis_variable
-    @room = Room.find(current_user.present_room)
-    @room_users = RoomUser.where(room_id: current_user.present_room)
-    @on_tasks = Task.where(room_id: current_user.present_room,
-                           status: 1).order(updated_at: :asc)
+  def set_analysis
+    @room           = Room.find(current_user.present_room)
+    @room_users     = RoomUser.where(room_id: current_user.present_room)
+    @on_tasks       = Task.where(room_id: current_user.present_room,
+                                 status: 1).order(updated_at: :asc)
     @finished_tasks = Task.where(room_id: current_user.present_room,
                                  status: 2).order(updated_at: :desc)
   end

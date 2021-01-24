@@ -23,7 +23,7 @@ require File.expand_path(File.dirname(__FILE__) + "/environment")
 rails_env = Rails.env.to_sym
 set :environment, rails_env
 set :output, 'log/cron.log'
-every 1.day, :at => '2:00 am' do
+every 1.day, at: '2:00' do
   runner "Batch::DataUpdate.data_update"
 rescue => e
   Rails.logger.error("aborted rails runner")

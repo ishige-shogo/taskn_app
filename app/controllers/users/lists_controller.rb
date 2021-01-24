@@ -18,7 +18,7 @@ class Users::ListsController < ApplicationController
     @off_tasks = Task.where(room_id: current_user.present_room, status: 0)
     @on_tasks = Task.where(room_id: current_user.present_room, status: 1)
     @finished_tasks = Task.where(room_id: current_user.present_room, status: 2).order(updated_at: :desc)
-    @all_task = {
+    @all_tasks_graph = {
       "未着手" => @off_tasks.count,
       "実行中" => @on_tasks.count,
       "終了済" => @finished_tasks.count,
@@ -43,7 +43,7 @@ class Users::ListsController < ApplicationController
     @off_tasks = Task.where(room_id: current_user.present_room, status: 0)
     @on_tasks = Task.where(room_id: current_user.present_room, status: 1)
     @finished_tasks = Task.where(room_id: current_user.present_room, status: 2).order(updated_at: :desc)
-    @all_task = {
+    @all_tasks_graph = {
       "未着手" => @off_tasks.count,
       "実行中" => @on_tasks.count,
       "終了済" => @finished_tasks.count,

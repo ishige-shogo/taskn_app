@@ -2,7 +2,7 @@ class Users::RoomsController < ApplicationController
   before_action :authenticate_user!
 
   def search
-    if params[:search_room].empty?
+    if params[:search_room].blank?
       flash[:alert_search] = "ルームIDを入力してください。"
       redirect_to new_room_path
     else

@@ -1,8 +1,8 @@
 class Users::ContactsController < ApplicationController
   before_action :authenticate_user!
   def new
-    @contact = Contact.new
     @contacts = Contact.where(user_id: current_user.id).reverse_order
+    @contact = Contact.new
   end
 
   def create

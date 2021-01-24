@@ -7,9 +7,9 @@ class Users::HomesController < ApplicationController
 
   # ゲストログイン用
   def new_guest
-    user = User.new(user_params)
-    user.name = "ゲストユーザー"
-    user.email = SecureRandom.alphanumeric(15) + "@email.com"
+    user          = User.new(user_params)
+    user.name     = "ゲストユーザー"
+    user.email    = SecureRandom.alphanumeric(15) + "@email.com"
     user.password = SecureRandom.alphanumeric(10)
     user.save
     sign_in user

@@ -1,5 +1,6 @@
 class Users::AnalysisController < ApplicationController
   before_action :authenticate_user!
+
   def show
     set_analysis
     @all_tasks_graph = {

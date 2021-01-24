@@ -5,12 +5,10 @@ class Users::HomesController < ApplicationController
   def how_to
   end
 
+  # ゲストログイン用
   def new_guest
-    # ゲストログイン用
     user = User.new(user_params)
-    # 名前は固定
     user.name = "ゲストユーザー"
-    # メールとパスワードはランダムな文字列が自動で生成される
     user.email = SecureRandom.alphanumeric(15) + "@email.com"
     user.password = SecureRandom.alphanumeric(10)
     user.save

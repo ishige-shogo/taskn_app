@@ -1,40 +1,42 @@
 <div class="container">
-<div class ="row">
-  <div class ="col text-center mx-auto">
-    <h1><strong><span class="text-light">お問い合わせ</span>一覧</strong></h1><h5>全<span class="h4 font-weight-bold"> <%= @contact_all.count%></span> 件</h5>
-  </div>
-</div>
 
-<div class="row">
-  <div class="col text-center mx-auto">
-    <table class="table table-sm table-hover">
-      <thead class="thead-dark">
-        <tr>
-          <th>お問い合わせID</th>
-          <th>利用者ID</th>
-          <th>利用者名</th>
-          <th>タイトル</th>
-          <th>送信時間</th>
-          <th>ステータス</th>
-          <th></th>
-        </tr>
-      </thead>
-      <tbody class ="table-bordered table-light">
-        <% @contacts.each do |contact| %>
-        <tr>
-          <td><%= contact.id %></td>
-          <td><%= contact.user_id %></td>
-          <td><%= contact.user.name %></td>
-          <td><%= simple_body(contact.title) %></td>
-          <td><%= simple_date(contact.created_at) %><br><%= simple_time(contact.created_at) %></td>
-          <td class=<%= status_color(contact.is_read) %>><%= contact.is_read %></td>
-          <td><%= link_to "詳細確認", admins_contact_path(contact.id), method: :patch, class:"font-weight-bold" %></td>
-        </tr>
-        <% end %>
-      </tbody>
-    </table>
+  <div class ="row">
+    <div class ="col text-center mx-auto">
+      <h1><strong><span class="text-light">お問い合わせ</span>一覧</strong></h1><h5>全<span class="h4 font-weight-bold"> <%= @contact_all.count%></span> 件</h5>
+    </div>
   </div>
-</div>
+
+  <div class="row">
+    <div class="col text-center mx-auto">
+      <table class="table table-sm table-hover">
+        <thead class="thead-dark">
+          <tr>
+            <th>お問い合わせID</th>
+            <th>利用者ID</th>
+            <th>利用者名</th>
+            <th>タイトル</th>
+            <th>送信時間</th>
+            <th>ステータス</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody class ="table-bordered table-light">
+          <% @contacts.each do |contact| %>
+          <tr>
+            <td><%= contact.id %></td>
+            <td><%= contact.user_id %></td>
+            <td><%= contact.user.name %></td>
+            <td><%= simple_body(contact.title) %></td>
+            <td><%= simple_date(contact.created_at) %><br><%= simple_time(contact.created_at) %></td>
+            <td class=<%= status_color(contact.is_read) %>><%= contact.is_read %></td>
+            <td><%= link_to "詳細確認", admins_contact_path(contact.id), method: :patch, class:"font-weight-bold" %></td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
 </div>
 
 <%= paginate @contacts %>

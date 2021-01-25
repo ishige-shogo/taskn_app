@@ -13,7 +13,7 @@
     <div class="col-6 text-center mx-auto">
         <div class="field"><h3><span class="text-dark font-weight-bold">TODOリスト</span></h3></div>
         <div class="field text-left mt-3">
-        <%= form_with model: @task, url: lists_path, method: :post,  local:true do |f| %>
+        <%= form_with model: @task, url: lists_path, method: :post, remote:true do |f| %>
             <%= f.text_field :body , placeholder:"タスクを追加する  (例・プレゼンの表紙を作成)"%>
             <%= f.radio_button :importance, "HIGH" %>HIGH
             <%= f.radio_button :importance, "MIDDLE", checked: true %>MIDDLE
@@ -21,41 +21,20 @@
             <%= f.submit "タスクを作成", class:"btn btn-sm btn-success" %>
         <% end %>
         </div>
-        <table class="table table-sm table-hover table-light mt-3">
-            <% @off_tasks.each do |off_task| %>
-            <tr>
-                <td class="<%= status_color(off_task.importance)%> small-table"><%= off_task.importance%></td>
-                <td class="text-left"><%= off_task.body %></td>
-                <td class="small-table"><%= link_to "担当", lists_start_path(id: off_task.id), method: :patch, class:"btn btn-sm btn-primary" %></td>
-                <td class="small-table"><%= link_to "削除", list_path(off_task.id), method: :delete %></td>
-            </tr>
-            <% end %>
-        </table>
+        <div id ="task_table"><%= render "users/mains/task", off_tasks: @off_tasks %></div>
     </div>
     <div class="col-4 mx-auto">
         <div class="field text-center"><h3><span class="text-dark font-weight-bold">掲示板メモ</span></h3></div>
         <div class="field text-left mt-3">
-            <%= form_with model: @memo, url: memos_path, local:true do |f| %>
+            <%= form_with model: @memo, url: memos_path, remote:true do |f| %>
                 <%= f.text_field :body , placeholder:"メモを残す  (例・本日15時～16時不在)"%>
             <% end %>
         </div>
-        <table class="table table-sm table-hover mt-3">
-            <% @memos.each do |memo| %>
-            <tr>
-                <td class="small-table"><%= attachment_image_tag memo.user, :image, size: "30x30", format: 'jpg', fallback: "no_image.jpg", class: "" %></td>
-                <td><%= memo.body %></td>
-                <td class="small-table"><%=super_simple_date(memo.created_at)%></td>
-                <td class="small-table"><%=super_simple_time(memo.created_at)%></td>
-                <td class="small-table"><%= link_to "消", memo_path(memo.id), method: :delete %></td>
-            </tr>
-            <% end %>
-
-        </table>
+            <div id ="memo_table"><%= render "users/mains/memo", memos: @memos %></div>
         <table>
             <tr>
-                <td class="text-right"><%= link_to "メモを全て削除", destroy_all_path(@room.id), method: :delete %></td>
+                <td class="text-right"><%= link_to "メモを全て削除", destroy_all_path(@room.id), method: :delete, remote:true %></td>
             </tr>
         </table>
     </div>
 </div>
-

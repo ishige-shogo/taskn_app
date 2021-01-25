@@ -177,6 +177,7 @@ describe "[STEP4] ログイン後：ルームのテスト" do
         fill_in "search_room", with: ""
         click_on "ルームを検索"
       end
+
       it "空欄で入力の場合：画面の遷移" do
         expect(current_path).to eq new_room_path
       end

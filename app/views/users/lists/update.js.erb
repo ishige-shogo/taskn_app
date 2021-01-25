@@ -1,0 +1,3 @@
+$("#ontask_table").html("<%= j(render "users/analysis/task", {on_tasks: @on_tasks}) %>");
+$("#finished_task_table").html("<%= j(render "users/analysis/finished_task", {finished_tasks: @finished_tasks}) %>");
+$("#all_task_table").html("<%= j(render "users/analysis/all_task", {all_tasks_graph: @all_tasks_graph, off_tasks: @off_tasks, on_tasks: @on_tasks, finished_tasks: @finished_tasks, all_tasks: @all_tasks}) %>");

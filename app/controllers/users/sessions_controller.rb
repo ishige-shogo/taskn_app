@@ -28,9 +28,8 @@ class Users::SessionsController < Devise::SessionsController
 
   # 退会した利用者がログインできないようにする処理
   def reject_user
-    user = User.find_by(email: params[:user][:email].downcase)
-    if user
-      if user.valid_password?(params[:user][:password]) && (user.active_for_authentication? != true)
+    if user = User.find_by(email: params[:user][:email].downcase)
+      if user.valid_password?(params[:user][:password]) && (!user.active_for_authentication?)
         flash[:notice] = "このアカウントは利用できません。"
         redirect_to new_user_session_path
       end

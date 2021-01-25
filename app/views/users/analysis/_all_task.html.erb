@@ -1,0 +1,23 @@
+<div class="field">
+  <%= pie_chart all_tasks_graph %>
+</div>
+<div class="field mt-3 text-center mx-auto">
+  <table class="table table-light">
+    <thead class="thead-dark">
+      <tr>
+        <th>未着手のタスク</th>
+        <th>実行中のタスク</th>
+        <th>終了済のタスク</th>
+        <th>すべてのタスク</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><%= off_tasks.count %></td>
+        <td><%= on_tasks.count %></td>
+        <td><%= finished_tasks.count %></td>
+        <td><%= all_tasks.count %></td>
+      </tr>
+    </tbody>
+  </table>
+</div>

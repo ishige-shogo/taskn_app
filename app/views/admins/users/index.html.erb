@@ -1,44 +1,46 @@
 <div class="container">
-<div class ="row">
-  <div class ="col text-center mx-auto">
-    <h1><strong><span class="text-light">利用者</span>一覧</strong></h1><h5>全<span class="h4 font-weight-bold"> <%= @user_all.count%></span> 名</h5>
-  </div>
-</div>
 
-<div class="row">
-  <div class="col text-center mx-auto">
-    <table class="table table-sm table-hover">
-      <thead class="thead-dark">
-        <tr>
-          <th>利用者ID</th>
-          <th>利用者名</th>
-          <th>参加ルーム数</th>
-          <th>新規登録日時</th>
-          <th>ステータス</th>
-          <th></th>
-        </tr>
-      </thead>
-      <tbody class ="table-bordered table-light">
-        <% @users.each do |user| %>
-        <tr>
-          <td><%= user.id %></td>
-          <td class="font-weight-bold"><%= simple_body(user.name) %></td>
-          <td><%= user.room_users.count %></td>
-          <td><%= simple_date(user.created_at) %><br><%= simple_time(user.created_at) %></td>
-          <td class=<%= status_color(user.is_deleted) %>><%= user.is_deleted %></td>
-          <td>
-            <%= form_with model: @user, url: admins_user_path(user.id), method: :patch, local:true do |f| %>
-              <%= f.radio_button :is_deleted, "有効" %> 有効
-              <%= f.radio_button :is_deleted, "退会済" %> 退会済
-              <%= f.submit "変更する", class:"btn btn-sm btn-secondary" %>
-            <% end %>
-          </td>
-        </tr>
-        <% end %>
-      </tbody>
-    </table>
+  <div class ="row">
+    <div class ="col text-center mx-auto">
+      <h1><strong><span class="text-light">利用者</span>一覧</strong></h1><h5>全<span class="h4 font-weight-bold"> <%= @user_all.count%></span> 名</h5>
+    </div>
   </div>
-</div>
+
+  <div class="row">
+    <div class="col text-center mx-auto">
+      <table class="table table-sm table-hover">
+        <thead class="thead-dark">
+          <tr>
+            <th>利用者ID</th>
+            <th>利用者名</th>
+            <th>参加ルーム数</th>
+            <th>新規登録日時</th>
+            <th>ステータス</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody class ="table-bordered table-light">
+          <% @users.each do |user| %>
+          <tr>
+            <td><%= user.id %></td>
+            <td class="font-weight-bold"><%= simple_body(user.name) %></td>
+            <td><%= user.room_users.count %></td>
+            <td><%= simple_date(user.created_at) %><br><%= simple_time(user.created_at) %></td>
+            <td class=<%= status_color(user.is_deleted) %>><%= user.is_deleted %></td>
+            <td>
+              <%= form_with model: @user, url: admins_user_path(user.id), method: :patch, local:true do |f| %>
+                <%= f.radio_button :is_deleted, "有効" %> 有効
+                <%= f.radio_button :is_deleted, "退会済" %> 退会済
+                <%= f.submit "変更する", class:"btn btn-sm btn-secondary" %>
+              <% end %>
+            </td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
 </div>
 
 <%= paginate @users %>

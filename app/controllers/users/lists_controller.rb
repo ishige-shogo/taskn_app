@@ -8,33 +8,50 @@ class Users::ListsController < ApplicationController
     @task.room_id = current_user.present_room
     @task.status = 0
     @task.save
-    redirect_to main_path(current_user.present_room)
+    after_set_lists
   end
 
   def destroy
-    task = Task.find(params[:id])
-    task.destroy
-    redirect_to main_path(current_user.present_room)
+    set_lists
+    @task.destroy
+    after_set_lists
   end
 
   def start
-    task = Task.find(params[:id])
-    # Taskステータスを実行中にする
-    task.user_id = current_user.id
-    task.status = 1
-    task.update(task_status_params)
-    redirect_to main_path(current_user.present_room)
+    set_lists
+    @task.user_id = current_user.id
+    @task.status = 1
+    @task.update(task_status_params)
+    after_set_lists
   end
 
   def update
-    task = Task.find(params[:id])
-    # Taskステータスを終了済にする
-    task.status = 2
-    task.update(task_status_params)
-    redirect_to  analysis_path(current_user.present_room)
+    set_lists
+    @task.status = 2
+    @task.update(task_status_params)
+    after_set_lists
   end
 
   private
+
+  def set_lists
+    @task = Task.find(params[:id])
+  end
+
+  def after_set_lists
+    @all_tasks      = Task.where(room_id: current_user.present_room)
+    @off_tasks      = Task.where(room_id: current_user.present_room,
+                                 status: 0)
+    @on_tasks       = Task.where(room_id: current_user.present_room,
+                                 status: 1)
+    @finished_tasks = Task.where(room_id: current_user.present_room,
+                                 status: 2).order(updated_at: :desc)
+    @all_tasks_graph = {
+      "未着手" => @off_tasks.count,
+      "実行中" => @on_tasks.count,
+      "終了済" => @finished_tasks.count,
+    }
+  end
 
   def task_params
     params.require(:task).permit(:body, :importance)
@@ -43,4 +60,5 @@ class Users::ListsController < ApplicationController
   def task_status_params
     params.permit(:status)
   end
+
 end

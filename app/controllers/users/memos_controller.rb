@@ -23,7 +23,7 @@ class Users::MemosController < ApplicationController
   private
 
   def set_memos
-    @memos = Memo.where(room_id: current_user.present_room)
+    @memos = Memo.includes([:user]).where(room_id: current_user.present_room)
   end
 
   def memo_params

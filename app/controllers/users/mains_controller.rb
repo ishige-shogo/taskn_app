@@ -6,7 +6,7 @@ class Users::MainsController < ApplicationController
     @off_tasks = Task.where(room_id: params[:id],
                             status: 0)
     @memo      = Memo.new
-    @memos     = Memo.where(room_id: params[:id])
+    @memos     = Memo.includes([:user]).where(room_id: params[:id])
     # アクセス制限
     unless current_user.present_room == @room.id
       flash[:alert_enter_room] = "他のルームに参加するためにはパスワードが必要です。"

@@ -2,7 +2,7 @@ class Admins::RoomsController < ApplicationController
   before_action :authenticate_admin!
   def index
     @room_all = Room.all
-    @rooms = Room.page(params[:page]).per(10)
+    @rooms = Room.includes([:user]).page(params[:page]).per(10)
   end
 
   def update

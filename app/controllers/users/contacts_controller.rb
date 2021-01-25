@@ -1,13 +1,13 @@
 class Users::ContactsController < ApplicationController
   before_action :authenticate_user!
   def new
-    @contact = Contact.new
     @contacts = Contact.where(user_id: current_user.id).reverse_order
+    @contact  = Contact.new
   end
 
   def create
     @contacts = Contact.where(user_id: current_user.id)
-    @contact = Contact.new(contact_params)
+    @contact  = Contact.new(contact_params)
     @contact.user_id = current_user.id
     if @contact.save
       flash[:notice_contact] = "お問い合わせが送信されました。"

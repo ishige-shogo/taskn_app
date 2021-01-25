@@ -1,27 +1,30 @@
 class Users::MemosController < ApplicationController
   before_action :authenticate_user!
   def create
-    @memo = Memo.new(memo_params)
+    @memo         = Memo.new(memo_params)
     @memo.user_id = current_user.id
     @memo.room_id = current_user.present_room
     @memo.save
-    @memos = Memo.where(room_id: current_user.present_room)
+    set_memos
   end
 
   def destroy
-    @memos = Memo.where(room_id: current_user.present_room)
     # ルームのメモを個別に削除する
     @memo = Memo.find(params[:id])
     @memo.destroy
+    set_memos
   end
 
   def destroy_all
-    # ルームのメモを全て削除する
-    @memos = Memo.where(room_id: current_user.present_room)
+    set_memos
     @memos.destroy_all
   end
 
   private
+
+  def set_memos
+    @memos = Memo.where(room_id: current_user.present_room)
+  end
 
   def memo_params
     params.require(:memo).permit(:body)

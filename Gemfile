@@ -51,6 +51,7 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'rubocop-airbnb'
+  gem 'bullet'
 end
 
 group :test do
@@ -60,9 +61,11 @@ group :test do
   gem 'faker'
 end
 
+group :production do
+  gem 'mysql2'
+end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
-
 gem 'groupdate'
 gem 'devise'
 gem "refile", require: "refile/rails", github: 'manfe/refile'
@@ -73,7 +76,5 @@ gem 'jquery-rails'
 gem 'font-awesome-sass', '~> 5.13'
 gem "attr_encrypted"
 gem 'dotenv-rails'
-group :production do
-  gem 'mysql2'
-end
+
 gem 'whenever', require: false

@@ -31,13 +31,13 @@ class Users::AnalysisController < ApplicationController
 
   def set_analysis
     @room           = Room.find(current_user.present_room)
-    @room_users     = RoomUser.where(room_id: current_user.present_room)
+    @room_users     = RoomUser.includes([:user]).where(room_id: current_user.present_room)
     @all_tasks      = Task.where(room_id: current_user.present_room)
     @off_tasks      = Task.where(room_id: current_user.present_room,
                                  status: 0)
-    @on_tasks       = Task.where(room_id: current_user.present_room,
-                                 status: 1).order(updated_at: :asc)
-    @finished_tasks = Task.where(room_id: current_user.present_room,
-                                 status: 2).order(updated_at: :desc)
+    @on_tasks       = Task.includes([:user]).where(room_id: current_user.present_room,
+                                                   status: 1).order(updated_at: :asc)
+    @finished_tasks = Task.includes([:user]).where(room_id: current_user.present_room,
+                                                   status: 2).order(updated_at: :desc)
   end
 end

@@ -67,7 +67,7 @@
 
 ## 開発環境
 + OS：Windows10
-+ 言語：Ruby,HTML,CSS,JavaScript,SQL
++ 言語：Ruby,HTML,CSS,JavaScript
 + フレームワーク：Ruby on Rails 5.2.4
 + JSライブラリ：jQuery
 + IDE：AWS Cloud9

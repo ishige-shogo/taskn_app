@@ -1,4 +1,5 @@
 # タスクん
+![logo](https://user-images.githubusercontent.com/73116792/105974145-f1230400-60d0-11eb-9d96-cf0424e23c29.jpg)
 
 ## サイト概要
 **チームで利用できるTODOリスト管理アプリケーション**です。<br>

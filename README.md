@@ -58,12 +58,12 @@
 
 ## 設計書
 
-[ER図・UIFlow・画面設計](https://docs.google.com/presentation/d/1eZgJde1nMYudyUOFiBr0TFLnuX0U71qg0qFNmT0f-UY/edit?usp=sharing)
+[ER図・UIFlow・画面設計](https://docs.google.com/presentation/d/1eZgJde1nMYudyUOFiBr0TFLnuX0U71qg0qFNmT0f-UY/edit?usp=sharing)（Googleスライドに遷移します）
 
-[テーブル定義書・アプリケーション詳細設計](https://docs.google.com/spreadsheets/d/1T74wFeck5zvVcDJOU_7VzCvwDMPfgS-o02Bh9Bzpbiw/edit?usp=sharing)
+[テーブル定義書・アプリケーション詳細設計](https://docs.google.com/spreadsheets/d/1T74wFeck5zvVcDJOU_7VzCvwDMPfgS-o02Bh9Bzpbiw/edit?usp=sharing)（Googleスプレッドシートに遷移します）
 
 ## 機能一覧
-[機能一覧](https://docs.google.com/spreadsheets/d/1RFY9YETr8O3dOyvynmOLHyf9Lk7-TYPbuJRNSd9cFK0/edit?usp=sharing)
+[機能一覧](https://docs.google.com/spreadsheets/d/1RFY9YETr8O3dOyvynmOLHyf9Lk7-TYPbuJRNSd9cFK0/edit?usp=sharing)（Googleスプレッドシートに遷移します）
 
 ## 開発環境
 + OS：Windows10
@@ -73,7 +73,7 @@
 + IDE：AWS Cloud9
 
 ## 使用素材
-+ [ICOOON  MONO](https://icooon-mono.com/category/transport/)(トップページデザイン・利用者アイコンに使用予定)
++ [ICOOON  MONO](https://icooon-mono.com/category/transport/)（ヘッダーアイコン・利用者アイコンに使用）
 
-+ [Canva](https://www.canva.com/)(アプリケーションのロゴに使用予定)
++ [Canva](https://www.canva.com/)（アプリケーションのロゴ・トップページ・アバウトページに使用）
 

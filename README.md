@@ -1,12 +1,12 @@
 # タスクん
 
 ## サイト概要
-**チームで利用できるTODOリスト共有アプリケーション**です。<br>
+**チームで利用できるTODOリスト管理アプリケーション**です。<br>
 **ルームはパスワード管理**されており、チーム以外の人は閲覧編集ができません。<br>
 また**掲示板メモ機能・分析機能**も搭載しており、利用者はタスクの進捗度を、管理者は登録人数や累計ルーム数のデータを**グラフによって可視化**できます。
 
 ## サイトテーマ
-チームで利用できるTODOリスト共有アプリケーションです。
+チームで利用できるTODOリスト管理アプリケーションです。
 
 ## テーマを選んだ理由
 チームでのアプリケーション開発を経験した上で、**不便だと感じた部分を解消できるアプリ**を作成したいと思いました。
@@ -33,7 +33,7 @@
 
 + **個人で何か目標がある人**(アプリ開発・英語学習・やりたいことリスト等)
 
-## 主な使い方
+## 主な機能と使い方
 + **TODOリスト・掲示板メモを1画面に表示すること**でUIの向上に努めています。
 
 + 分析機能を搭載し、**タスクの進捗度をグラフで可視化できます。**
@@ -58,22 +58,22 @@
 
 ## 設計書
 
-[ER図・UIFlow・画面設計](https://docs.google.com/presentation/d/1eZgJde1nMYudyUOFiBr0TFLnuX0U71qg0qFNmT0f-UY/edit?usp=sharing)
+[ER図・UIFlow・画面設計](https://docs.google.com/presentation/d/1eZgJde1nMYudyUOFiBr0TFLnuX0U71qg0qFNmT0f-UY/edit?usp=sharing)（Googleスライドに遷移します）
 
-[テーブル定義書・アプリケーション詳細設計](https://docs.google.com/spreadsheets/d/1T74wFeck5zvVcDJOU_7VzCvwDMPfgS-o02Bh9Bzpbiw/edit?usp=sharing)
+[テーブル定義書・アプリケーション詳細設計](https://docs.google.com/spreadsheets/d/1T74wFeck5zvVcDJOU_7VzCvwDMPfgS-o02Bh9Bzpbiw/edit?usp=sharing)（Googleスプレッドシートに遷移します）
 
 ## 機能一覧
-[機能一覧](https://docs.google.com/spreadsheets/d/1RFY9YETr8O3dOyvynmOLHyf9Lk7-TYPbuJRNSd9cFK0/edit?usp=sharing)
+[機能一覧](https://docs.google.com/spreadsheets/d/1RFY9YETr8O3dOyvynmOLHyf9Lk7-TYPbuJRNSd9cFK0/edit?usp=sharing)（Googleスプレッドシートに遷移します）
 
 ## 開発環境
 + OS：Windows10
-+ 言語：HTML,CSS,JavaScript,Ruby,SQL
++ 言語：Ruby,HTML,CSS,JavaScript
 + フレームワーク：Ruby on Rails 5.2.4
 + JSライブラリ：jQuery
-+ IDE：Cloud9
++ IDE：AWS Cloud9
 
 ## 使用素材
-+ [ICOOON  MONO](https://icooon-mono.com/category/transport/)(トップページデザイン・利用者アイコンに使用予定)
++ [ICOOON  MONO](https://icooon-mono.com/category/transport/)（ヘッダーアイコン・利用者アイコンに使用）
 
-+ [ロゴメーカー](https://logo-maker.stores.jp/)(アプリケーションのロゴに使用予定)
++ [Canva](https://www.canva.com/)（アプリケーションのロゴ・トップページ・アバウトページに使用）
 

@@ -69,7 +69,7 @@
 [機能一覧](https://docs.google.com/spreadsheets/d/1RFY9YETr8O3dOyvynmOLHyf9Lk7-TYPbuJRNSd9cFK0/edit?usp=sharing)（Googleスプレッドシートに遷移します）
 
 ## 開発環境
-+ OS：Windows10
++ OS：Windows10 Home
 + 言語：Ruby,HTML,CSS,JavaScript
 + フレームワーク：Ruby on Rails 5.2.4
 + JSライブラリ：jQuery
